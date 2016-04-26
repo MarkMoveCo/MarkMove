@@ -3,7 +3,7 @@ namespace site;
 use site\Db;
 use site\Repositories\UserRepository;
 use site\View;
-use site\Exceptions;
+use site\Exceptions\UnauthorizedException;
 
 spl_autoload_register(function($className){
 	$classPathSplitted = explode('\\', $className);
@@ -38,12 +38,18 @@ foreach ($scriptName as $key => $value) {
 	}
 }
 $actionIndex = $controllerIndex + 1;
+$paramsStartIndex = $actionIndex + 1;
+$params = [];
 if (array_key_exists($controllerIndex, $requestUri)) 
 {
 	$controllerName = $requestUri[$controllerIndex];
 	if (array_key_exists($actionIndex, $requestUri))
 	{
 		$actionName = $requestUri[$actionIndex];
+		while (array_key_exists($paramsStartIndex, $requestUri)) {
+			$params [] = $requestUri[$paramsStartIndex];
+			$paramsStartIndex++;
+		}
 	}
 	else
 	{
@@ -61,7 +67,13 @@ $view = new View($controllerName, $actionName);
 $controllerClassName = '\\site\\Controllers\\'.ucfirst($controllerName).'Controller';
 $controller = new $controllerClassName($view, $controllerName);
 try{
-	$controller->$actionName();
+	if (count($params) == 0) {
+		$controller->$actionName();
+	}
+	else{
+		$controller->$actionName($params);
+	}
+
 }
 catch(UnauthorizedException $unauthorizedException){
 echo "Access denied";
