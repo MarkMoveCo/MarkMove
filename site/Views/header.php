@@ -27,17 +27,10 @@ namespace site\Views;?>
 						<ul class="nav navbar-nav navbar-left">
 							<li role="presentation"><a href="<?= $this->url();?>">Mark Move</a></li>
 							<?php if(!empty($this->user)): ?>
-								<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Home<span class="badge"><?= count($this->user->getNotifications());?></span></a>
-								<ul class="dropdown-menu">
-								<?php if($this->user->getNotifications() != null):?>
-								<?php foreach($this->user->getNotifications() as $notification):?>
-									<li><a href="#"><?= $notification->getNotification();?></a></li>
-									<li role="separator" class="divider"></li>
-								<?php endforeach;?>
-							<?php endif;?>
-								</ul>
+								<li class="presentation">
+								<a href="<?= $this->url();?>">Home</a>		
 							</li>
+
 							<?php endif;?>
 							<li role="presentation"><a href="#">Landmarks</a></li>
 							<li class="dropdown">
