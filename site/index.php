@@ -3,6 +3,7 @@ namespace site;
 use site\Db;
 use site\Repositories\UserRepository;
 use site\View;
+use site\Exceptions;
 
 spl_autoload_register(function($className){
 	$classPathSplitted = explode('\\', $className);
@@ -59,7 +60,14 @@ else
 $view = new View($controllerName, $actionName);
 $controllerClassName = '\\site\\Controllers\\'.ucfirst($controllerName).'Controller';
 $controller = new $controllerClassName($view, $controllerName);
-$controller->$actionName();
+try{
+	$controller->$actionName();
+}
+catch(UnauthorizedException $unauthorizedException){
+echo "Access denied";
+die;
+}
+
 
 $view->render();
 
