@@ -111,6 +111,16 @@ class UsersController extends Controller{
 
 	}
 
+	public function profile_change_picture()
+	{
+
+	}
+
+	public function profile_crop_picture()
+	{
+
+	}
+
 	private function changeRoles()
 	{
 		$rolesToUpdate = $_POST['rolesToUpdate'];
