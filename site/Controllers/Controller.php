@@ -1,8 +1,11 @@
 <?php
 namespace site\Controllers;
 use site\View;
+use site\Repositories\UserRepository;
+use site\Exceptions\UserNotFoundException;
 
-class Controller{
+class Controller
+{
 
 	protected $view;
 
@@ -11,6 +14,28 @@ class Controller{
 	public function __construct(View $view, $controllerName){
 		$this->view = $view;
 		$this->controllerName = $controllerName;
+	}
+
+	public function getUser($id)
+	{
+		$user = UserRepository::create()->getOneById($id);
+		if (!$user) 
+		{
+			if ($id == -1)
+			{
+				$user = $user = User::partialInitialise("Todor","1234","todor@email.bg","20","Male");
+				$user->setRole(new Role("Admin",$id));
+				return $user;
+			}
+			else
+			{
+				throw new UserNotFoundException();
+			}
+		}
+		else
+		{
+			return $user;
+		}
 	}
 
 	public function redirect($controller = null, $action = null, $params = []){
