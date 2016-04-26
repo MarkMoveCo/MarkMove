@@ -40,8 +40,21 @@ namespace site\Views\users;?>
 			        <a href="#" class="list-group-item">
 			            <i class="fa fa-comment-o"></i>
 			        </a>
-			        <a href="#" class="list-group-item">
-			            <i class="fa fa-globe"></i>
+			        <a href="#" class="list-group-item" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+			            <?php if(!empty($this->user)): ?>
+    				            <i class="fa fa-globe"></i>
+    				            <?php if(count($this->user->getNotifications()) != 0):?>
+								<span class="badge"><?= count($this->user->getNotifications());?></span>
+								<ul class="dropdown-menu">
+								<?php if($this->user->getNotifications() != null):?>
+								<?php foreach($this->user->getNotifications() as $notification):?>
+									<li><a href="#"><?= $notification->getNotification();?></a></li>
+									<li role="separator" class="divider"></li>
+								<?php endforeach;?>
+							<?php endif;?>
+								</ul>
+							<?php endif;?>
+							<?php endif;?>
 			        </a>
 			        <a href="#" class="list-group-item">
 			            <i class="fa fa-bar-chart-o"></i>
