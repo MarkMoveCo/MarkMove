@@ -1,0 +1,26 @@
+.change-profile {
+	width: 580px;
+	height: 350px;
+	padding-left: 12px;
+	background-color: #fff;
+}
+
+header {
+	margin-bottom: 20px;
+}
+
+.btn { 
+	height: 50px;
+	width: 250px;
+	margin-right: 5px;
+}
+
+.my-pictures > h3 {
+	color: #000;
+}
+
+.scaled-image .image {
+	width: 120px;
+	height: 120px;
+	margin-right: 5px;
+}
