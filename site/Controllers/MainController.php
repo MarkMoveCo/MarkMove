@@ -5,6 +5,7 @@ use site\Repositories\UserRepository;
 use site\Models\User;
 use site\Models\Role;
 use site\Models\Notification;
+use site\Exceptions\UserNotFoundException;
 
 class MainController extends Controller
 {
@@ -79,8 +80,18 @@ class MainController extends Controller
 
 	public function landmarks()
 	{
-		$user = $this->getUser($_SESSION['userid']);
-		$this->view->user = $user;
+		if (isset($_SESSION['userid']))
+		{
+			try
+			{
+				$user = $this->getUser($_SESSION['userid']);
+				$this->view->user = $user;	
+			}
+			catch(UserNotFoundException $exception)
+			{
+
+			}
+		}
 	}
 
 	public function index()

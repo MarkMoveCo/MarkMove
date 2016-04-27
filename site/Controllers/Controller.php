@@ -3,6 +3,8 @@ namespace site\Controllers;
 use site\View;
 use site\Repositories\UserRepository;
 use site\Exceptions\UserNotFoundException;
+use site\Models\User;
+use site\Models\Role;
 
 class Controller
 {
