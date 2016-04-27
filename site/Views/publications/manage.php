@@ -27,7 +27,25 @@ namespace site\Views\publications;
 		</header>
 
 		<main>
-			
+			<a href="<?=$this->url('publications','create');?>"><button type="button">Create publication</button></a>
+			<table border="1">
+				<tr>
+				<td>
+					Publication
+				</td>
+				</tr>
+				<?php foreach($this->publicationsCollection as $publication):?>
+					<tr>
+						<td>
+						<a href="<?=$this->url('publications','publication',$params = ['id'=>$publication->getId()]);?>">
+						<button type="button">						
+						<?= $publication->getTitle();?>
+						</button>
+						</a>	
+						</td>				
+					</tr>
+				<?php endforeach;?>
+			</table>
 		</main>
 
 		<footer>
