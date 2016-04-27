@@ -43,31 +43,7 @@
     }
 }
 
-/* blocks */
-.profile{
-    width: 200px;
-    padding-bottom: 10px;
-    float: left;
-    color: #000;
-    background-color: #fff; 
-}
-
-.profile-name { 
-    font-size: 1.5em;
-    margin-bottom: 5px;
-    margin-left: 20px;
-}
-
-.profile-info {
-    margin-left: 10px;
-}
-
-.profile-info i{
-    margin-right: 5px;
-}
-
-
-
+/* change profile picture*/
 .fb-profile > .profile-menu> .change-picture {
     display: inline-block;
     position: relative;
@@ -93,3 +69,42 @@
     font-size: 16px;
     color: #000;
 }
+
+/* blocks */
+.profile{
+    width: 200px;
+    padding-bottom: 10px;
+    float: left;
+    color: #000;
+    background-color: #fff; 
+}
+
+.profile-name { 
+    font-size: 1.5em;
+    margin-bottom: 5px;
+    margin-left: 20px;
+}
+
+.profile-info {
+    margin-left: 10px;
+}
+
+.profile-info i{
+    margin-right: 5px;
+}
+
+/* newsfeed */
+
+.post-element {
+    display: inline-block;
+    height: 50px;
+}
+
+.newsfeed > .add-post > .general > .user > a > img {
+    width: 50px;
+    height: 50px;
+    border-radius: 15px;
+}
+
+.btn { 
+height: 52px; }

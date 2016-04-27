@@ -43,7 +43,6 @@ namespace site\Views\users;?>
 						  ?>"/>
 	 				</a>
 
-
 <!-- 							<form action="" method="post" enctype="multipart/form-data">
     							Select image to upload:
    								<input type="file" name="fileToUpload" id="fileToUpload">
@@ -52,9 +51,9 @@ namespace site\Views\users;?>
 
 					<div class="profile-menu">
 						<ul>
-							<li><a href="#">About me</a></li>
 							<li><a href="#">Photos</a></li>
 							<li><a href="#">Videos</a></li>
+							<li><a href="#">Activities</a></li>
 							<li><a href="#">Groups</a></li>
 							<li><a href="#">Events</a></li>
 							<li><a href="#">Friends</a></li>
@@ -72,24 +71,69 @@ namespace site\Views\users;?>
 			      <a href="#pageone" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
 			      <img src="http://lorempixel.com/850/280/nightlife/5/"alt="Skaret View">
 			    </div> -->
+			    
+			    <div class="content">
+			    	<div class="sidebar">
+			    		<div class="profile">
+							<div class="profile-name">
+								<?= $this->user->getNickname();?>
+							</div>
+							<div>
+								<table class="profile-info">
+									<tr>
+										<td><i class="fa fa-pencil-square"></i></td>
+										<td>Write something about you...</td>
+									</tr>
+									<tr>
+									</tr>
+									<tr>
+										<td><i class="fa fa-home"></i></td>
+										<td>Born from a boom-box</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+			    	</div>
 
-				<div class="profile">
-					<div class="profile-name"><?= $this->user->getNickname();?></div>
-					<div>
-						<table class="profile-info">
-							<tr>
-								<td><i class="fa fa-pencil-square"></i></td>
-								<td>Write something about you...</td>
-							</tr>
-							<tr>
-							</tr>
-							<tr>
-								<td><i class="fa fa-home"></i></td>
-								<td>Born from a boom-box</td>
-							</tr>
-						</table>
-					</div>
-				</div>
+			    	<div class="newsfeed">
+				    	<div class="add-post">
+					    	<div class="general">
+					    		<div class="post-element user">
+					    			<a href="#" class="profile-picture">
+					    				<img align="left" src="<?php
+										$filePath = $_SERVER['DOCUMENT_ROOT'].'/site/images/profile/'.$this->user->getNickname().'.jpg';
+										if (file_exists($filePath)) {
+										 	echo '../images/profile/'.$this->user->getNickname().'.jpg';
+										}
+										else
+										{
+										 	echo 'http://localhost/site/images/profile/default.jpg';
+										} 
+										?>"/>
+					    			</a>
+					    		</div>
+
+					    		<div class="post-element content">
+					    			<div class="input-group">
+										<textarea placeholder="What do you want to say?"required></textarea>
+									</div>	
+					    		</div>
+					    	</div>
+
+					    	<div class="sufix">
+					    		<div class="post-element">
+					    			<a href="#">
+					    				<i class="glyphicon glyphicon-picture"></i>
+					    			</a>
+					    		</div>
+
+					    		<div class="post-element action">
+					    			<input class="commit" name="commit" type="submit" value="Post"></input>
+					    		</div>
+					    	</div>	  
+				    	</div>  						    		
+			    	</div>
+			    </div>
 			</div> <!-- /container -->
 		</main>
 
