@@ -26,13 +26,31 @@ class PublicationRepository extends Repository
 		return $result;
 	}
 
+	public function getAll()
+	{
+		$query="SELECT * FROM publications";
+		$params = [];
+		$this->db->query($query, $params);
+		$result = $this->db->fetchAll();
+		$publicationsCollection = [];
+		foreach($result as $resultPublicaiton)
+		{
+			$publication = new Publication($resultPublicaiton['title'],$resultPublicaiton['body']);
+			$publication->setId($resultPublicaiton['id']);
+			$publicationsCollection[] = $publication;
+		}
+
+		return $publicationsCollection;
+	}
+
 	public function getByTitle($title)
 	{
-		$query="SELECT body FROM publications WHERE title=?";
+		$query="SELECT id, body FROM publications WHERE title=?";
 		$params = [$title];
 		$this->db->query($query, $params);
 		$result = $this->db->fetch();
 		$publication = new Publication($title, $result['body']);
+		$publication->setId($result['id']);
 		return $publication;
 	}
 
@@ -43,6 +61,7 @@ class PublicationRepository extends Repository
 		$this->db->query($query, $params);
 		$result = $this->db->fetch();
 		$publication = new Publication($result['title'], $result['body']);
+		$publication->setId($id);
 		return $publication;
 	}
 }
