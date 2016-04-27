@@ -61,6 +61,19 @@ class PublicationsController extends Controller
 				//throw new UnauthorizedException();
 				$this->redirect(); // ERROR
 			}
+			else
+			{
+				$publicationsCollection = PublicationRepository::create()->getAll();
+				if (!$publicationsCollection) 
+				{
+					echo "Error<br><br><br><br>";
+					die;
+				}
+				else
+				{
+					$this->view->publicationsCollection = $publicationsCollection;
+				}
+			}
 
 		}
 		else
@@ -72,23 +85,28 @@ class PublicationsController extends Controller
 
 	public function publication($params)
 	{
-		if (count($params) == 1) 
-		{
-			$identifier = $params[0];
-			$publication = PublicationRepository::create()->getById($identifier);
-			if (!$publication) 
+		if (count($params) == 2) 
+		{	
+			$type = $params[0];
+			$identifier = $params[1];
+			if ($type == "id") 
 			{
-				echo "Error<br><br><br><br>";
-				die;
+				$publication = PublicationRepository::create()->getById($identifier);
+				if (!$publication) 
+				{
+					echo "Error<br><br><br><br>";
+					die;
+				}
+				else
+				{
+					$this->view->publication = $publication;
+				}
 			}
-			else
-			{
-				$this->view->publication = $publication;
-			}
+			
 		}
 		else
 		{
-			echo"ERROR<br><br><br><br>";
+			echo"ERROR <br><br><br><br>";
 			die;
 		}
 
