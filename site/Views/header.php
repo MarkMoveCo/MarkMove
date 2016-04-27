@@ -32,7 +32,7 @@ namespace site\Views;?>
 							</li>
 
 							<?php endif;?>
-							<li role="presentation"><a href="#">Landmarks</a></li>
+							<li role="presentation"><a href="<?= $this->url(null,'landmarks');?>">Landmarks</a></li>
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tourism<span class="caret"></span></a>
 								<ul class="dropdown-menu">
