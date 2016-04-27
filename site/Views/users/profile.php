@@ -28,7 +28,7 @@ namespace site\Views\users;?>
 			<div class="container">
 				<div class="fb-profile">
 					<a href="#" class="profile-picture">
-						<img align="left" class="fb-image-lg" src="http://lorempixel.com/850/280/nightlife/5/" alt="Profile image example"/>
+						<img align="left" class="fb-image-lg" src="http://localhost/site/images/wallpaper.jpg" alt="Profile image example"/>
 					</a>
 	 				<a href="#" class="profile-picture">
 	 					<img align="left" class="fb-image-profile thumbnail" src="<?php
