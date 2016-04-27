@@ -77,6 +77,12 @@ class MainController extends Controller
 	$this->redirect('users','home');
 	}
 
+	public function landmarks()
+	{
+		$user = $this->getUser($_SESSION['userid']);
+		$this->view->user = $user;
+	}
+
 	public function index()
 	{
 		if (isset($_SESSION['userid'])) {
