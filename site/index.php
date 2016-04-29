@@ -4,6 +4,7 @@ use site\Db;
 use site\Repositories\UserRepository;
 use site\View;
 use site\Exceptions\UnauthorizedException;
+use site\Repositories\FriendshipRepository;
 
 spl_autoload_register(function($className){
 	$classPathSplitted = explode('\\', $className);
