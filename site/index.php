@@ -5,6 +5,8 @@ use site\Repositories\UserRepository;
 use site\View;
 use site\Exceptions\UnauthorizedException;
 use site\Repositories\FriendshipRepository;
+use site\Models\Post;
+use site\Repositories\PostRepository;
 
 spl_autoload_register(function($className){
 	$classPathSplitted = explode('\\', $className);
@@ -80,7 +82,7 @@ catch(UnauthorizedException $unauthorizedException){
 echo "Access denied";
 die;
 }
-
+//(new \DateTime())->format('Y-m-d H:i:s');
 
 $view->render();
 
