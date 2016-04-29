@@ -4,7 +4,8 @@ use site\Db;
 use site\Models\User;
 use site\Repositories\Repository;
 
-class UserRepository extends Repository{
+class UserRepository extends Repository
+{
 
 		protected static $inst = null;
 
