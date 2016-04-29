@@ -8,13 +8,15 @@ class Post
 {
 	private $userNickname;
 
+	private $userId;
+
 	private $postContent;
 
 	private $postDateTime;
 
-	public function __construct($userNickname, $postContent, $postDateTime)
+	public function __construct($userId, $postContent, $postDateTime)
 	{
-		$this->setUserNickname($userNickname);
+		$this->setUserId($userId);
 		$this->setPostContent($postContent);
 		$this->setPostDateTime($postDateTime);
 	}
@@ -24,12 +26,22 @@ class Post
 		return PostRepository::create()->save($this);
 	}
 
+	public function setUserId($userId)
+	{
+		$this->userId = $userId;
+	}
+
+	public function getUserId()
+	{
+		return $this->userId;
+	}
+
 	public function setUserNickname($userNickname)
 	{
 		$this->userNickname = $userNickname;
 	}
 
-	public function getUser()
+	public function getUserNickname()
 	{
 		return $this->userNickname;
 	}
