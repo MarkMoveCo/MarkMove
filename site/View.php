@@ -14,7 +14,7 @@ public function __construct($controllerName, $actionName){
 }
 
 	public function render(){
-		require_once '/Views/'.$this->controllerName.'/'.$this->actionName.'.php';
+		require_once 'Views/'.$this->controllerName.'/'.$this->actionName.'.php';
 	}
 
 	public function url($controller = null, $action = null, $params = []){
