@@ -59,7 +59,7 @@ namespace site\Views\users;?>
 							<li><a href="#">Friends</a></li>
 						</ul>
 						<div class="change-picture">
-							<a href="profile-change-picture.php" role="button">
+							<a href="<?=$this->url('users','profile_change_picture');?>" role="button">
 								<i class="fa fa-edit"></i>
 								<span id="change-text">Change picture</span>
 							</a>
