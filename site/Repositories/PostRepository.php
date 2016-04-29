@@ -29,7 +29,7 @@ class PostRepository extends Repository
 
 	public function getLatestPostsForUser($userId)
 	{
-		$query = "SELECT users.nickname, posts.post_content, posts.post_date
+		$query = "SELECT users.id, users.nickname, posts.post_content, posts.post_date
 		FROM friendships
 		JOIN users
 		ON users.id = friendships.user_one_id OR users.id = friendships.user_two_id
@@ -43,7 +43,8 @@ class PostRepository extends Repository
 		$latestPostsCollection = [];
 		foreach($result as $resultPost)
 		{
-			$post = new Post($resultPost['nickname'], $resultPost['post_content'], $resultPost['post_date']);
+			$post = new Post($resultPost['id'], $resultPost['post_content'], $resultPost['post_date']);
+			$post->setUserNickname($resultPost['nickname']);
 			$latestPostsCollection [] = $post;
 		}
 
