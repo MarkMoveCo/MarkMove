@@ -121,9 +121,12 @@ namespace site\Views\users;?>
 					    	</div>
 
 					    	<div class="sufix">
-					    		<div class="post-element">
+					    		<div class="post-element icons">
 					    			<a href="#">
 					    				<i class="glyphicon glyphicon-picture"></i>
+					    			</a>
+					    			<a href="#">
+					    				<i class="fa fa-map-marker"></i>
 					    			</a>
 					    		</div>
 
@@ -131,8 +134,8 @@ namespace site\Views\users;?>
 					    			<input class="commit" name="commit" type="submit" value="Post"></input>
 					    		</div>
 					    	</div>	  
-				    	</div>  						    		
-			    	</div>
+				    	</div> <!-- add-post  -->
+			    	</div> <!-- newsfeed -->
 			    </div>
 			</div> <!-- /container -->
 		</main>

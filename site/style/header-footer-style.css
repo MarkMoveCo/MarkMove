@@ -19,10 +19,16 @@
 /*******************Footer**********************/
 .footer-bottom{
     position: absolute;
-    bottom: 0;
+/*    bottom: 0;*/
     width: 100%;
     text-align: center;
     display: block;
+}
+
+@media(max-width: 1024) {
+    .footer-bottom {
+        bottom: 0;
+    }
 }
 .title-median {
     font-size: 16px;
