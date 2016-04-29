@@ -82,7 +82,6 @@ catch(UnauthorizedException $unauthorizedException){
 echo "Access denied";
 die;
 }
-//(new \DateTime())->format('Y-m-d H:i:s');
 
 $view->render();
 
