@@ -7,11 +7,14 @@ use site\Models\User;
 use site\Models\Role;
 use site\Repositories\UserRepository;
 use site\Repositories\RoleRepository;
+use site\Repositories\PostRepository;
 use site\Models\Notification;
 use site\Repositories\NotificationRepository;
 use site\Models\Photo;
+use site\Models\Post;
 
-class UsersController extends Controller{
+class UsersController extends Controller
+{
 	
 	private function uploadPicture($photoName,$path = null)
 	{
@@ -185,11 +188,24 @@ class UsersController extends Controller{
 
 	public function home()
 	{
-		if (isset($_SESSION['userid'])) {	
+		if (isset($_SESSION['userid'])) 
+		{	
 			$user = UserRepository::create()->getOneById($_SESSION['userid']);
-			if ($user) {
-			$user->setNotifications(NotificationRepository::create()->getAllWithUserId($user->getId()));
-			$this->view->user = $user;
+			if ($user) 
+			{
+				$user->setNotifications(NotificationRepository::create()->getAllWithUserId($user->getId()));
+				$this->view->user = $user;
+				$this->view->latestPosts = PostRepository::create()->getLatestPostsForUser($user->getId());
+				if (isset($_POST['submit-post'])) 
+				{
+					$success = $this->makePost();
+					if (!$success) 
+					{
+						throw new Exception("Error Processing Request", 1);
+					}
+
+					$this->redirect('users','home');
+				}
 			}
 			else if($_SESSION['userid'] == "-1"){
 				$user = User::partialInitialise("Todor","1234","todor@email.bg","20","Male");
@@ -203,5 +219,12 @@ class UsersController extends Controller{
 		}
 
 
+	}
+
+	private function makePost()
+	{
+		$post = new Post($this->view->user->getId(), $_POST['post-content'],(new \DateTime())->format('Y-m-d H:i:s'));
+		$result = $post->save();
+		return $result;
 	}
 }
