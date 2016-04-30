@@ -32,15 +32,16 @@ namespace site\Views\main;?>
 		</header>
 
 		<main>
-			<div class="story">
-				<p>“Traveling – it leaves you speechless, then turns you into a storyteller.” – Ibn Battuta</p>
-			<div class="message">
-				<p>Tell your story to us</p>
-				<a href="<?=$this->url(null,'register');?>">Sign up</a>
+			<div class="container">
+				<div class="story">
+					<p>“Traveling – it leaves you speechless, then turns you into a storyteller.” – Ibn Battuta</p>
+					<div class="message">
+						<p>Tell your story to us</p>
+						<a href="<?=$this->url(null,'register');?>">Sign up</a>
+					</div>
+				</div>
 			</div>
-
-			</div>
-		</main>
+		</main> 
 
 		<footer>
 			<?php require_once 'Views/footer.php';?>

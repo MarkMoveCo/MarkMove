@@ -6,6 +6,14 @@
 
 
 /*newsfeed*/
+.add-post{
+	width: 520px;
+	height: 80px;
+	background-color: #fff;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
 .post-element {
     display: inline-block;
     height: 50px;
@@ -15,8 +23,64 @@
     width: 50px;
     height: 50px;
     border-radius: 15px;
+    margin-left: 0;
+}
+
+.content {
+	width: 400px;
+	height: 50px;
 }
 
 .newsfeed > .add-post > .suffix > .action {
     float: right;
+}
+
+.icons {
+	float: left;
+}
+
+.commit {
+	float: right;
+}
+
+/*post*/
+.feed {
+	background-color: #fff;
+	padding: 10px;
+	height: 650px;
+	width: 520px;
+}
+
+.name {
+	margin-bottom: 5px;
+	font-size: 20px;
+}
+
+.photo{
+	width: 500px;
+	height: 450px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.comments, 
+.shares {
+	float: right;
+}
+
+.comments{
+	margin-right: 10px;
+}
+
+.btn {
+	height: 20px;
+	padding: 0 42px 0 42px;
+}
+
+.newsfeed > .feed > .actions > .btn > i {
+margin-right: 5px;
+}
+
+.comment-action {
+	margin-top: 10px;
 }

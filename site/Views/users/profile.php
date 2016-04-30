@@ -99,8 +99,8 @@ namespace site\Views\users;?>
 				    	<div class="add-post">
 					    	<div class="general">
 					    		<div class="post-element user">
-					    			<a href="#" class="profile-picture">
-					    				<img align="left" src="<?php
+					    			<a href="#" class="post-element">
+					    				<img class="profile-picture" align="left" src="<?php
 										$filePath = $_SERVER['DOCUMENT_ROOT'].'/site/images/profile/'.$this->user->getNickname().'.jpg';
 										if (file_exists($filePath)) {
 										 	echo '../images/profile/'.$this->user->getNickname().'.jpg';

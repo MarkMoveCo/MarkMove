@@ -13,4 +13,17 @@ header {
     margin-bottom: 49px; 
 }
 
+.container {
+	min-height: 500px;
+}
 
+@media (max-width: 1240px) {
+	.container { 
+	min-height: 400px; }
+}
+
+
+@media (max-width: 1024px) {
+	.container { 
+	min-height: 300px; }
+}

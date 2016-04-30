@@ -1,9 +1,6 @@
 <?php
 namespace site\Views;?>
 <div class="footer-bottom">
-    <div> 
-        <h2 class="title-median">Webenlance Pvt. Ltd.</h2>
-    </div>
     <div class="social-icons">
         <ul class="nomargin">
             <li><a href="https://www.facebook.com/bootsnipp"><i class="fa fa-facebook-square fa-3x social-fb" id="social"></i></a></li>
@@ -14,7 +11,7 @@ namespace site\Views;?>
         </ul>
     </div>
     <div class="contact">
-        <a href="mailto:info@webenlance.com">info@webenlance.com</a>
+        <a href="mailto:info@webenlance.com">info@markmove.com</a>
     </div>
     <div class="copyright">
         © 2016, MarkMove, All rights reserved

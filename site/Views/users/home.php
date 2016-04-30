@@ -65,26 +65,22 @@ namespace site\Views\users;?>
 
               	<div class="newsfeed">
 			    	<div class="add-post">
-				    	<div class="general">
-				    		<div class="post-element user">
-				    			<a href="#" class="profile-picture">
-				    				<img class="profile-picture" align="left" src="<?php
-									$filePath = $_SERVER['DOCUMENT_ROOT'].'/site/images/profile/'.$this->user->getNickname().'.jpg';
-									if (file_exists($filePath)) {
-									 	echo '../images/profile/'.$this->user->getNickname().'.jpg';
-									}
-									else
-									{
-									 	echo 'http://localhost/site/images/profile/default.jpg';
-									} 
-									?>"/>
-				    			</a>
-				    		</div>
+			    		<div class="post-element user">
+			    			<a href="#" class="profile-picture">
+			    				<img class="profile-picture" align="left" src="<?php
+								$filePath = $_SERVER['DOCUMENT_ROOT'].'/site/images/profile/'.$this->user->getNickname().'.jpg';
+								if (file_exists($filePath)) {
+								 	echo '../images/profile/'.$this->user->getNickname().'.jpg';
+								}
+								else
+								{
+								 	echo 'http://localhost/site/images/profile/default.jpg';
+								} 
+								?>"/>
+			    			</a>
 
-				    		<div class="post-element content">
-				    			<div class="input-group">
-									<textarea placeholder="What do you want to say?"required></textarea>
-								</div>	
+				    		<div class="post-element">
+								<textarea class="content" placeholder="What do you want to say?"required></textarea>
 				    		</div>
 				    	</div>
 
@@ -107,56 +103,47 @@ namespace site\Views\users;?>
 			    	<div class="feed">
 			    		<div class="post-element user">
 			    			<a href="#" class="post-element">
-			    				<img class="profile-picture" align="left" src="<?php
-								$filePath = $_SERVER['DOCUMENT_ROOT'].'/site/images/profile/'.$this->user->getNickname().'.jpg';
-								if (file_exists($filePath)) {
-								 	echo '../images/profile/'.$this->user->getNickname().'.jpg';
-								}
-								else
-								{
-								 	echo 'http://localhost/site/images/profile/default.jpg';
-								} 
-								?>"/>
+			    				<img class="profile-picture" align="left" src="http://hotnews.bg/uploads/tinymce/w29/3fb483df7f0a.jpg"/>					
 			    			</a>
-			    			<a href="#" class="post-element profile-picture">
-			    				<h4 class="name">Pesho Petrov</h4>
-		    				</a>
-		    				<p>from 12:37 17.11.1721 at <a href="#">Moscow, Russia</a><p>
+			    			<div class="post-element">
+			    				<a class="profile-name" href="#">
+				    				<h4 class="name">Pesho Petrov</h4>
+			    				</a>
+			    				<p>from 12:37 17.11.1721 at <a href="#">Moscow, Russia</a><p>
+			    			</div>
 			    		</div>
 
 			    		<div class="photo-box">
 			    			<a href="#">
-			    				<img src="http://i.dailymail.co.uk/i/pix/2015/09/28/08/2CD1E26200000578-0-image-a-312_1443424459664.jpg">
+			    				<img class="photo" src="http://i.dailymail.co.uk/i/pix/2015/09/28/08/2CD1E26200000578-0-image-a-312_1443424459664.jpg"/>
 			    			</a>
 			    		</div>
 
+			    		<div class="stats">
+			    			<a href="#"><span class="likes">25 likes</span></a>
+
+			    			<a href="#"><span class="shares">0 shares</span></a>
+			    			<a href="#"><span class="comments">1 comment</span></a>
+			    		</div>
+
 			    		<div class="actions">
-			    			<button class="post-element">
-			    				<i class="fa fa-thumbs-o-up">Like</i>
+			    			<button class="post-element btn">
+			    				<i class="fa fa-thumbs-o-up"></i>
+			    				Like
 			    			</button>
 
-			    			<button class="post-element">
-			    				<i class="fa fa-comments-o">Comment</i>
+			    			<button class="post-element btn">
+			    				<i class="fa fa-comments-o"></i>
+			    				Comment
 			    			</button>
 
-			    			<button class="post-element">
-			    				<i class="fa fa-share">Share</i>
+			    			<button class="post-element btn">
+			    				<i class="fa fa-share"></i>
+			    				Share
 			    			</button>
 			    		</div>
 
-			    		<div class="comments">
-			    			<div>
-			    				<a href="#" class="post-element profile-picture">
-			    					<img class="profile-picture" src="http://img.wennermedia.com/social/justin-bieber-zoom-04b2591a-ffa1-4a8e-a4bf-50d03a59e826.jpg">
-			    				</a>
-
-			    				<div class="post-element content">
-					    			<div class="input-group">
-										<p>You know you love me, I know you care. Just shout whenever,and I'll be there. You are my love, you are my heart. And we will never, ever , ever be apart. Read more: Justin Bieber - Baby Lyrics | MetroLyrics </p>
-									</div>	
-					    		</div>
-			    			</div>
-
+			    		<div class="comment-action">
 			    			<div class="general">
 					    		<div class="post-element user">
 					    			<a href="#">
@@ -173,10 +160,8 @@ namespace site\Views\users;?>
 					    			</a>
 					    		</div>
 
-					    		<div class="post-element content">
-					    			<div class="input-group">
-										<textarea placeholder="What do you want to say?"required></textarea>
-									</div>	
+					    		<div class="post-element">
+									<textarea class="content" placeholder="What do you want to say?"required></textarea>
 					    		</div>
 					    	</div>
 			    		</div>
