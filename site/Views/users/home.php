@@ -64,26 +64,27 @@ namespace site\Views\users;?>
 				</div>
 
               	<div class="newsfeed">
-			    	<div class="add-post">
-			    		<div class="post-element user">
-			    			<a href="#" class="profile-picture">
-			    				<img class="profile-picture" align="left" src="<?php
-								$filePath = $_SERVER['DOCUMENT_ROOT'].'/site/images/profile/'.$this->user->getNickname().'.jpg';
-								if (file_exists($filePath)) {
-								 	echo '../images/profile/'.$this->user->getNickname().'.jpg';
-								}
-								else
-								{
-								 	echo 'http://localhost/site/images/profile/default.jpg';
-								} 
-								?>"/>
-			    			</a>
-
+			    	<div class="add-post panel">
+				    	<div class="general">
+				    		<div class="post-element user">
+				    			<a href="#" class="profile-picture">
+				    				<img class="profile-picture" align="left" src="<?php
+									$filePath = $_SERVER['DOCUMENT_ROOT'].'/site/images/profile/'.$this->user->getNickname().'.jpg';
+									if (file_exists($filePath)) {
+									 	echo '../images/profile/'.$this->user->getNickname().'.jpg';
+									}
+									else
+									{
+									 	echo 'http://localhost/site/images/profile/default.jpg';
+									} 
+									?>"/>
+				    			</a>
+					    	</div>
 				    		<div class="post-element">
 								<textarea class="content" placeholder="What do you want to say?"required></textarea>
 				    		</div>
 				    	</div>
-
+			    		
 				    	<div class="sufix">
 				    		<div class="post-element icons">
 				    			<a href="#">
@@ -93,14 +94,13 @@ namespace site\Views\users;?>
 				    				<i class="fa fa-map-marker"></i>
 				    			</a>
 				    		</div>
-
 				    		<div class="post-element action">
-				    			<input class="commit" name="commit" type="submit" value="Post"></input>
+				    			<input class="commit btn" name="commit" type="submit" value="Post"></input>
 				    		</div>
 				    	</div>	  
 			    	</div> <!-- add-post  -->
 
-			    	<div class="feed">
+			    	<div class="feed panel">
 			    		<div class="post-element user">
 			    			<a href="#" class="post-element">
 			    				<img class="profile-picture" align="left" src="http://hotnews.bg/uploads/tinymce/w29/3fb483df7f0a.jpg"/>					
@@ -113,11 +113,16 @@ namespace site\Views\users;?>
 			    			</div>
 			    		</div>
 
-			    		<div class="photo-box">
-			    			<a href="#">
-			    				<img class="photo" src="http://i.dailymail.co.uk/i/pix/2015/09/28/08/2CD1E26200000578-0-image-a-312_1443424459664.jpg"/>
-			    			</a>
-			    		</div>
+						<div class="post-content">
+							<div>
+								<p class="text">Kaji neshto tuk! </br> oK!</p>
+							</div>
+							<div class="photo-box">
+								<a href="#">
+									<img class="photo" src="http://i.dailymail.co.uk/i/pix/2015/09/28/08/2CD1E26200000578-0-image-a-312_1443424459664.jpg"/>
+								</a>
+							</div>
+						</div>
 
 			    		<div class="stats">
 			    			<a href="#"><span class="likes">25 likes</span></a>
