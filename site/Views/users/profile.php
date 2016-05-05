@@ -66,11 +66,6 @@ namespace site\Views\users;?>
 						</div>
 					</div>
 				</div> 
-
-			    <!-- <div data-role="popup" id="myPopup">
-			      <a href="#pageone" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
-			      <img src="http://lorempixel.com/850/280/nightlife/5/"alt="Skaret View">
-			    </div> -->
 			    
 			    <div class="content">
 			    	<div class="sidebar">
@@ -95,11 +90,11 @@ namespace site\Views\users;?>
 						</div>
 			    	</div>
 
-			    	<div class="newsfeed">
-				    	<div class="add-post">
+	              	<div class="newsfeed">
+				    	<div class="add-post panel">
 					    	<div class="general">
 					    		<div class="post-element user">
-					    			<a href="#" class="post-element">
+					    			<a href="#" class="profile-picture">
 					    				<img class="profile-picture" align="left" src="<?php
 										$filePath = $_SERVER['DOCUMENT_ROOT'].'/site/images/profile/'.$this->user->getNickname().'.jpg';
 										if (file_exists($filePath)) {
@@ -111,27 +106,23 @@ namespace site\Views\users;?>
 										} 
 										?>"/>
 					    			</a>
-					    		</div>
-
-					    		<div class="post-element content">
-					    			<div class="input-group">
-										<textarea placeholder="What do you want to say?"required></textarea>
-									</div>	
+						    	</div>
+					    		<div class="post-element">
+									<textarea class="post-content" placeholder="What do you want to say?"required></textarea>
 					    		</div>
 					    	</div>
-
+				    		
 					    	<div class="sufix">
 					    		<div class="post-element icons">
 					    			<a href="#">
-					    				<i class="glyphicon glyphicon-picture"></i>
+					    				<i class="fa fa-image">Add picture</i>
 					    			</a>
 					    			<a href="#">
-					    				<i class="fa fa-map-marker"></i>
+					    				<i class="fa fa-map-marker">Add Location</i>
 					    			</a>
 					    		</div>
-
 					    		<div class="post-element action">
-					    			<input class="commit" name="commit" type="submit" value="Post"></input>
+					    			<input class="commit btn" name="commit" type="submit" value="Post"></input>
 					    		</div>
 					    	</div>	  
 				    	</div> <!-- add-post  -->

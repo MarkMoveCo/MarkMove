@@ -88,10 +88,10 @@ namespace site\Views\users;?>
 				    	<div class="sufix">
 				    		<div class="post-element icons">
 				    			<a href="#">
-				    				<i class="glyphicon glyphicon-picture"></i>
+				    				<i class="fa fa-image">Add picture</i>
 				    			</a>
 				    			<a href="#">
-				    				<i class="fa fa-map-marker"></i>
+				    				<i class="fa fa-map-marker">Add Location</i>
 				    			</a>
 				    		</div>
 				    		<div class="post-element action">
