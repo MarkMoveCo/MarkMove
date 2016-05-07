@@ -35,6 +35,11 @@
     float: right;
 }
 
+.btn {
+	height: 20px;
+	padding: 0 42px 0 42px;
+}
+
 .icons {
 	float: left;
 }
@@ -52,7 +57,6 @@
 }
 
 .name {
-	margin-bottom: 5px;
 	font-size: 20px;
 }
 
@@ -69,11 +73,6 @@
 
 .comments{
 	margin-right: 10px;
-}
-
-.btn {
-	height: 20px;
-	padding: 0 42px 0 42px;
 }
 
 .newsfeed > .feed > .actions > .btn > i {

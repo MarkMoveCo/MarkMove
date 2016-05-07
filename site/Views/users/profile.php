@@ -80,8 +80,6 @@ namespace site\Views\users;?>
 										<td>Write something about you...</td>
 									</tr>
 									<tr>
-									</tr>
-									<tr>
 										<td><i class="fa fa-home"></i></td>
 										<td>Born from a boom-box</td>
 									</tr>

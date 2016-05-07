@@ -1,12 +1,13 @@
 .change-profile {
-	width: 580px;
-	height: 350px;
-	padding-left: 12px;
+	margin: 0 auto;
+	padding: 5px 5px 12px 12px;
+	margin-top: 100px;
+	width: 550px;
 	background-color: #fff;
 }
 
 header {
-	margin-bottom: 20px;
+	margin-bottom: 25px;
 }
 
 .btn { 
