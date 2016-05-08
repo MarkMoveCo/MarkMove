@@ -24,10 +24,12 @@
 		</header>
 
 		<main>
-			<div>
-				<h1>Eror 404</h1>
+			<div class="container">
+				<div>
+					<h1>Eror 404</h1>
 
-				<p>We are sorry but the current page is not found</p>
+					<p>We are sorry but the current page is not found</p>
+				</div>
 			</div>
 		</main>
 

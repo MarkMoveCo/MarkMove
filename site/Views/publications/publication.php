@@ -7,6 +7,20 @@ namespace site\Views\publications;
 	<title><?=$this->publication->getTitle();?></title>
 </head>
 <body>
-<?=$this->publication->getBody();?>
+	<div id="wrapper">
+		<header>
+			<?php require_once 'Views/header.php';?>
+		</header>
+
+		<main>
+			<div class="container">
+				<?=$this->publication->getBody();?>
+			</div>
+		</main>
+
+		<footer>
+		  <?php require_once 'Views/footer.php';?>
+		</footer>
+	</div>
 </body>
 </html>

@@ -24,32 +24,34 @@ namespace site\Views\users;?>
 		</header>
 
 		<main>
-			<table border="1">
-				<tr>
-				<td>Nickname</td>
-				<td>Role</td>
-				</tr>
-				  <?php foreach($this->usersCollection as $sameRoleUsers): ?>
-				  	<?php if($sameRoleUsers != null):?>
-				  	<?php foreach($sameRoleUsers as $user):?>
-				  <tr>
-				    <td><?= $user->getUserNickname();?></td>
-				    <td>
-				    <select name="<?= $user->getId();?>">
-				    	<?php foreach($this->rolesCollection as $role):?>
-				    		<option 
-				    		<?php if($user->getRole() == $role):?>
-				    			selected
-				    		<?php endif;?>
-				    		><?=$role;?></option>
-				    	<?php endforeach;?>
-	    			</td>
-				  </tr>
-				<?php endforeach;?>
-			<?php endif;?>
-				  <?php endforeach;?>
-			</table>
-			<input type="submit" name="change_roles" value ="Save" onclick="saveChanges()"></input>
+			<div class="container">
+				<table border="1">
+					<tr>
+					<td>Nickname</td>
+					<td>Role</td>
+					</tr>
+					  <?php foreach($this->usersCollection as $sameRoleUsers): ?>
+					  	<?php if($sameRoleUsers != null):?>
+					  	<?php foreach($sameRoleUsers as $user):?>
+					  <tr>
+					    <td><?= $user->getUserNickname();?></td>
+					    <td>
+					    <select name="<?= $user->getId();?>">
+					    	<?php foreach($this->rolesCollection as $role):?>
+					    		<option 
+					    		<?php if($user->getRole() == $role):?>
+					    			selected
+					    		<?php endif;?>
+					    		><?=$role;?></option>
+					    	<?php endforeach;?>
+		    			</td>
+					  </tr>
+					<?php endforeach;?>
+				<?php endif;?>
+					  <?php endforeach;?>
+				</table>
+				<input type="submit" name="change_roles" value ="Save" onclick="saveChanges()"></input>
+				</div>
 		</main>
 
 		<footer>

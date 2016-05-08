@@ -1,0 +1,18 @@
+.left-side,
+.right-side {
+	display: inline-block;
+}
+
+.left-side {
+	float: left;
+}
+
+.right-side {
+	float: right;
+}
+
+#googleMap {
+	margin-top: 10px;
+	width: 400px;
+	height: 380px;
+}
