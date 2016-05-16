@@ -3,7 +3,7 @@ namespace site\Views\users;?>
 <!DOCTYPE html>
 <html>
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0">
 
 	<title><?= $this->user->getNickname();?></title>
 	<link rel="stylesheet" type="text/css" href="../style/reset.css">
@@ -67,7 +67,7 @@ namespace site\Views\users;?>
 					</div>
 				</div> 
 			    
-			    <div class="content">
+			    <div>
 			    	<div class="sidebar">
 			    		<div class="profile">
 							<div class="profile-name">
@@ -124,15 +124,82 @@ namespace site\Views\users;?>
 					    		</div>
 					    	</div>	  
 				    	</div> <!-- add-post  -->
+
+				    	<div class="feed panel">
+				    		<div class="post-element user">
+				    			<a href="#" class="post-element">
+				    				<img class="profile-picture" align="left" src="http://hotnews.bg/uploads/tinymce/w29/3fb483df7f0a.jpg"/>					
+				    			</a>
+				    			<div class="post-element">
+				    				<a href="#">
+					    				<h4 class="name">Pesho Petrov</h4>
+				    				</a>
+				    				<p>from 12:37 17.11.1721 at <a href="#">Moscow, Russia</a><p>
+				    			</div>
+				    		</div>
+
+							<div>
+								<div>
+									<p class="text">Kaji neshto tuk! </br> oK!</p>
+								</div>
+								<div class="photo-box">
+									<a href="#">
+										<img class="photo" src="http://i.dailymail.co.uk/i/pix/2015/09/28/08/2CD1E26200000578-0-image-a-312_1443424459664.jpg"/>
+									</a>
+								</div>
+							</div>
+
+				    		<div class="stats">
+				    			<a href="#"><span class="likes">25 likes</span></a>
+
+				    			<a href="#"><span class="shares">0 shares</span></a>
+				    			<a href="#"><span class="comments">1 comment</span></a>
+				    		</div>
+
+				    		<div class="actions">
+				    			<button class="post-element btn">
+				    				<i class="fa fa-thumbs-o-up"></i>
+				    				Like
+				    			</button>
+
+				    			<button class="post-element btn">
+				    				<i class="fa fa-comments-o"></i>
+				    				Comment
+				    			</button>
+
+				    			<button class="post-element btn">
+				    				<i class="fa fa-share"></i>
+				    				Share
+				    			</button>
+				    		</div>
+
+				    		<div class="comment-action">
+				    			<div class="general">
+						    		<div class="post-element user">
+						    			<a href="#">
+						    				<img class="profile-picture" align="left" src="<?php
+											$filePath = $_SERVER['DOCUMENT_ROOT'].'/site/images/profile/'.$this->user->getNickname().'.jpg';
+											if (file_exists($filePath)) {
+											 	echo '../images/profile/'.$this->user->getNickname().'.jpg';
+											}
+											else
+											{
+											 	echo 'http://localhost/site/images/profile/default.jpg';
+											} 
+											?>"/>
+						    			</a>
+						    		</div>
+
+						    		<div class="post-element">
+										<textarea class="post-content" placeholder="What do you want to say?"required></textarea>
+						    		</div>
+						    	</div>
+				    		</div>
+				    	</div>
 			    	</div> <!-- newsfeed -->
 			    </div>
 			</div> <!-- /container -->
 		</main>
-
-		<footer>
-			<?php 
-			require_once 'Views/footer.php';?>
-		</footer>
     </div>
 </body>
 </html>

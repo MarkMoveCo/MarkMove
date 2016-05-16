@@ -60,6 +60,9 @@ namespace site\Views\users;?>
 				        <a href="#" class="list-group-item">
 				            <i class="fa fa-bar-chart-o"></i>
 				        </a>
+				        <a href="#" class="list-group-item">
+				            <i class="fa fa-pencil"></i>
+				        </a>
 				    </div>        
 				</div>
 

@@ -75,7 +75,6 @@ namespace site\Views\publications;
                 <label for="text">Name:</label>
                 <input class="form-control" type="text" name="title"></input> 
             </div>
-            <button type="submit" name="create" class="btn btn-default">Create</button>
           </form>
         </div>
       </div> <!-- container -->
