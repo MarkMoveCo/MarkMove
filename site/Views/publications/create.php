@@ -62,7 +62,7 @@ namespace site\Views\publications;
 
       <div class="container">
         <div class="content">
-          <div class="element">
+          <div>
             <form role="form" action="" method="post" id="create-form">
               <div class="form-group">
                   <input class="form-control" type="text" name="title" placeholder="Title"></input> 
@@ -70,7 +70,7 @@ namespace site\Views\publications;
             </form>
           </div>
 
-          <div class="element">
+          <div>
             <form role="form" action="" method="post" id="create-form">
               <div class="form-group">
                   <input class="form-control" type="text" name="author" placeholder="Author"></input> 
@@ -84,11 +84,64 @@ namespace site\Views\publications;
           </ul>
 
           <div class="tab-content">
+            <div class="control-box">
+              <button class="element fa fa-image" role="presentation" tabindex="-1">
+              </button>
+
+              <button class="element dropdown" role="presentation" tabindex="-1">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Paragraph<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#"><h1>Heading 1<h1></a></li>
+                  <li><a href="#"><h2>Heading 2</h2></a></li>
+                  <li><a href="#"><h3>Heading 3</h3></a></li>
+                  <li><a href="#"><h4>Heading 4</h4></a></li>
+                  <li><a href="#"><h5>Heading 5</h5></a></li>
+                  <li><a href="#"><h6>Heading 6</h6></a></li>
+                </ul>
+              </button>
+
+              <button class="element fa fa-bold" role="presentation" tabindex="-1">
+              </button>
+
+              <button class="element fa fa-italic" role="presentation" tabindex="-1">
+              </button>
+
+              <button class="element fa fa-underline" role="presentation" tabindex="-1">
+              </button>
+
+              <button class="element fa fa-list-ul" role="presentation" tabindex="-1">
+              </button>
+
+              <button class="element fa fa-list-ol" role="presentation" tabindex="-1">
+              </button>
+
+              <button class="element fa fa-link" role="presentation" tabindex="-1">
+              </button>
+
+              <button class="element fa fa-quote-left" role="presentation" tabindex="-1">
+              </button>
+
+              <button class="element fa fa-align-left" role="presentation" tabindex="-1">
+              </button>
+
+              <button class="element fa fa-align-center" role="presentation" tabindex="-1">
+              </button>
+
+              <button class="element fa fa-align-right" role="presentation" tabindex="-1">
+              </button>
+
+              <button class="element fa fa-align-justify" role="presentation" tabindex="-1">
+              </button>
+
+              <button class="element fa fa-eraser" role="presentation" tabindex="-1">
+              </button>
+            </div>
+
             <div class="tab-pane active" id="html">
               <textarea class="form-control" name="raw-HTML" rows="12" form="create-form"></textarea>
             </div>
-            <div class="tab-pane" id="visual">
-              
+
+            <div class="tab-pane" id="visual">              
             </div>
           </div>
 

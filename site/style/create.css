@@ -117,8 +117,11 @@
 }
 
 /*custom*/
+.control-box {
+    background-color: #fff;
+}
 .element {
-    margin-top: 10px;
+    padding: 7px;
 }
 li i {
     margin-right: 10px;
