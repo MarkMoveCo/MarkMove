@@ -117,7 +117,12 @@
 }
 
 /*custom*/
+.preview-button {
+    margin-left: 10px;
+    margin-right: 10px;
+}
 .control-box {
+    padding-left: 2px;
     background-color: #fff;
 }
 .element {

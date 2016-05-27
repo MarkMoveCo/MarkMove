@@ -46,25 +46,74 @@ namespace site\Views\publications;
                 </li>
 
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-newspaper-o"></i>Categories and Tags</a>
+                  <a href="#" class="dropdown-toggle" data-toggle="collapse"
+                  data-target="#cats-tags" role="button" aria-haspopup="true" aria-expanded="true"><i class="fa fa-newspaper-o"></i>Categories and Tags</a>
+                  <div id="cats-tags" class="collapse">
+                    <form class="form">
+                      <p>Categories</p>
+                      <div class="checkbox">
+                        <label><input type="checkbox">Nature</label>
+                      </div>
+                      <div class="checkbox">
+                        <label><input type="checkbox">Goli kaki</label>
+                      </div>
+                      <div class="checkbox disabled">
+                        <label><input type="checkbox" value="" disabled checked>Uncategorized</label>
+                      </div>
+                      <a class="fa fa-folder-open" href="#"> Add new category</a>
+                      <p>Tags</p>
+                      <input type="text" name="">
+                    </form>
+                  </div>
                 </li>
+
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-image"></i>Featured Images</a>
+                  <a href="#" class="dropdown-toggle" data-toggle="collapse"
+                  data-target="#images" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-image"></i>Featured Images</a>
+                  <div id="images" class="collapse">
+                    <button type="button">
+                      <i class="fa fa-image"></i>
+                      <span>Set Featured Image</span>
+                    </button>              
+                  </div>
                 </li>
+
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa  fa-share-alt"></i>Sharing</a>
+                  <a href="#" class="dropdown-toggle" data-toggle="collapse" 
+                  data-target="#sharing"role="button" aria-haspopup="true" aria-expanded="false"><i class="fa  fa-share-alt"></i>Sharing</a>
+                  <div id="sharing" class="collapse">
+                    <p>Connect and select social media services to automatically share this post.</p>
+                    <p><strong>Facebook</strong></p>
+                    <div class="checkbox">
+                      <label><input type="checkbox" value="">Nqkoi si tam</label>
+                    </div>
+                    <p><strong>Twitter</strong></p>
+                    <div class="checkbox">
+                      <label><input type="checkbox" value="">Koi si ti be</label>
+                    </div>
+                  </div>
                 </li>
+
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa  fa-wrench"></i>More options</a>
+                  <a href="#" class="dropdown-toggle" data-toggle="collapse" 
+                  data-target="#more" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa  fa-wrench"></i>More options</a>
+                  <div id="more" class="collapse">
+                    <p>Location</p>
+                    <button type="button">
+                      <i class="fa  fa-location-arrow"></i>
+                      <span>Get current location</span>
+                    </button>
+                    <input type="search" name="" placeholder="Search..." role="search">
+                  </div>
                 </li>
           </ul>
       </div>
 
       <div class="container">
         <div class="content">
-          <div>
+          <div style="margin-top:10px;">
             <form role="form" action="" method="post" id="create-form">
-              <div class="form-group">
+              <div class="col-sm-8 form-group">
                   <input class="form-control" type="text" name="title" placeholder="Title"></input> 
               </div>
             </form>
@@ -72,18 +121,20 @@ namespace site\Views\publications;
 
           <div>
             <form role="form" action="" method="post" id="create-form">
-              <div class="form-group">
+              <div class="col-sm-8 form-group">
                   <input class="form-control" type="text" name="author" placeholder="Author"></input> 
               </div>
             </form>
           </div>
           
-          <ul class="nav nav-tabs">
+          <div class="col-sm-8">
+            <ul class="nav nav-tabs">
               <li class="active"><a href="#html" data-toggle="tab">HTML</a></li>
               <li><a data-toggle="tab" href="#visual">Visual</a></li>
-          </ul>
+            </ul>
+          </div>
 
-          <div class="tab-content">
+          <div class="col-sm-8 tab-content">
             <div class="control-box">
               <button class="element fa fa-image" role="presentation" tabindex="-1">
               </button>
@@ -133,24 +184,31 @@ namespace site\Views\publications;
               <button class="element fa fa-align-justify" role="presentation" tabindex="-1">
               </button>
 
+              <button class="element fa fa-font" role="presentation" tabindex="-1">
+              </button>
+
               <button class="element fa fa-eraser" role="presentation" tabindex="-1">
               </button>
             </div>
 
             <div class="tab-pane active" id="html">
-              <textarea class="form-control" name="raw-HTML" rows="12" form="create-form"></textarea>
+              <textarea class="form-control" name="raw-HTML" rows="16" form="create-form"></textarea>
             </div>
 
-            <div class="tab-pane" id="visual">              
+            <div class="tab-pane" id="visual" style="width: 100%; height: 738px; display: block;">
+               <!DOCTYPE html>
+                <html style="overflow-y: hidden;">
+                <head>
+                  <title></title>
+                </head>
+                <body style="overflow-y: hidden; padding-left: 1px; padding-right: 1px; padding-bottom: 50px;">
+                  <p> </p>
+                </body>
+                </html>       
             </div>
           </div>
-
-        </div>
+        </div> <!-- content -->
       </div> <!-- container -->
     </main>
-	
-    <footer>
-      <?php require_once 'Views/footer.php';?>
-    </footer>
 </body>
 </html>
