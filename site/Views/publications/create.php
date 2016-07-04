@@ -47,22 +47,29 @@ namespace site\Views\publications;
 
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="collapse"
-                  data-target="#cats-tags" role="button" aria-haspopup="true" aria-expanded="true"><i class="fa fa-newspaper-o"></i>Categories and Tags</a>
-                  <div id="cats-tags" class="collapse">
+                  data-target="#cats-tags" role="button" aria-haspopup="true" aria-expanded="true"><i class="fa fa-newspaper-o"></i><span>Categories and Tags</span></a>
+                  <div id="cats-tags" class="collapse sub-sidemenu">
                     <form class="form">
-                      <p>Categories</p>
-                      <div class="checkbox">
-                        <label><input type="checkbox">Nature</label>
+                      <div id="categories">
+                        <p class="sub-title">Categories</p>
+
+                        <div class="checkbox">
+                          <label><input type="checkbox">Nature</label>
+                        </div>
+                        <div class="checkbox">
+                          <label><input type="checkbox">Goli kaki</label>
+                        </div>
+                        <div class="checkbox">
+                          <label><input type="checkbox" checked>Uncategorized</label>
+                        </div>
+
+                        <a id="add-category" class="fa fa-folder-open" href="#"> Add new category</a>
                       </div>
-                      <div class="checkbox">
-                        <label><input type="checkbox">Goli kaki</label>
+                      
+                      <div>
+                        <p class="sub-title">Tags</p>
+                        <input class="input-box" type="text" name="">
                       </div>
-                      <div class="checkbox disabled">
-                        <label><input type="checkbox" value="" disabled checked>Uncategorized</label>
-                      </div>
-                      <a class="fa fa-folder-open" href="#"> Add new category</a>
-                      <p>Tags</p>
-                      <input type="text" name="">
                     </form>
                   </div>
                 </li>
@@ -70,8 +77,8 @@ namespace site\Views\publications;
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="collapse"
                   data-target="#images" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-image"></i>Featured Images</a>
-                  <div id="images" class="collapse">
-                    <button type="button">
+                  <div id="images" class="collapse sub-sidemenu">
+                    <button class="btn" type="button">
                       <i class="fa fa-image"></i>
                       <span>Set Featured Image</span>
                     </button>              
@@ -81,12 +88,14 @@ namespace site\Views\publications;
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="collapse" 
                   data-target="#sharing"role="button" aria-haspopup="true" aria-expanded="false"><i class="fa  fa-share-alt"></i>Sharing</a>
-                  <div id="sharing" class="collapse">
-                    <p>Connect and select social media services to automatically share this post.</p>
+                  <div id="sharing" class="collapse sub-sidemenu">
+                    <p id="info">Connect and select social media services to automatically share this post.</p>
+                    
                     <p><strong>Facebook</strong></p>
                     <div class="checkbox">
                       <label><input type="checkbox" value="">Nqkoi si tam</label>
                     </div>
+
                     <p><strong>Twitter</strong></p>
                     <div class="checkbox">
                       <label><input type="checkbox" value="">Koi si ti be</label>
@@ -97,9 +106,9 @@ namespace site\Views\publications;
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="collapse" 
                   data-target="#more" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa  fa-wrench"></i>More options</a>
-                  <div id="more" class="collapse">
+                  <div id="more" class="collapse sub-sidemenu">
                     <p>Location</p>
-                    <button type="button">
+                    <button class="btn" type="button">
                       <i class="fa  fa-location-arrow"></i>
                       <span>Get current location</span>
                     </button>
@@ -129,8 +138,8 @@ namespace site\Views\publications;
           
           <div class="col-sm-8">
             <ul class="nav nav-tabs">
-              <li class="active"><a href="#html" data-toggle="tab">HTML</a></li>
-              <li><a data-toggle="tab" href="#visual">Visual</a></li>
+              <li class="active"><a data-toggle="tab" href="#visual">Visual</a></li>
+              <li><a href="#html" data-toggle="tab">HTML</a></li>
             </ul>
           </div>
 
@@ -142,12 +151,12 @@ namespace site\Views\publications;
               <button class="element dropdown" role="presentation" tabindex="-1">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Paragraph<span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#"><h1>Heading 1<h1></a></li>
-                  <li><a href="#"><h2>Heading 2</h2></a></li>
-                  <li><a href="#"><h3>Heading 3</h3></a></li>
-                  <li><a href="#"><h4>Heading 4</h4></a></li>
-                  <li><a href="#"><h5>Heading 5</h5></a></li>
-                  <li><a href="#"><h6>Heading 6</h6></a></li>
+                  <li><a href="#"><h1 class="paragraph">Heading 1</h1></a></li>
+                  <li><a href="#"><h2 class="paragraph">Heading 2</h2></a></li>
+                  <li><a href="#"><h3 class="paragraph">Heading 3</h3></a></li>
+                  <li><a href="#"><h4 class="paragraph">Heading 4</h4></a></li>
+                  <li><a href="#"><h5 class="paragraph">Heading 5</h5></a></li>
+                  <li><a href="#"><h6 class="paragraph">Heading 6</h6></a></li>
                 </ul>
               </button>
 

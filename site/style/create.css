@@ -74,7 +74,7 @@
 
 .sidebar-nav > .sidebar-brand {
     height: 65px;
-    font-size: 18px;
+    font-size: 22px;
     color: #fff;
     line-height: 60px;
 }
@@ -116,11 +116,101 @@
     }
 }
 
-/*custom*/
 .preview-button {
     margin-left: 10px;
     margin-right: 10px;
 }
+
+li i {
+    margin-right: 10px;
+}
+
+.sub-title {
+    margin-left: 30px;
+    margin-bottom: 0;
+    font-size: 16px;
+}
+
+.sub-sidemenu{
+    background-color: #fff;
+    color: #000;
+}
+
+.checkbox {
+    padding: 0;
+    margin: 0;
+}
+
+.checkbox input[type="checkbox"] {
+    position: relative;
+    margin-right: 2px;
+}
+
+#categories {
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+#add-category {
+    color: #000;
+    padding-top: 5px;
+    margin-left: 20px;
+}
+
+.input-box {
+    margin-left: 30px;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+#images .btn,
+#more .btn {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 120px;
+}
+
+#images i,
+#more i {
+    margin: 5px;
+    zoom: 250%;
+    display: block;
+}
+
+#images span,
+#more span {
+    padding: 10px;
+    border-radius: 3px;
+    background-color: #fff;
+}
+
+#sharing #info {
+    padding-left: 10px;
+    margin-bottom: 10px;
+    color: #999999
+}
+
+#sharing p{
+    margin: 0;
+    margin-bottom: -10px;
+    padding: 0;
+    line-height: 120%;
+}
+
+#more {
+    padding-left: 20px;
+}
+
+#more p{
+    margin: 0;
+    padding: 0;
+}
+
+#more input {
+    margin-bottom: 10px;
+}
+
+/*INPUT form style*/
 .control-box {
     padding-left: 2px;
     background-color: #fff;
@@ -128,6 +218,8 @@
 .element {
     padding: 7px;
 }
-li i {
-    margin-right: 10px;
+
+.paragraph {
+    margin: 0;
+    padding: 0;
 }
