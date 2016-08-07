@@ -1,0 +1,84 @@
+.list-group {
+	position: fixed;
+	right: 0;
+	top: 50px;
+}
+
+/*newsfeed*/
+.add-post{
+	padding: 5px;
+	width: 520px;
+	min-height: 85px;
+	background-color: #fff;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.post-element {
+    display: inline-block;
+}
+
+.profile-picture {
+    width: 50px;
+    height: 50px;
+    border-radius: 15px;
+    margin: 0 auto;
+}
+
+.content {
+	min-width: 430px;
+	height: 50px;
+	margin-left: 5px;
+}
+
+.newsfeed > .add-post > .suffix > .action {
+    float: right;
+}
+
+.btn {
+	height: 20px;
+	padding: 0 42px 0 42px;
+}
+
+.icons {
+	float: left;
+}
+
+.action {
+	float: right;
+}
+
+/*post*/
+.feed {
+	background-color: #fff;
+	padding: 10px;
+	width: 520px;
+	max-height: 700px;
+}
+
+.name {
+	font-size: 20px;
+}
+
+.photo{
+	width: 500px;
+	height: 450px;
+	margin-bottom: 10px;
+}
+
+.comments, 
+.shares {
+	float: right;
+}
+
+.comments{
+	margin-right: 10px;
+}
+
+.newsfeed > .feed > .actions > .btn > i {
+margin-right: 5px;
+}
+
+.comment-action {
+	margin-top: 10px;
+}

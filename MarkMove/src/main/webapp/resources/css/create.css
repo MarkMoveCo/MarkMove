@@ -1,0 +1,225 @@
+#wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+    padding-left: 250px;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    left: 250px;
+    width: 0;
+    height: 100%;
+    margin-left: -250px;
+    overflow-y: auto;
+    background: #02021a;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 250px;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    padding: 15px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -250px;
+}
+
+/* Sidebar Styles */
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    text-indent: 20px;
+    line-height: 40px;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #999999;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255,255,255,0.2);
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+    height: 65px;
+    font-size: 22px;
+    color: #fff;
+    line-height: 60px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+    color: #999999;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+    color: #fff;
+    background: none;
+}
+
+@media(min-width:768px) {
+    #wrapper {
+        padding-left: 250px;
+    }
+
+    #wrapper.toggled {
+        padding-left: 0;
+    }
+
+    #sidebar-wrapper {
+        width: 250px;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        width: 0;
+    }
+
+    #page-content-wrapper {
+        padding: 20px;
+        position: relative;
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
+}
+
+.preview-button {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+li i {
+    margin-right: 10px;
+}
+
+.sub-title {
+    margin-left: 30px;
+    margin-bottom: 0;
+    font-size: 16px;
+}
+
+.sub-sidemenu{
+    background-color: #fff;
+    color: #000;
+}
+
+.checkbox {
+    padding: 0;
+    margin: 0;
+}
+
+.checkbox input[type="checkbox"] {
+    position: relative;
+    margin-right: 2px;
+}
+
+#categories {
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+#add-category {
+    color: #000;
+    padding-top: 5px;
+    margin-left: 20px;
+}
+
+.input-box {
+    margin-left: 30px;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+#images .btn,
+#more .btn {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 120px;
+}
+
+#images i,
+#more i {
+    margin: 5px;
+    zoom: 250%;
+    display: block;
+}
+
+#images span,
+#more span {
+    padding: 10px;
+    border-radius: 3px;
+    background-color: #fff;
+}
+
+#sharing #info {
+    padding-left: 10px;
+    margin-bottom: 10px;
+    color: #999999
+}
+
+#sharing p{
+    margin: 0;
+    margin-bottom: -10px;
+    padding: 0;
+    line-height: 120%;
+}
+
+#more {
+    padding-left: 20px;
+}
+
+#more p{
+    margin: 0;
+    padding: 0;
+}
+
+#more input {
+    margin-bottom: 10px;
+}
+
+/*INPUT form style*/
+.control-box {
+    padding-left: 2px;
+    background-color: #fff;
+}
+.element {
+    padding: 7px;
+}
+
+.paragraph {
+    margin: 0;
+    padding: 0;
+}
