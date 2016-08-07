@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:include="layouts/header :: head('MarkMove')">
+    <meta charset="UTF-8"/>
+    <title></title>
+</head>
+<body>
+<div id="wrapper">
+    <header th:include="layouts/header :: header(null)">
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="story">
+                <p>"Traveling - it leaves you speechless, then turns you into a storyteller." - Ibn Battuta</p>
+                <div class="message">
+                    <p>Tell your story to us</p>
+                    <a th:href="@{/register}">Sign up</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer th:include="layouts/footer :: footer">
+    </footer>
+</div>
+</body>
+</html>
