@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="layout :: site-head">
-    <title>Register</title>
+    <title>Login</title>
     <link th:style="" rel="stylesheet" type="text/css" href="../public/css/login-form.css" th:href="@{/css/login-form.css}"/>
 </head>
 
@@ -21,14 +21,15 @@
                     <a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
                 </div>
 
-                <form class="form" th:action="@{/login}" method="post" accept-charset="UTF-8" id="login-nav">
+                <form class="form" th:action="@{/login}" th:object="${loginForm}" method="post" accept-charset="UTF-8" id="login-nav">
                     <div class="form-group">
-                        <label class="sr-only" for="username">Username: </label>
+                        <label class="sr-only" for="username" th:value="*{username}">Username: </label>
                         <input id="username" type="text" name="username" placeholder="Enter your username"/>
                     </div>
+
                     <div class="form-group">
-                        <label class="sr-only" for="password">Password: </label>
-                        <input id="password" type="password" name="username" placeholder="Enter your password"/>
+                        <label class="sr-only" for="password" th:value="username">Password: </label>
+                        <input id="password" type="password" name="username" placeholder="Enter your password" th:value="*{password}"/>
 
                         <div class="help-block text-right"><a href="#">Forget the password?</a></div>
                     </div>

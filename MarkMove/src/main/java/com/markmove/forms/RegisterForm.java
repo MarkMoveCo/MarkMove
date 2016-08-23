@@ -1,5 +1,7 @@
 package com.markmove.forms;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -12,7 +14,15 @@ public class RegisterForm {
     private String password;
     private String confirmPassword;
 
-    private String fullName;
+    @NotNull
+    private String email;
+
+    @Min(7)
+    private int age;
+
+    @NotNull
+    @Size(min=4, max=6)
+    private String gender;
 
     public String getUsername() {
         return username;
@@ -38,11 +48,27 @@ public class RegisterForm {
         this.confirmPassword = confirmPassword;
     }
 
-    public String getFullName() {
-        return fullName;
+    public String getEmail() {
+        return email;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 }

@@ -2,13 +2,15 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 
-<head th:include="/templates/layouts/header :: head('Error 404')">
+<head th:replace="layout :: site-head">
+    <title>Login</title>
+    <link th:style="" rel="stylesheet" type="text/css" href="../../public/css/error404.css" th:href="@{/css/error404.css}"/>
 </head>
 
 <body>
+
 <div id="wrapper">
-    <header th:include="/templates/layouts/header :: header(null)">
-    </header>
+    <header th:replace="layout :: site-header"/>
 
     <main>
         <p><h1>Error 404</h1></p>

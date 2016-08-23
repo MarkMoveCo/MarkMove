@@ -2,7 +2,6 @@ package com.markmove.services;
 
 import com.markmove.models.Post;
 import com.markmove.repositories.PostRepository;
-import groovy.transform.PackageScope;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.PageRequest;
