@@ -29,6 +29,10 @@ public class User {
     @OneToMany(mappedBy = "author")
     private Set<Post> posts = new HashSet<>();
 
+    @ManyToMany
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles;
+
     public User() {
     }
 
@@ -94,6 +98,14 @@ public class User {
 
     public void setPosts(Set<Post> posts) {
         this.posts = posts;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.markmove.controllers;
 
 import com.markmove.forms.RegisterForm;
+import com.markmove.models.User;
 import com.markmove.services.NotificationService;
 import com.markmove.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class RegisterController {
     @Autowired
     private NotificationService notifyService;
 
-    @RequestMapping("/register")
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String register(RegisterForm registerForm) {
         return "/register";
     }
@@ -37,6 +38,8 @@ public class RegisterController {
             notifyService.addErrorMessage("Invalid registration!");
             return "/register";
         }
+
+        userService.create(new User(registerForm.getUsername(), registerForm.getPassword(), registerForm.getEmail(), registerForm.getAge(), registerForm.getGender()));
 
         notifyService.addInfoMessage("Registration successful");
         return "redirect:/";
