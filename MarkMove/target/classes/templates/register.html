@@ -17,7 +17,7 @@
         <div class="container">
             <div class="panel-primary panel">
                 <div class="panel-body">
-                    <form method="post" th:object="${registerForm}">
+                    <form method="post" th:action="@{/register}" th:object="${registerForm}">
                         <div class="form-group">
                             <h2>Create account</h2>
                         </div>
@@ -38,7 +38,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="password" class="control-label" th:value="*{username}">Password:</label>
+                            <label for="password" class="control-label" th:value="*{password}">Password:</label>
                             <div class="input-group">
                                 <input id="password" class="form-control" type="password" name="password" th:value="*{password}" />
                                 <div class="input-group-addon">
@@ -53,9 +53,9 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="confirm-password" class="control-label" th:value="*{username}">Password:</label>
+                            <label for="confirm-password" class="control-label" th:value="*{confirmPassword}">Confirm password:</label>
                             <div class="input-group">
-                                <input id="confirm-password" class="form-control" type="password" name="password" th:value="*{confirmPassword}" />
+                                <input id="confirm-password" class="form-control" type="password" name="confirmPassword" th:value="*{confirmPassword}" />
                                 <div class="input-group-addon">
                                     <span id="ok-confirm-password-sign" class="glyphicon glyphicon-ok ok" aria-hidden="true"></span>
                                 </div>
@@ -68,9 +68,9 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="email-input" class="control-label" th:value="*{username}">Email:</label>
+                            <label for="email-input" class="control-label" th:value="*{email}">Email:</label>
                             <div class="input-group">
-                                <input id="email-input" class="form-control" type="password" name="password" th:value="*{email}" />
+                                <input id="email-input" class="form-control" type="text" name="email" th:value="*{email}" />
                                 <div class="input-group-addon">
                                     <span id="ok-email-sign" class="glyphicon glyphicon-ok ok" aria-hidden="true"></span>
                                 </div>
@@ -83,7 +83,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="age" class="control-label" th:value="*{password}">Age:</label>
+                            <label for="age" class="control-label" th:value="*{age}">Age:</label>
                             <div class="input-group">
                                 <input id="age" class="form-control" type="text" name="age" th:value="*{age}"/>
                             </div>

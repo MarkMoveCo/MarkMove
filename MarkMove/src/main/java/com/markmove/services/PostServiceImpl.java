@@ -16,7 +16,6 @@ public class PostServiceImpl implements PostService {
     @Autowired
     private PostRepository postRepository;
 
-
     @Override
     public List<Post> findAll() {
         return this.postRepository.findAll();

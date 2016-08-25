@@ -60,7 +60,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean authenticate(String username, String password) {
-        throw new UnsupportedOperationException("Operation not implemented");
+        return true;
     }
 
     @Override

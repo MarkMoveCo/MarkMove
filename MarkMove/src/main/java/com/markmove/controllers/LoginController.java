@@ -20,7 +20,7 @@ public class LoginController {
     @Autowired
     private NotificationService notifyService;
 
-    @RequestMapping("/login")
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(LoginForm loginForm) {
         return "/login";
     }
