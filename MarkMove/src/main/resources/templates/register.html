@@ -1,17 +1,23 @@
 <!DOCTYPE html>
-    <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-          xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
-    <head th:replace="layout :: site-head">
-        <title>Register</title>
-        <link rel="stylesheet" type="text/css" href="../public/css/register-form.css" th:href="@{/css/register.css}"/>
-        <script src="../public/js/jquery-3.1.0.min.js" th:src="@{/js/validate-inputs.js}"></script>
-    </head>
+<head>
+    <th:block layout:include="layout :: site-head" th:with="title='Register'">
+        <th:block layout:fragment="links">
+            <link rel="stylesheet" type="text/css" href="../public/css/register-form.css"
+                  th:href="@{/css/register.css}"/>
+            <script src="../public/js/jquery-3.1.0.min.js" th:src="@{/js/validate-inputs.js}"></script>
+        </th:block>
 
-    <body>
+    </th:block>
+</head>
 
-    <div id="wrapper">
-        <header th:replace="layout :: site-header"/>
+<body>
+
+<div id="wrapper">
+    <header th:replace="layout :: site-header"/>
 
     <main>
         <div class="container">
@@ -25,12 +31,15 @@
                         <div class="form-group">
                             <label for="username" class="control-label">Username:</label>
                             <div class="input-group">
-                                <input id="username" class="form-control" type="text" name="username" th:value="*{username}" />
+                                <input id="username" class="form-control" type="text" name="username"
+                                       th:value="*{username}"/>
                                 <div class="input-group-addon">
-                                    <span id="ok-nickname-sign" class="glyphicon glyphicon-ok ok" aria-hidden="true"></span>
+                                    <span id="ok-nickname-sign" class="glyphicon glyphicon-ok ok"
+                                          aria-hidden="true"></span>
                                 </div>
                             </div>
-                            <div id="taken-nickname-alert" class="alert alert-danger error-message" role="alert" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">
+                            <div id="taken-nickname-alert" class="alert alert-danger error-message" role="alert"
+                                 th:if="${#fields.hasErrors('username')}" th:errors="*{username}">
                                 <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                                 <label class="sr-only">Error:</label>
                                 There is already user with that nickname
@@ -40,12 +49,15 @@
                         <div class="form-group">
                             <label for="password" class="control-label" th:value="*{password}">Password:</label>
                             <div class="input-group">
-                                <input id="password" class="form-control" type="password" name="password" th:value="*{password}" />
+                                <input id="password" class="form-control" type="password" name="password"
+                                       th:value="*{password}"/>
                                 <div class="input-group-addon">
-                                    <span id="ok-password-sign" class="glyphicon glyphicon-ok ok" aria-hidden="true"></span>
+                                    <span id="ok-password-sign" class="glyphicon glyphicon-ok ok"
+                                          aria-hidden="true"></span>
                                 </div>
                             </div>
-                            <div id="invalid-password-alert" class="alert alert-danger error-message" role="alert" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">
+                            <div id="invalid-password-alert" class="alert alert-danger error-message" role="alert"
+                                 th:if="${#fields.hasErrors('password')}" th:errors="*{password}">
                                 <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                                 <label class="sr-only">Error:</label>
                                 Password should be at least 6 symbols long
@@ -53,14 +65,19 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="confirm-password" class="control-label" th:value="*{confirmPassword}">Confirm password:</label>
+                            <label for="confirm-password" class="control-label" th:value="*{confirmPassword}">Confirm
+                                password:</label>
                             <div class="input-group">
-                                <input id="confirm-password" class="form-control" type="password" name="confirmPassword" th:value="*{confirmPassword}" />
+                                <input id="confirm-password" class="form-control" type="password" name="confirmPassword"
+                                       th:value="*{confirmPassword}"/>
                                 <div class="input-group-addon">
-                                    <span id="ok-confirm-password-sign" class="glyphicon glyphicon-ok ok" aria-hidden="true"></span>
+                                    <span id="ok-confirm-password-sign" class="glyphicon glyphicon-ok ok"
+                                          aria-hidden="true"></span>
                                 </div>
                             </div>
-                            <div id="invalid-confirm-password-alert" class="alert alert-danger error-message" role="alert" th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}">
+                            <div id="invalid-confirm-password-alert" class="alert alert-danger error-message"
+                                 role="alert" th:if="${#fields.hasErrors('confirmPassword')}"
+                                 th:errors="*{confirmPassword}">
                                 <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                                 <label class="sr-only">Error:</label>
                                 Passwords do not match
@@ -70,12 +87,15 @@
                         <div class="form-group">
                             <label for="email-input" class="control-label" th:value="*{email}">Email:</label>
                             <div class="input-group">
-                                <input id="email-input" class="form-control" type="text" name="email" th:value="*{email}" />
+                                <input id="email-input" class="form-control" type="text" name="email"
+                                       th:value="*{email}"/>
                                 <div class="input-group-addon">
-                                    <span id="ok-email-sign" class="glyphicon glyphicon-ok ok" aria-hidden="true"></span>
+                                    <span id="ok-email-sign" class="glyphicon glyphicon-ok ok"
+                                          aria-hidden="true"></span>
                                 </div>
                             </div>
-                            <div id="invalid-email-alert" class="alert alert-danger error-message" role="alert" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
+                            <div id="invalid-email-alert" class="alert alert-danger error-message" role="alert"
+                                 th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
                                 <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                                 <label class="sr-only">Error:</label>
                                 Email is not correct
@@ -87,7 +107,8 @@
                             <div class="input-group">
                                 <input id="age" class="form-control" type="text" name="age" th:value="*{age}"/>
                             </div>
-                            <div id="invalid-age-alert" class="alert alert-danger error-message" role="alert" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">
+                            <div id="invalid-age-alert" class="alert alert-danger error-message" role="alert"
+                                 th:if="${#fields.hasErrors('age')}" th:errors="*{age}">
                                 <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                                 <label class="sr-only">Error:</label>
                                 Age under 7 is not valid
@@ -97,14 +118,15 @@
                         <div class="form-group">
                             <label class="control-label">Gender :</label>
                             <input type="radio" name="gender" value="Male" th:value="*{gender}"/> Male
-                            <input type="radio" name="gender" value="Female" th:value="*{gender}" /> Female
+                            <input type="radio" name="gender" value="Female" th:value="*{gender}"/> Female
                         </div>
 
                         <div class="form-group">
                             <input class="btn btn-info btn-block" type="submit" value="Register"/>
                         </div>
 
-                        <p class="form-group">By creating an account, you agree to our <a href="#">Terms of Use</a> and our <a href="#">Privacy Policy</a>.</p>
+                        <p class="form-group">By creating an account, you agree to our <a href="#">Terms of Use</a> and
+                            our <a href="#">Privacy Policy</a>.</p>
                     </form>
                 </div>
             </div>

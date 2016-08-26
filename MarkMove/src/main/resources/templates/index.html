@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
-<head th:replace="layout :: site-head">
-    <title>MarkMove</title>
-    <link th:style="" rel="stylesheet" type="text/css" href="../public/css/index.css" th:href="@{/css/index.css}"/>
-</head>
+<head>
+    <th:block layout:include="layout :: site-head" th:with="title='MarkMove'" th:remove="tag">
+        <th:block layout:fragment="links">
+            <link rel="stylesheet" type="text/css" href="../public/css/index.css" th:href="@{/css/index.css}"/>
+        </th:block>
+            </th:block>
+    </head>
 
 <body>
 

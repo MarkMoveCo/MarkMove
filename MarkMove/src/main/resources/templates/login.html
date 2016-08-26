@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
-<head th:replace="layout :: site-head(~{::title/text()},~{::link})">
-    <title>Login</title>
-    <link th:style="" rel="stylesheet" type="text/css" href="../public/css/login-form.css" th:href="@{/css/login-form.css}"/>
+<head>
+    <th:block layout:include="layout :: site-head" th:with="title='Login'" th:remove="tag">
+        <th:block layout:fragment="links">
+            <link rel="stylesheet" type="text/css" href="../public/css/login-form.css" th:href="@{/css/login-form.css}"/>
+        </th:block>
+    </th:block>
 </head>
 
 <body>

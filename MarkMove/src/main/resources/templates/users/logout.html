@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <head th:replace="layout :: site-head">
-    <title>Log Out</title>
+    <th:block layout:include="layout :: site-head" th:with="title = 'Log Out'" th:remove="tag"></th:block>
 </head>
 <body>
 
