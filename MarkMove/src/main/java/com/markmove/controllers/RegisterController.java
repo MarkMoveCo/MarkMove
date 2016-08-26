@@ -53,6 +53,7 @@ public class RegisterController {
 
         securityService.autologin(registerForm.getUsername(), registerForm.getPassword());
         notifyService.addInfoMessage("Registration successful");
+
         return "redirect:/";
     }
 }
