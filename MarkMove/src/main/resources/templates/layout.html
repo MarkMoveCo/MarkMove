@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <head>
     <th:block layout:fragment="site-head">
@@ -79,7 +79,7 @@
                         <li role="presentation"><a href="#">Events</a></li>
                         <li role="presentation"><a href="#">Additional Info</a></li>
                         <!--TODO: Add check if user is admin-->
-                        <li th:if="${user != null}" class="dropdown">
+                        <li sec:authorize="hasRole('ROLE_ADMIN')" class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administration<span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#">Manage Events</a></li>
@@ -90,15 +90,13 @@
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <div th:switch="${user}" th:remove="tag">
-                            <div th:case="${null}" th:remove="tag">
-                                <li role="presentation"><a th:href="@{/login}">Log in</a></li>
-                                <li role="presentation"><a th:href="@{/register}">Sign up</a></li>
-                            </div>
-                            <div th:case="*" th:remove="tag">
-                                <li role="presentation"><a th:href="@{/users/profile}" th:text="${user}">User's Name</a></li>
-                                <li role="presentation"><a th:href="@{/logout}">Log out</a></li>
-                            </div>
+                        <div sec:authorize="isAnonymous()" th:remove="tag">
+                            <li role="presentation"><a th:href="@{/login}">Log in</a></li>
+                            <li role="presentation"><a th:href="@{/register}">Sign up</a></li>
+                        </div>
+                        <div sec:authorize="isAuthenticated()" th:remove="tag">
+                            <li role="presentation"><a th:href="@{/users/profile}" sec:authentication="name"></a></li>
+                            <li role="presentation"><a th:href="@{/logout}">Log out</a></li>
                         </div>
                     </ul>
                 </div><!-- /.navbar-collapse -->
