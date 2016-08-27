@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
@@ -22,7 +22,7 @@
                 <p>"Traveling - it leaves you speechless, then turns you into a storyteller." - Ibn Battuta</p>
                 <div class="message">
                     <p>Tell your story to us</p>
-                    <a th:href="@{/register}">Sign up</a>
+                    <a sec:authorize="isAnonymous()" th:href="@{/register}">Sign up</a>
                 </div>
             </div>
         </div>
