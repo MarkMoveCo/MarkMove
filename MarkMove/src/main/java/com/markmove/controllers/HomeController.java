@@ -13,10 +13,4 @@ public class HomeController {
 
         return "index";
     }
-
-    @RequestMapping("/landmarks")
-    public String landmarks(Model model){
-        model.addAttribute("user", "Hashim");
-        return "landmarks";
-    }
 }
