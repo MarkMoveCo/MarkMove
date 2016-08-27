@@ -1,15 +1,15 @@
 package com.markmove.services;
 
+import com.markmove.services.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sun.swing.BakedArrayList;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
-public class NotificationServiceImpl implements NotificationService{
+@Service()
+public class NotificationServiceImpl implements NotificationService {
 
     public static final String NOTIFY_MSG_SESSION_KEY = "siteNotificationMessages";
 
@@ -23,30 +23,29 @@ public class NotificationServiceImpl implements NotificationService{
 
     @Override
     public void addErrorMessage(String msg) {
-
+        addNotificationMessage(NotificationMessageType.ERROR, msg);
     }
-    @SuppressWarnings("unchecked")
-    private void addNotificationMessage(NotificationMessageType type, String msg){
-        List<NotificationMessage> notificationMessages = (List<NotificationMessage>)
+
+    private void addNotificationMessage(NotificationMessageType type, String msg) {
+        List<NotificationMessage> notifyMessages = (List<NotificationMessage>)
                 httpSession.getAttribute(NOTIFY_MSG_SESSION_KEY);
-        if (notificationMessages == null){
-            notificationMessages = new ArrayList<NotificationMessage>();
+        if (notifyMessages == null) {
+            notifyMessages = new ArrayList<NotificationMessage>();
         }
-
-        notificationMessages.add(new NotificationMessage(type, msg));
-        httpSession.setAttribute(NOTIFY_MSG_SESSION_KEY, notificationMessages);
+        notifyMessages.add(new NotificationMessage(type, msg));
+        httpSession.setAttribute(NOTIFY_MSG_SESSION_KEY, notifyMessages);
     }
 
-    private enum NotificationMessageType{
+    public enum NotificationMessageType {
         INFO,
         ERROR
     }
 
-    private class NotificationMessage{
-        private NotificationMessageType type;
-        private String text;
+    public class NotificationMessage {
+        NotificationMessageType type;
+        String text;
 
-        NotificationMessage(NotificationMessageType type, String text) {
+        public NotificationMessage(NotificationMessageType type, String text) {
             this.type = type;
             this.text = text;
         }

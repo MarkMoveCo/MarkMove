@@ -18,8 +18,7 @@
         <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css"/>
 
         <th:block layout:fragment="links">
-        </th:block>
-
+    </th:block>
 
     <script src="../public/js/jquery-3.1.0.min.js"
             th:src="@{/js/jquery-3.1.0.min.js}"></script>
@@ -39,7 +38,7 @@
             <div class="container-fluid">
                 <div>
                     <a class="navbar-brand" href="#" th:href="@{/}">
-                        <img id="logo" alt="Brand" src="../../public/images/logo.png" th:src="@{/images/logo.png}"/></a>
+                        <img id="logo" alt="Brand" src="../public/images/logo.png" th:src="@{/images/logo.png}"/></a>
                 </div>
 
                 <div class="navbar-header">
@@ -102,9 +101,18 @@
                             </div>
                         </div>
                     </ul>
-                </div><!-- /.navbar-csollapse -->
+                </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
+
+        <ul id="messages" th:with="notifyMessages=${session[T(com.markmove.services.NotificationServiceImpl).NOTIFY_MSG_SESSION_KEY]}">
+            <li th:each="msg : ${notifyMessages}"
+                th:text="${msg.text}"
+                th:class="${#strings.toLowerCase(msg.type)}">
+            </li>
+            <span th:if="${notifyMessages}" th:remove="all" th:text="${session.remove(
+          T(com.markmove.services.NotificationServiceImpl).NOTIFY_MSG_SESSION_KEY)}"></span>
+        </ul>
     </header>
 
 </body>

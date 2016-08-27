@@ -28,23 +28,25 @@
                 <form class="form" th:action="@{/login}" th:object="${loginForm}" method="post" accept-charset="UTF-8" id="login-nav">
                     <div class="form-group">
                         <label class="sr-only" for="username" th:value="*{username}">Username: </label>
-                        <input id="username" type="text" name="username" placeholder="Enter your username"/>
+                        <input class="form-control" id="username" type="text" name="username" placeholder="Enter your username"/>
                     </div>
 
                     <div class="form-group">
                         <label class="sr-only" for="password" th:value="*{password}">Password: </label>
-                        <input id="password" type="password" name="password" placeholder="Enter your password" th:value="*{password}"/>
+                        <input class="form-control" id="password" type="password" name="password" placeholder="Enter your password" th:value="*{password}"/>
 
                         <div class="help-block text-right"><a href="#">Forget the password?</a></div>
+                    </div>
+
+                    <div class="form-group">
+                        <input id="keep-logged" type="checkbox"/>
+                        <label for="keep-logged">Keep me logged in.</label>
                     </div>
 
                     <div class="form-group">
                         <input class="btn btn-primary btn-block" type="submit" value="Sign In"/>
                     </div>
 
-                    <div class="checkbox">
-                        <input type="checkbox" value="Keep me logged-in"/>
-                    </div>
                 </form>
             </div>
         </div>

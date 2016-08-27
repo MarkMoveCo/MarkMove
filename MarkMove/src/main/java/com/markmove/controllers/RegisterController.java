@@ -49,9 +49,10 @@ public class RegisterController {
             return "/register";
         }
 
-        userService.create(new User(registerForm.getUsername(), registerForm.getPassword(), registerForm.getEmail(), registerForm.getAge(), registerForm.getGender()));
+        User newUser = new User(registerForm.getUsername(), registerForm.getPassword(), registerForm.getEmail(), registerForm.getAge(), registerForm.getGender());
+        userService.create(newUser);
 
-        securityService.autologin(registerForm.getUsername(), registerForm.getPassword());
+        securityService.autologin(newUser.getUsername(), newUser.getPasswordHash());
         notifyService.addInfoMessage("Registration successful");
 
         return "redirect:/";
