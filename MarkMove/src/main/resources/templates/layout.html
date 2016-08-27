@@ -78,7 +78,6 @@
                         </li>
                         <li role="presentation"><a href="#">Events</a></li>
                         <li role="presentation"><a href="#">Additional Info</a></li>
-                        <!--TODO: Add check if user is admin-->
                         <li sec:authorize="hasRole('ROLE_ADMIN')" class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administration<span class="caret"></span></a>
                             <ul class="dropdown-menu">
@@ -96,7 +95,11 @@
                         </div>
                         <div sec:authorize="isAuthenticated()" th:remove="tag">
                             <li role="presentation"><a th:href="@{/users/profile}" sec:authentication="name"></a></li>
-                            <li role="presentation"><a th:href="@{/logout}">Log out</a></li>
+                            <li role="presentation"><a><form th:action="@{/logout}" method="post">
+                                <input id= "logout-button" type="submit" value="Sign Out"/>
+                            </form></a>
+
+                            </li>
                         </div>
                     </ul>
                 </div><!-- /.navbar-collapse -->
