@@ -19,6 +19,9 @@ public class Landmark {
     private GPSLocation location;
 
     @Column
+    private byte[] image;
+
+    @Column
     private double rating;
 
     public Landmark() {
@@ -68,6 +71,14 @@ public class Landmark {
 
     public void setRating(double rating) {
         this.rating = rating;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 
     @Override

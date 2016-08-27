@@ -60,10 +60,6 @@
                     </form>
                     <ul class="nav navbar-nav navbar-left">
                         <li role="presentation"><a th:href="@{/}">Mark Move</a></li>
-                        <li th:if="${user != null}" class="presentation">
-                            <a th:href="@{/}">Home</a>
-                        </li>
-
                         <li role="presentation"><a th:href="@{/landmarks}">Landmarks</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tourism<span class="caret"></span></a>
@@ -81,10 +77,10 @@
                         <li sec:authorize="hasRole('ROLE_ADMIN')" class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administration<span class="caret"></span></a>
                             <ul class="dropdown-menu">
+                                <li><a href="landmarks/manage.html" th:href="@{/landmarks/manage}">Manage Landmarks</a></li>
                                 <li><a href="#">Manage Events</a></li>
-                                <li><a th:href="@{/publications/manage}">Manage publications</a></li>
+                                <li><a th:href="@{/publications/manage}">Manage Publications</a></li>
                                 <li><a th:href="@{/users/permissions}">Permissions</a></li>
-                                <li><a href="#">Manage photos</a></li>
                             </ul>
                         </li>
                     </ul>

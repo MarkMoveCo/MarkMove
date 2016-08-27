@@ -9,7 +9,16 @@ public class LandmarksController {
 
     @RequestMapping("/landmarks")
     public String landmarks(Model model){
-
         return "landmarks/landmarks";
+    }
+
+    @RequestMapping("/landmarks/manage")
+    public String manageLandmarksPage(){
+        return "landmarks/manage";
+    }
+
+    @RequestMapping("/landmarks/create")
+    public String createLandmark(){
+        return "landmarks/create";
     }
 }
