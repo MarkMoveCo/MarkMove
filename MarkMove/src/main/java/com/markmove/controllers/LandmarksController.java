@@ -8,10 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class LandmarksController {
@@ -26,8 +28,12 @@ public class LandmarksController {
         return "landmarks/landmarks";
     }
 
-    @RequestMapping("/landmarks/manage")
-    public String manageLandmarksPage(){
+    @RequestMapping(value = "/landmarks/manage", method = RequestMethod.GET)
+    public String manageLandmarksPage(Model model){
+        List<Landmark> allLandmarks = landmarkService.findAll();
+
+        model.addAttribute("landmarks", allLandmarks);
+
         return "landmarks/manage";
     }
 
@@ -51,5 +57,19 @@ public class LandmarksController {
         notificationService.addInfoMessage("Successfully created landmark");
 
         return "redirect:/landmarks/manage";
+    }
+
+    @RequestMapping("/landmarks/view/{id}")
+    public String view(@PathVariable("id") Long id, Model model) {
+        Landmark landmark = landmarkService.findById(id);
+
+        if (landmark == null) {
+            notificationService.addErrorMessage("Cannot find post #" + id);
+            return "redirect:/landmarks/manage";
+        }
+
+        model.addAttribute("landmark", landmark);
+
+        return "landmarks/view";
     }
 }
