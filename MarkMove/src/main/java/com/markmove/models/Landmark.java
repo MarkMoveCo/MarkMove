@@ -2,6 +2,7 @@ package com.markmove.models;
 
 import javax.persistence.*;
 
+@Entity
 @Table(name = "landmarks")
 public class Landmark {
     @Id
@@ -16,7 +17,7 @@ public class Landmark {
     private String description;
 
     @Column
-    private GPSLocation location;
+    private String location;
 
     @Column
     private byte[] image;
@@ -27,10 +28,9 @@ public class Landmark {
     public Landmark() {
     }
 
-    public Landmark(String name, String description, GPSLocation location) {
+    public Landmark(String name, String description) {
         this.name = name;
         this.description = description;
-        this.location = location;
     }
 
     public Long getId() {
@@ -57,11 +57,11 @@ public class Landmark {
         this.description = description;
     }
 
-    public GPSLocation getLocation() {
+    public String getLocation() {
         return location;
     }
 
-    public void setLocation(GPSLocation location) {
+    public void setLocation(String location) {
         this.location = location;
     }
 
