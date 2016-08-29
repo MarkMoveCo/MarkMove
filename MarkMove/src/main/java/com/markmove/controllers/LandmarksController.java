@@ -72,4 +72,34 @@ public class LandmarksController {
 
         return "landmarks/view";
     }
+
+    @RequestMapping(value = "/landmarks/edit/{id}", method = RequestMethod.GET)
+    public String editPage(@PathVariable("id") Long id, Model model) {
+        Landmark landmark = landmarkService.findById(id);
+
+        if (landmark == null) {
+            notificationService.addErrorMessage("Cannot find post #" + id);
+            return "redirect:/landmarks/manage";
+        }
+
+        model.addAttribute("landmark", landmark);
+
+        return "landmarks/edit";
+    }
+
+    @RequestMapping(value = "/landmarks/edit/{id}", method = RequestMethod.POST)
+    public String edit(@PathVariable("id") Long id, @Valid LandmarkForm landmarkForm, Model model) {
+        Landmark landmark = landmarkService.findById(id);
+
+        if (landmark == null) {
+            notificationService.addErrorMessage("Cannot find post #" + id);
+            return "redirect:/landmarks/manage";
+        }
+
+        model.addAttribute("landmark", landmark);
+
+        //TODO: save changes
+
+        return "landmarks/edit";
+    }
 }

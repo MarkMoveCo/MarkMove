@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <th:block layout:include="layout :: site-head" th:with="title=${landmark.name}" th:remove="tag">
+        <th:block layout:fragment="links">
+            <link rel="stylesheet" href="../../public/css/create-landmark.css" th:href="@{/public/css/create-landmark.css}"/>
+        </th:block>
+    </th:block>
+</head>
+<body>
+<div id="wrapper">
+    <header th:replace="layout :: header">
+    </header>
+
+    <main>
+        <div class="container">
+            <form method="post" accept-charset="UTF-8" th:action="@{/landmarks/edit/{id}/(id=${landmark.id})}" th:object="${landmarkForm}">
+                <h1>Edit Landmark</h1>
+                <div class="form-group">
+                    <label for="name" >Name: </label>
+                    <textarea class="form-control" id="name" type="text" name="name" th:text="${landmark.name}"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="location" >Location: </label>
+                    <textarea class="form-control" id="location" type="text" name="location" th:text="${landmark.location}"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description: </label>
+                    <textarea class="form-control" name="description" id="description" rows="20" th:text="${landmark.description}"></textarea>
+                </div>
+
+                <div id="last-div" class="form-group">
+                    <label class="btn btn-default btn-block btn-file" >
+                        Browse Picture<input type="file" style="display: none;"/>
+                    </label>
+                    <input class="btn btn-primary btn-block" type="submit" value="Save changes"/>
+                </div>
+            </form>
+        </div>
+    </main>
+</div>
+</body>
+</html>
