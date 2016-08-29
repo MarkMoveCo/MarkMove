@@ -36,6 +36,12 @@ public class User {
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
+    @OneToMany(mappedBy = "user")
+    private Set<UserNotification> userNotifications;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private Set<Picture> pictures;
+
     public User() {
     }
 
@@ -117,6 +123,14 @@ public class User {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public Set<UserNotification> getUserNotifications() {
+        return userNotifications;
+    }
+
+    public void setUserNotifications(Set<UserNotification> userNotifications) {
+        this.userNotifications = userNotifications;
     }
 
     @Override

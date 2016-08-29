@@ -1,6 +1,5 @@
 package com.markmove.services;
 
-import com.markmove.services.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -8,8 +7,8 @@ import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service()
-public class NotificationServiceImpl implements NotificationService {
+@Service
+public class SystemNotificationServiceImpl implements SystemNotificationService {
 
     public static final String NOTIFY_MSG_SESSION_KEY = "siteNotificationMessages";
 
@@ -25,12 +24,12 @@ public class NotificationServiceImpl implements NotificationService {
     public void addErrorMessage(String msg) {
         addNotificationMessage(NotificationMessageType.ERROR, msg);
     }
-
+    @SuppressWarnings("unchecked")
     private void addNotificationMessage(NotificationMessageType type, String msg) {
         List<NotificationMessage> notifyMessages = (List<NotificationMessage>)
                 httpSession.getAttribute(NOTIFY_MSG_SESSION_KEY);
         if (notifyMessages == null) {
-            notifyMessages = new ArrayList<NotificationMessage>();
+            notifyMessages = new ArrayList<>();
         }
         notifyMessages.add(new NotificationMessage(type, msg));
         httpSession.setAttribute(NOTIFY_MSG_SESSION_KEY, notifyMessages);

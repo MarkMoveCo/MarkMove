@@ -1,15 +1,13 @@
 package com.markmove.controllers;
 
 import com.markmove.forms.LoginForm;
-import com.markmove.services.NotificationService;
+import com.markmove.services.SystemNotificationService;
 import com.markmove.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import javax.validation.Valid;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class LoginController {
@@ -18,28 +16,18 @@ public class LoginController {
     private UserService userService;
 
     @Autowired
-    private NotificationService notifyService;
+    private SystemNotificationService notifyService;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login(LoginForm loginForm) {
-        return "/login";
-    }
+    public String login(@RequestParam(value = "error", required = false) String error) {
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String loginPage(@Valid LoginForm loginForm, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            notifyService.addErrorMessage("Please fill the form correctly!");
-            return "/login";
+        if (error != null) {
+            this.notifyService.addErrorMessage("Invalid login");
+
         }
 
-        if (!userService.authenticate(
-                loginForm.getUsername(), loginForm.getPassword())) {
-            notifyService.addErrorMessage("Invalid login!");
-            return "/login";
-        }
-
-        notifyService.addInfoMessage("Login successful");
-        return "redirect:/";
+        return "login";
     }
+
 }
 
