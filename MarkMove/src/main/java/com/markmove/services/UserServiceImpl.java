@@ -1,5 +1,6 @@
 package com.markmove.services;
 
+import com.markmove.models.Role;
 import com.markmove.models.User;
 import com.markmove.repositories.RoleRepository;
 import com.markmove.repositories.UserRepository;
@@ -43,7 +44,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public User create(User user) {
         user.setPasswordHash(bCryptPasswordEncoder.encode(user.getPasswordHash()));
-        user.setRoles(new HashSet<>(roleRepository.findAll()));
+        HashSet<Role> roles = new HashSet<Role>();
+
+        // adding ROLE_USER
+        // ROLE_USER should be added to db explicitly
+        roles.add(roleRepository.findAll().get(1));
+
+        user.setRoles(roles);
 
         return this.userRepository.save(user);
     }

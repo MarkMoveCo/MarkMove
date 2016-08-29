@@ -50,7 +50,7 @@ public class LandmarksController {
         }
 
         if (landmarkForm.getPicture() != null){
-            newLandmark.setImage(landmarkForm.getPicture());
+            newLandmark.setPicture(landmarkForm.getPicture());
         }
 
         landmarkService.create(newLandmark);

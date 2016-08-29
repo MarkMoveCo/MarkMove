@@ -19,8 +19,10 @@ public class Landmark {
     @Column
     private String location;
 
+    @Lob
+    @Basic(fetch = FetchType.LAZY)
     @Column
-    private byte[] image;
+    private byte[] picture;
 
     @Column
     private double rating;
@@ -73,12 +75,12 @@ public class Landmark {
         this.rating = rating;
     }
 
-    public byte[] getImage() {
-        return image;
+    public byte[] getPicture() {
+        return picture;
     }
 
-    public void setImage(byte[] image) {
-        this.image = image;
+    public void setPicture(byte[] picture) {
+        this.picture = picture;
     }
 
     @Override

@@ -16,6 +16,7 @@ public class LandmarkForm {
     @Lob
     private String description;
 
+    @Lob
     private byte[] picture;
 
     public String getName() {
