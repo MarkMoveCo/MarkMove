@@ -3,7 +3,7 @@ package com.markmove.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "landmarks")
+@Table(name = "landmark")
 public class Landmark {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

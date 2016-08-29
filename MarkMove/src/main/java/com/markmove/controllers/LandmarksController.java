@@ -3,7 +3,7 @@ package com.markmove.controllers;
 import com.markmove.forms.LandmarkForm;
 import com.markmove.models.Landmark;
 import com.markmove.services.LandmarkService;
-import com.markmove.services.NotificationService;
+import com.markmove.services.SystemNotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +21,7 @@ public class LandmarksController {
     private LandmarkService landmarkService;
 
     @Autowired
-    private NotificationService notificationService;
+    private SystemNotificationService notificationService;
 
     @RequestMapping("/landmarks")
     public String landmarks(Model model){

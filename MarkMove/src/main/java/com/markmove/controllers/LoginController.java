@@ -1,6 +1,5 @@
 package com.markmove.controllers;
 
-import com.markmove.forms.LoginForm;
 import com.markmove.services.SystemNotificationService;
 import com.markmove.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
