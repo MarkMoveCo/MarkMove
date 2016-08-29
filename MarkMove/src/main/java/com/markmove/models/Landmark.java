@@ -1,6 +1,7 @@
 package com.markmove.models;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "landmark")
@@ -19,10 +20,8 @@ public class Landmark {
     @Column
     private String location;
 
-    @Lob
-    @Basic(fetch = FetchType.LAZY)
-    @Column
-    private byte[] picture;
+    @OneToMany(mappedBy = "landmark")
+    private Set<Picture> pictures;
 
     @Column
     private double rating;
@@ -75,12 +74,12 @@ public class Landmark {
         this.rating = rating;
     }
 
-    public byte[] getPicture() {
-        return picture;
+    public Set<Picture> getPictures() {
+        return pictures;
     }
 
-    public void setPicture(byte[] picture) {
-        this.picture = picture;
+    public void setPictures(Set<Picture> pictures) {
+        this.pictures = pictures;
     }
 
     @Override

@@ -16,8 +16,6 @@ public class LandmarkForm {
     @Lob
     private String description;
 
-    @Lob
-    private byte[] picture;
 
     public String getName() {
         return name;
@@ -43,11 +41,4 @@ public class LandmarkForm {
         this.description = description;
     }
 
-    public byte[] getPicture() {
-        return picture;
-    }
-
-    public void setPicture(byte[] picture) {
-        this.picture = picture;
-    }
 }

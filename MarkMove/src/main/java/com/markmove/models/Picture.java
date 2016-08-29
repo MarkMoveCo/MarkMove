@@ -16,6 +16,9 @@ public class Picture {
     @ManyToOne
     private User user;
 
+    @ManyToOne
+    private Landmark landmark;
+
     public Picture(String location, User user) {
         this.setLocation(location);
         this.setUser(user);

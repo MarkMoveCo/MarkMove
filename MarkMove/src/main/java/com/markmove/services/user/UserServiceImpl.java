@@ -1,10 +1,9 @@
-package com.markmove.services;
+package com.markmove.services.user;
 
 import com.markmove.models.Role;
 import com.markmove.models.User;
 import com.markmove.repositories.RoleRepository;
 import com.markmove.repositories.UserRepository;
-import com.markmove.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

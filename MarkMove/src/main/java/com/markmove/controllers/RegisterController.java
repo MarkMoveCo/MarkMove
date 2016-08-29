@@ -3,7 +3,7 @@ package com.markmove.controllers;
 import com.markmove.forms.RegisterForm;
 import com.markmove.models.User;
 import com.markmove.services.SystemNotificationService;
-import com.markmove.services.UserService;
+import com.markmove.services.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 @Controller

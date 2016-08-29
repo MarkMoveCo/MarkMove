@@ -16,7 +16,7 @@
 
     <main>
         <div class="container">
-            <form method="post" accept-charset="UTF-8" th:action="@{/landmarks/create}" th:object="${landmarkForm}">
+            <form method="post" accept-charset="UTF-8" enctype="multipart/form-data" th:action="@{/landmarks/create}" th:object="${landmarkForm}">
                 <h1>Create Landmark</h1>
                 <div class="form-group">
                     <label for="name" th:value="*{name}" >Name: </label>
@@ -34,8 +34,8 @@
                 </div>
 
                 <div id="last-div" class="form-group">
-                    <label class="btn btn-default btn-block btn-file" th:value="*{picture}">
-                        Browse Picture<input type="file" style="display: none;" th:value="*{picture}"/>
+                    <label class="btn btn-default btn-block btn-file">
+                        Browse Picture<input type="file" name="file"/>
                     </label>
                     <input class="btn btn-primary btn-block" type="submit" value="Create Landmark"/>
                 </div>

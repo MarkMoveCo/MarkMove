@@ -1,4 +1,4 @@
-package com.markmove.services;
+package com.markmove.services.user;
 
 import com.markmove.models.Role;
 import com.markmove.models.User;
