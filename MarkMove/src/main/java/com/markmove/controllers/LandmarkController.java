@@ -24,9 +24,8 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import java.nio.file.Paths;
 import java.security.Principal;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Controller
 public class LandmarkController {
@@ -48,8 +47,24 @@ public class LandmarkController {
     @Autowired
     private SystemNotificationService notificationService;
 
-    @RequestMapping("/landmarks")
+    @RequestMapping(value = "/landmarks", method = RequestMethod.GET)
     public String landmarks(Model model){
+        List<Landmark> landmarks = this.landmarkService.findAll();
+
+        List<Landmark> mostRated = landmarks.stream()
+                .sorted(Comparator.comparingDouble((Landmark landmark) -> landmark.getRating())
+                        .thenComparing(Comparator.comparing((Landmark landmark) -> landmark.getName())))
+                .collect(Collectors.toList());
+
+        model.addAttribute("mostRated", mostRated);
+
+        return "landmarks/landmarks";
+    }
+
+    @RequestMapping(value = "/landmarks", method = RequestMethod.POST)
+    public String rateLandmark(){
+        //TODO: rate landmark
+
         return "landmarks/landmarks";
     }
 

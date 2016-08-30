@@ -13,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -22,6 +23,11 @@ public class LandmarkServiceImpl implements LandmarkService {
 
     @Autowired
     private LandmarkRepository landmarkRepository;
+
+    @Override
+    public List<Landmark> findAll(){
+        return this.landmarkRepository.findAll();
+    }
 
     @Override
     public Landmark findById(Long id) {

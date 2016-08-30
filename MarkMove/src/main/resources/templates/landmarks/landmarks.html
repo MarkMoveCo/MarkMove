@@ -33,165 +33,32 @@
         <div class="container">
             <div class="left-side">
                 <div class="category">
-                    <h3 class="category-name">Recent posted</h3>
-                    <div class="carousel slide" data-ride="carousel">
-                        <ul class="carousel-inner" role="listbox">
-                            <li class="landmark panel">
-                                <a href="#">
-                                    <img class="landmark-photo" src="http://www.smeshni7.com/wp-content/uploads/2012/09/%D1%8F%D0%BA%D0%B8-%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8-1.jpg"/>
-                                    <h4 class="landmark-name">The best place</h4>
-                                </a>
-
-                                <p class="landmark-info">Do you want to try my reflex?</p>
-
-                                <div class="stars">
-                                    <form action="">
-                                        <input class="star star-5" id="star-5" type="radio" name="star"/>
-                                        <label class="star star-5" for="star-5"></label>
-                                        <input class="star star-4" id="star-4" type="radio" name="star"/>
-                                        <label class="star star-4" for="star-4"></label>
-                                        <input class="star star-3" id="star-3" type="radio" name="star"/>
-                                        <label class="star star-3" for="star-3"></label>
-                                        <input class="star star-2" id="star-2" type="radio" name="star"/>
-                                        <label class="star star-2" for="star-2"></label>
-                                        <input class="star star-1" id="star-1" type="radio" name="star"/>
-                                        <label class="star star-1" for="star-1"></label>
-                                    </form>
-                                </div>
-                            </li>
-
-                            <li class="landmark panel">
-                                <a href="#">
-                                    <img class="landmark-photo" src="http://www.smeshni7.com/wp-content/uploads/2012/09/%D1%8F%D0%BA%D0%B8-%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8-1.jpg"/>
-                                    <h4 class="landmark-name">The best place</h4>
-                                </a>
-
-                                <p class="landmark-info">Do you want to try my reflex?</p>
-
-                                <div class="stars">
-                                    <form action="">
-                                        <input class="star star-5" id="star-5" type="radio" name="star"/>
-                                        <label class="star star-5" for="star-5"></label>
-                                        <input class="star star-4" id="star-4" type="radio" name="star"/>
-                                        <label class="star star-4" for="star-4"></label>
-                                        <input class="star star-3" id="star-3" type="radio" name="star"/>
-                                        <label class="star star-3" for="star-3"></label>
-                                        <input class="star star-2" id="star-2" type="radio" name="star"/>
-                                        <label class="star star-2" for="star-2"></label>
-                                        <input class="star star-1" id="star-1" type="radio" name="star"/>
-                                        <label class="star star-1" for="star-1"></label>
-                                    </form>
-                                </div>
-                            </li>
-
-                            <li class="landmark panel">
-                                <a href="#">
-                                    <img class="landmark-photo" src="http://www.smeshni7.com/wp-content/uploads/2012/09/%D1%8F%D0%BA%D0%B8-%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8-1.jpg"/>
-                                    <h4 class="landmark-name">The best place</h4>
-                                </a>
-
-                                <p class="landmark-info">Do you want to try my reflex?</p>
-
-                                <div class="stars">
-                                    <form action="">
-                                        <input class="star star-5" id="star-5" type="radio" name="star"/>
-                                        <label class="star star-5" for="star-5"></label>
-                                        <input class="star star-4" id="star-4" type="radio" name="star"/>
-                                        <label class="star star-4" for="star-4"></label>
-                                        <input class="star star-3" id="star-3" type="radio" name="star"/>
-                                        <label class="star star-3" for="star-3"></label>
-                                        <input class="star star-2" id="star-2" type="radio" name="star"/>
-                                        <label class="star star-2" for="star-2"></label>
-                                        <input class="star star-1" id="star-1" type="radio" name="star"/>
-                                        <label class="star star-1" for="star-1"></label>
-                                    </form>
-                                </div>
-                            </li>
-                        </ul>
-
-                        <!-- Left and right controls -->
-                        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="category">
                     <h3 class="category-name">Most popular</h3>
-                    <ul>
+                    <ul th:each="landmark : ${mostRated}">
                         <li class="landmark panel">
                             <a href="#">
-                                <img class="landmark-photo" src="http://www.smeshni7.com/wp-content/uploads/2012/09/%D1%8F%D0%BA%D0%B8-%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8-1.jpg"/>
-                                <h4 class="landmark-name">The best place</h4>
+                                <img class="landmark-photo" th:each="picture : ${landmark.pictures}" th:src="@{${picture.location}}" src="http://www.smeshni7.com/wp-content/uploads/2012/09/%D1%8F%D0%BA%D0%B8-%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8-1.jpg"/>
+                                <h4 class="landmark-name" th:text="${landmark.name}">The best place</h4>
                             </a>
 
-                            <p class="landmark-info">Do you want to try my reflex?</p>
+                            <p class="landmark-info" th:text="${landmark.description}">Do you want to try my reflex?</p>
 
                             <div class="stars">
-                                <form action="">
-                                    <input class="star star-5" id="star-5" type="radio" name="star"/>
-                                    <label class="star star-5" for="star-5"></label>
-                                    <input class="star star-4" id="star-4" type="radio" name="star"/>
-                                    <label class="star star-4" for="star-4"></label>
-                                    <input class="star star-3" id="star-3" type="radio" name="star"/>
-                                    <label class="star star-3" for="star-3"></label>
-                                    <input class="star star-2" id="star-2" type="radio" name="star"/>
-                                    <label class="star star-2" for="star-2"></label>
-                                    <input class="star star-1" id="star-1" type="radio" name="star"/>
-                                    <label class="star star-1" for="star-1"></label>
-                                </form>
-                            </div>
-                        </li>
+                                <form action="post" th:action="@{/landmarks}">
+                                    <input class="star star-5" id="star-5" type="radio" name="star" value="5"/>
+                                    <label class="star star-5" for="star-5" th:value="*{star}"></label>
 
-                        <li class="landmark panel">
-                            <a href="#">
-                                <img class="landmark-photo" src="http://www.smeshni7.com/wp-content/uploads/2012/09/%D1%8F%D0%BA%D0%B8-%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8-1.jpg"/>
-                                <h4 class="landmark-name">The best place</h4>
-                            </a>
+                                    <input class="star star-4" id="star-4" type="radio" name="star" value="4"/>
+                                    <label class="star star-4" for="star-4" th:value="*{star}"></label>
 
-                            <p class="landmark-info">Do you want to try my reflex?</p>
+                                    <input class="star star-3" id="star-3" type="radio" name="star" value="3"/>
+                                    <label class="star star-3" for="star-3" th:value="*{star}"></label>
 
-                            <div class="stars">
-                                <form action="">
-                                    <input class="star star-5" id="star-5" type="radio" name="star"/>
-                                    <label class="star star-5" for="star-5"></label>
-                                    <input class="star star-4" id="star-4" type="radio" name="star"/>
-                                    <label class="star star-4" for="star-4"></label>
-                                    <input class="star star-3" id="star-3" type="radio" name="star"/>
-                                    <label class="star star-3" for="star-3"></label>
-                                    <input class="star star-2" id="star-2" type="radio" name="star"/>
-                                    <label class="star star-2" for="star-2"></label>
-                                    <input class="star star-1" id="star-1" type="radio" name="star"/>
-                                    <label class="star star-1" for="star-1"></label>
-                                </form>
-                            </div>
-                        </li>
+                                    <input class="star star-2" id="star-2" type="radio" name="star" value="2"/>
+                                    <label class="star star-2" for="star-2" th:value="*{star}"></label>
 
-                        <li class="landmark panel">
-                            <a href="#">
-                                <img class="landmark-photo" src="http://www.smeshni7.com/wp-content/uploads/2012/09/%D1%8F%D0%BA%D0%B8-%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8-1.jpg"/>
-                                <h4 class="landmark-name">The best place</h4>
-                            </a>
-
-                            <p class="landmark-info">Do you want to try my reflex?</p>
-
-                            <div class="stars">
-                                <form action="">
-                                    <input class="star star-5" id="star-5" type="radio" name="star"/>
-                                    <label class="star star-5" for="star-5"></label>
-                                    <input class="star star-4" id="star-4" type="radio" name="star"/>
-                                    <label class="star star-4" for="star-4"></label>
-                                    <input class="star star-3" id="star-3" type="radio" name="star"/>
-                                    <label class="star star-3" for="star-3"></label>
-                                    <input class="star star-2" id="star-2" type="radio" name="star"/>
-                                    <label class="star star-2" for="star-2"></label>
-                                    <input class="star star-1" id="star-1" type="radio" name="star"/>
-                                    <label class="star star-1" for="star-1"></label>
+                                    <input class="star star-1" id="star-1" type="radio" name="star" value="1"/>
+                                    <label class="star star-1" for="star-1" th:value="*{star}"></label>
                                 </form>
                             </div>
                         </li>
