@@ -6,22 +6,23 @@ import com.markmove.models.Landmark;
 import com.markmove.models.Picture;
 import com.markmove.services.LandmarkService;
 import com.markmove.services.PictureService;
+import com.markmove.services.PictureServiceImpl;
 import com.markmove.services.SystemNotificationService;
 import com.markmove.services.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.nio.file.Paths;
 import java.security.Principal;
 import java.util.HashSet;
 import java.util.Set;
@@ -36,6 +37,9 @@ public class LandmarkController {
 
     @Autowired
     private PictureService pictureService;
+
+    @Autowired
+    private ResourceLoader resourceLoader;
 
     @Autowired
     private UserService userService;
@@ -99,6 +103,17 @@ public class LandmarkController {
         model.addAttribute("landmark", landmark);
 
         return "landmarks/view";
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/images/{filename:.+}")
+    @ResponseBody
+    public ResponseEntity<?> getFile(@PathVariable String filename) {
+                    // Paths.get Should be Constant or somehow made with variables
+        try {
+            return ResponseEntity.ok(resourceLoader.getResource("file:" + Paths.get("src/main/resources/public/images", filename).toString()));
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @RequestMapping(value = "/landmarks/edit/{id}", method = RequestMethod.GET)
