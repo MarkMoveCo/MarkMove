@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <th:block layout:include="layout :: site-head" th:with="title='Permissions'" th:remove="tag">
+            <th:block layout:fragment="links">
+                <link rel="stylesheet" type="text/css" href="../public/css/index.css" th:href="@{/css/index.css}"/>
+                <script type="text/javascript" src="../scripts/edit-permissions.js"></script>
+            </th:block>
+        </th:block>
+    </head>
+<body>
+<div id="wrapper">
+    <header th:replace="layout :: site-header"></header>
+
+    <main>
+        <div class="container">
+            <table border="1">
+                <tr>
+                    <td>Nickname</td>
+                    <td>Role</td>
+                </tr>
+                <tr th:each="user : ${users}">
+                    <td th:text="${user.username}"></td>
+                    <td>
+                        <select th:name="${user.id}">
+                            <option th:each="role : ${roles}" th:selected="${#lists.contains(user.roles,role)}" th:text="${role.name}">
+                            </option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <input type="submit" name="change_roles" value ="Save" onclick="saveChanges()"/>
+        </div>
+    </main>
+
+    <footer th:replace="layouts/footer :: footer">
+    </footer>
+</div>
+</body>
+</html>
