@@ -1,11 +1,12 @@
 package com.markmove.services;
 
 import com.markmove.models.Landmark;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
-import java.util.List;
 
 public interface LandmarkService {
-    List<Landmark> findAll();
+    Page<Landmark> listAllByPage(Pageable pageable);
     Landmark findById(Long id);
     Landmark create(Landmark landmark);
     Landmark edit(Landmark landmark);
