@@ -19,9 +19,32 @@ public class Picture {
     @ManyToOne
     private Landmark landmark;
 
+    public Picture() {
+
+    }
+
+    public Picture(String location, User user, Landmark landmark) {
+        this.location = location;
+        this.user = user;
+        this.landmark = landmark;
+    }
+
     public Picture(String location, User user) {
         this.setLocation(location);
         this.setUser(user);
+    }
+
+    public Picture(String location, Landmark landmark) {
+        this.setLocation(location);
+        this.setLandmark(landmark);
+    }
+
+    public Picture(User user) {
+        this.setUser(user);
+    }
+
+    public Picture(Landmark landmark) {
+        this.setLandmark(landmark);
     }
 
     public Long getId() {
@@ -46,5 +69,13 @@ public class Picture {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Landmark getLandmark() {
+        return landmark;
+    }
+
+    public void setLandmark(Landmark landmark) {
+        this.landmark = landmark;
     }
 }
