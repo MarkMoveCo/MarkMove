@@ -25,6 +25,7 @@ import javax.validation.Valid;
 import java.nio.file.Paths;
 import java.security.Principal;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Controller
@@ -76,15 +77,14 @@ public class LandmarkController {
         if (landmarkForm.getLocation() != null){
             newLandmark.setLocation(landmarkForm.getLocation());
         }
-        this.landmarkService.create(newLandmark);
+//        this.landmarkService.create(newLandmark);
 
         Picture landMarkPicture = this.pictureService.create(file, newLandmark);
         Set<Picture> pictureSet = new HashSet<>();
         pictureSet.add(landMarkPicture);
         newLandmark.setPictures(pictureSet);
 
-        this.landmarkService.edit(newLandmark);
-
+        this.landmarkService.create(newLandmark);
 
         notificationService.addInfoMessage(Messages.LANDMARK_CREATED_OK);
 
@@ -131,7 +131,21 @@ public class LandmarkController {
     }
 
     @RequestMapping(value = "/landmarks/edit/{id}", method = RequestMethod.POST)
-    public String edit(@PathVariable("id") Long id, @Valid LandmarkForm landmarkForm, Model model) {
+    public String edit(@PathVariable("id") Long id, @Valid LandmarkForm landmarkForm) {
+        Landmark landmark = landmarkService.findById(id);
+
+        if (landmark == null) {
+            notificationService.addErrorMessage("Cannot find post #" + id);
+            return "redirect:/landmarks/manage";
+        }
+
+        this.landmarkService.edit(landmark, landmarkForm);
+
+        return "redirect:/landmarks/manage";
+    }
+
+    @RequestMapping(value = "/landmarks/delete/{id}", method = RequestMethod.GET)
+    public String deletePage(@PathVariable("id") Long id, Model model) {
         Landmark landmark = landmarkService.findById(id);
 
         if (landmark == null) {
@@ -141,8 +155,24 @@ public class LandmarkController {
 
         model.addAttribute("landmark", landmark);
 
-        //TODO: save changes
+        return "landmarks/delete";
+    }
 
-        return "landmarks/edit";
+    @RequestMapping(value = "/landmarks/delete/{id}", method = RequestMethod.POST)
+    public String delete(@PathVariable("id") Long id, Model model) {
+        Landmark landmark = landmarkService.findById(id);
+
+        if (landmark == null) {
+            notificationService.addErrorMessage("Cannot find post #" + id);
+            return "redirect:/landmarks/manage";
+        }
+
+        model.addAttribute("landmark", landmark);
+
+        landmarkService.deleteById(id);
+
+        notificationService.addInfoMessage("Successfully deleted landmark.");
+
+        return "redirect:/landmarks/manage";
     }
 }

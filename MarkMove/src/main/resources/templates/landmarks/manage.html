@@ -42,7 +42,7 @@
                                 <tr>
                                     <td align="center">
                                         <a class="btn btn-default" th:href="@{/landmarks/edit/{id}/(id=${landmark.id})}"><em class="fa fa-pencil"></em></a>
-                                        <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
+                                        <a class="btn btn-danger" th:href="@{/landmarks/delete/{id}/(id=${landmark.id})}"><em class="fa fa-trash"></em></a>
                                     </td>
                                     <td class="hidden-xs">
                                         <span th:text="${landmark.id}"></span>

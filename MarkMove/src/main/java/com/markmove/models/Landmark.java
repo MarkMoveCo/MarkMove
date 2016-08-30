@@ -1,5 +1,7 @@
 package com.markmove.models;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -21,6 +23,7 @@ public class Landmark {
     private String location;
 
     @OneToMany(mappedBy = "landmark")
+    @Cascade(value = { org.hibernate.annotations.CascadeType.PERSIST, org.hibernate.annotations.CascadeType.REMOVE })
     private Set<Picture> pictures;
 
     @Column

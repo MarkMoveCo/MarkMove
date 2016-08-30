@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <th:block layout:include="layout :: site-head" th:with="title=${landmark.name}" th:remove="tag">
+        <th:block layout:fragment="links">
+            <link rel="stylesheet" href="../../public/css/view-landmark.css" th:href="@{/public/css/view-landmark.css}"/>
+        </th:block>
+    </th:block>
+</head>
+<body>
+<div id="wrapper">
+    <header th:replace="layout :: header">
+    </header>
+
+    <main>
+        <div class="container">
+            <form class="panel" method="post" th:action="@{/landmarks/delete/{id}/(id=${landmark.id})}">
+                <h1 class="title" th:text="${landmark.name}">Landmark Name</h1>
+                <div class="location">
+                    <i><span th:text="${landmark.location}">Location name</span></i>
+                </div>
+                <p class="description" th:text="${landmark.description}">Landmark description</p>
+                <img th:each="picture : ${landmark.pictures}" th:src="@{${picture.location}}"/>
+
+                <input type="submit" value="Delete Landmark"/>
+            </form>
+        </div>
+    </main>
+</div>
+</body>
+</html>

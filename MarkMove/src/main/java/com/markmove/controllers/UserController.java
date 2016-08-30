@@ -1,6 +1,5 @@
 package com.markmove.controllers;
 
-import com.markmove.constants.Messages;
 import com.markmove.models.User;
 import com.markmove.services.PictureService;
 import com.markmove.services.SystemNotificationService;
