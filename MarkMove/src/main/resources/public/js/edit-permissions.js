@@ -1,18 +1,11 @@
-var rolesToUpdate = [];
+var rolesToUpdate = {};
 $(document).ready(function(){
 
 $("select").change(function(event){
 	var userId = $(this).attr("name");
 	var role = $(this).find(":selected").text();
 	var roleToUpdate = { userId : userId, role:role };
-	for (var i = rolesToUpdate.length - 1; i >= 0; i--) {
-		if(rolesToUpdate[i]["userId"] == userId){
-			rolesToUpdate[i]["role"] = role;
-			return;
-		}
-	}
-
-	rolesToUpdate.push(roleToUpdate);
+	rolesToUpdate[userId] = role;
 });
 
 });

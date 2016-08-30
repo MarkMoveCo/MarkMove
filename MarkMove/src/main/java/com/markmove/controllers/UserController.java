@@ -68,7 +68,7 @@ public class UserController {
 
     @RequestMapping(method = RequestMethod.POST, value = "/users/permissions")
     @ResponseBody
-    public void editUsersPermissions(Model model, @RequestParam("data") String[] arr) {
+    public void editUsersPermissions(Model model, @RequestParam("1") String arr) {
         int x = 1;
     }
 

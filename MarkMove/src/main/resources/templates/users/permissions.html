@@ -1,14 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml"
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
     <head>
         <th:block layout:include="layout :: site-head" th:with="title='Permissions'" th:remove="tag">
             <th:block layout:fragment="scripts">
                 <script src="../../public/js/edit-permissions.js" th:src="@{/js/edit-permissions.js}"></script>
-                <sec:csrfMetaTags />
+
             </th:block>
         </th:block>
+
+        <sec:csrfMetaTags/>
     </head>
 <body>
 <div id="wrapper">
@@ -16,7 +18,7 @@
 
     <main>
         <div class="container">
-            <form th:method="Post" th:action="@{/users/permissions}">
+            <form th:action="@{/users/permissions}" method="post">
             <table border="1">
                 <tr>
                     <td>Nickname</td>
@@ -26,8 +28,12 @@
                     <td th:text="${user.username}"></td>
                     <td>
                         <select th:name="${user.id}">
-                            <option th:each="role : ${roles}" th:selected="${#lists.contains(user.roles,role)}" th:text="${role.name}">
+                            <span th:each="role : ${roles}" th:with="isInRole = ${#lists.contains(user.roles,role)}" th:remove="tag">
+                                <option th:if="${isInRole}" th:selected="${isInRole}"  th:name="userRole" th:text="${role.name}">
                             </option>
+                                <option th:if="${!isInRole}" th:text="${role.name}"></option>
+                            </span>
+
                         </select>
                     </td>
                 </tr>
