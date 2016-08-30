@@ -77,7 +77,8 @@ public class LandmarkController {
         if (landmarkForm.getLocation() != null){
             newLandmark.setLocation(landmarkForm.getLocation());
         }
-//        this.landmarkService.create(newLandmark);
+
+       this.landmarkService.create(newLandmark);
 
         Picture landMarkPicture = this.pictureService.create(file, newLandmark);
         Set<Picture> pictureSet = new HashSet<>();
@@ -105,12 +106,12 @@ public class LandmarkController {
         return "landmarks/view";
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/images/{filename:.+}")
+    @RequestMapping(method = RequestMethod.GET, value = "/images/uploaded_images/{filename:.+}")
     @ResponseBody
     public ResponseEntity<?> getFile(@PathVariable String filename) {
                     // Paths.get Should be Constant or somehow made with variables
         try {
-            return ResponseEntity.ok(resourceLoader.getResource("file:" + Paths.get("src/main/resources/public/images", filename).toString()));
+            return ResponseEntity.ok(resourceLoader.getResource("file:" + Paths.get("src/main/resources/public/images/uploaded_images", filename).toString()));
         } catch (Exception e) {
             return ResponseEntity.notFound().build();
         }

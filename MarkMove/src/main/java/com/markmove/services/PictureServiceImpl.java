@@ -20,8 +20,8 @@ import java.nio.file.Paths;
 @Service
 public class PictureServiceImpl implements PictureService {
 
-    private static final String RESOURCES_PATH = "src/main/resources";
-    private static final String PICTURES_FOLDER_NAME = "images/uploaded_images";
+    private static final String RESOURCES_PATH = "src\\main\\resources";
+    private static final String PICTURES_FOLDER_NAME = "images\\uploaded_images";
     private static final String PUBLIC_CONTENTS_FOLDER = "public";
     private static final String PICTURES_PATH = RESOURCES_PATH + "/" + PUBLIC_CONTENTS_FOLDER + "/" + PICTURES_FOLDER_NAME; // TODO: Make more flexible (run-time) if possible;
     private static final String TEMP_PICTURE_NAME = "temp";
@@ -69,7 +69,7 @@ public class PictureServiceImpl implements PictureService {
                     String actualPathAsString = actualPath.toString();
                     int pictureNameStartIndex = actualPathAsString.lastIndexOf(PICTURES_FOLDER_NAME)  + PICTURES_FOLDER_NAME.length() + 1;   // BECAUSE \pictureName we dont need the slash
                     String pictureName = actualPathAsString.substring(pictureNameStartIndex, actualPathAsString.length());
-                    String relativePath = "/" + PICTURES_FOLDER_NAME +  "/" + pictureName;
+                    String relativePath = "/" + PICTURES_FOLDER_NAME.replace("\\", "/") +  "/" + pictureName;
                     picture.setLocation(relativePath);
                     this.pictureRepository.save(picture);
                     this.systemNotificationService.addInfoMessage(String.format(Messages.PICTURE_UPLOAD_OK, file.getOriginalFilename()));

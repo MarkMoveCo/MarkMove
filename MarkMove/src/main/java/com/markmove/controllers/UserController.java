@@ -9,9 +9,8 @@ import com.markmove.services.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -66,4 +65,12 @@ public class UserController {
         model.addAttribute("roles", roles);
         return "users/permissions";
     }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/users/permissions")
+    @ResponseBody
+    public void editUsersPermissions(Model model, @RequestParam("data") String[] arr) {
+        int x = 1;
+    }
+
+
 }

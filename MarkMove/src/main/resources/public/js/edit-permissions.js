@@ -20,24 +20,16 @@ $("select").change(function(event){
 
 function saveChanges(){
 	var url = "";
-	$.post(url, {"rolesToUpdate":rolesToUpdate},function(data,status){
-		window.location.reload(true);
-		if (status == "success") 
-		{
-			if (data)
-			{
-
-			}
-			else
-			{
-
-			}
-		}
-		else
-		{
-
-		}
-	});
+    var csrfHeader = $("meta[name='_csrf_header']").attr("content");
+    var csrfToken = $("meta[name='_csrf']").attr("content");
+    var headers = {};
+    headers[csrfHeader] = csrfToken;
+    $.ajax({
+        url: url,
+        type: "POST",
+        data: rolesToUpdate,
+        headers: headers
+});
 }
 
 var MouseIcon =
