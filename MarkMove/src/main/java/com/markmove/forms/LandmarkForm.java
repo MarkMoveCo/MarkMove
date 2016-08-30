@@ -16,7 +16,6 @@ public class LandmarkForm {
     @Lob
     private String description;
 
-
     public String getName() {
         return name;
     }

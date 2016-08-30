@@ -16,8 +16,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsService userDetailsService;
 
-    @Autowired
-    private CustomAuthenticationSuccessHandler successHandler;
+//    @Autowired
+//    private CustomAuthenticationSuccessHandler successHandler;
 
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {

@@ -18,7 +18,6 @@ public class CustomAuthenticationSuccessHandler extends SimpleUrlAuthenticationS
     @Autowired
     private SystemNotificationService systemNotificationService;
 
-
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         this.systemNotificationService.addInfoMessage(Messages.LOGGED_IN_OK);

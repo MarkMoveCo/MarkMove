@@ -20,7 +20,6 @@ import java.nio.file.Paths;
 @Service
 public class PictureServiceImpl implements PictureService {
 
-
     private static final String ROOT = "src/main/resources/pictures"; // TODO: Make more flexible (run-time) if possible;
     private static final String TEMP_PICTURE_NAME = "temp";
 

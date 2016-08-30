@@ -20,14 +20,11 @@ import java.security.Principal;
 @Controller
 public class UserController {
 
-
     @Autowired
     private PictureService pictureService;
 
     @Autowired
     private SystemNotificationService systemNotificationService;
-
-
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(@RequestParam(value = "error", required = false) String error) {
@@ -52,6 +49,4 @@ public class UserController {
         this.pictureService.create(file, principal.getName(), false);
         return "redirect:/";
     }
-
-
 }
