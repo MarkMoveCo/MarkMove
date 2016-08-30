@@ -55,6 +55,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<User> findAllOrderedByUsername() {
+        return this.userRepository.findAllByOrderByUsernameAsc();
+    }
+
+    @Override
     public User edit(User user) {
         return this.userRepository.save(user);
     }
