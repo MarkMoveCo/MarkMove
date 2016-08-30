@@ -22,9 +22,10 @@
                     <i><span th:text="${landmark.location}">Location name</span></i>
                 </div>
                 <p class="description" th:text="${landmark.description}">Landmark description</p>
+                <img th:each="picture : ${landmark.pictures}" th:src="@{${picture.location}}"/>
             </article>
         </div>
-    </main>
+    </main>+
 </div>
 </body>
 </html>
