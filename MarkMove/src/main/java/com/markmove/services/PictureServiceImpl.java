@@ -1,4 +1,4 @@
-package com.markmove.services.user;
+package com.markmove.services;
 
 import com.markmove.constants.Messages;
 import com.markmove.models.Landmark;
