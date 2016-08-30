@@ -1,8 +1,10 @@
 package com.markmove.controllers;
 
 import com.markmove.constants.Messages;
+import com.markmove.models.User;
 import com.markmove.services.PictureService;
 import com.markmove.services.SystemNotificationService;
+import com.markmove.services.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,10 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.security.Principal;
 
 @Controller
@@ -22,6 +20,9 @@ public class UserController {
 
     @Autowired
     private PictureService pictureService;
+
+    @Autowired
+    private UserService userService;
 
     @Autowired
     private SystemNotificationService systemNotificationService;
@@ -46,7 +47,8 @@ public class UserController {
     @RequestMapping(method = RequestMethod.POST, value = "/uploadPicture")
     public String handleFileUpload(@RequestParam("file") MultipartFile file, Principal principal) {
 
-        this.pictureService.create(file, principal.getName(), false);
+        User currentUser = this.userService.findByUsername(principal.getName());
+        this.pictureService.create(file, currentUser, false);
         return "redirect:/";
     }
 }

@@ -7,7 +7,11 @@ import com.markmove.models.Picture;
 import com.markmove.services.LandmarkService;
 import com.markmove.services.PictureService;
 import com.markmove.services.SystemNotificationService;
+import com.markmove.services.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,16 +24,21 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import java.security.Principal;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Controller
 public class LandmarkController {
+
+    private static final int PAGE_SIZE = 2;
+
     @Autowired
     private LandmarkService landmarkService;
 
     @Autowired
     private PictureService pictureService;
+
+    @Autowired
+    private UserService userService;
 
     @Autowired
     private SystemNotificationService notificationService;
@@ -40,9 +49,13 @@ public class LandmarkController {
     }
 
     @RequestMapping(value = "/landmarks/manage", method = RequestMethod.GET)
-    public String manageLandmarksPage(Model model){
-        List<Landmark> allLandmarks = landmarkService.findAll();
+    public String manageLandmarksPage(Model model, @RequestParam(value = "page", required = false) Integer pageNumber){
+        Pageable pageable = new PageRequest(0, PAGE_SIZE);
+        if (pageNumber != null) {
+            pageable = new PageRequest(pageNumber - 1, PAGE_SIZE);
+        }
 
+        Page<Landmark> allLandmarks = landmarkService.listAllByPage(pageable);
         model.addAttribute("landmarks", allLandmarks);
 
         return "landmarks/manage";
@@ -59,13 +72,16 @@ public class LandmarkController {
         if (landmarkForm.getLocation() != null){
             newLandmark.setLocation(landmarkForm.getLocation());
         }
+        this.landmarkService.create(newLandmark);
 
-        Picture landMarkPicture = this.pictureService.create(file, principal.getName(), false);
+        Picture landMarkPicture = this.pictureService.create(file, newLandmark);
         Set<Picture> pictureSet = new HashSet<>();
         pictureSet.add(landMarkPicture);
         newLandmark.setPictures(pictureSet);
 
-        landmarkService.create(newLandmark);
+        this.landmarkService.edit(newLandmark);
+
+
         notificationService.addInfoMessage(Messages.LANDMARK_CREATED_OK);
 
         return "redirect:/landmarks/manage";
