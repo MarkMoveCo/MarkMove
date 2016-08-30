@@ -5,7 +5,7 @@
 <head>
     <th:block layout:include="layout :: site-head" th:with="title=${landmark.name}" th:remove="tag">
         <th:block layout:fragment="links">
-            <link rel="stylesheet" href="../../public/css/view-landmark.css" th:href="@{/public/css/view-landmark.css}"/>
+            <link rel="stylesheet" href="../../public/css/view-landmark.css" th:href="@{/css/view-landmark.css}"/>
         </th:block>
     </th:block>
 </head>
@@ -16,13 +16,13 @@
 
     <main>
         <div class="container">
-            <article>
+            <article class="panel">
+                <img id="landmark-picture" th:each="picture : ${landmark.pictures}" th:src="@{${picture.location}}"/>
                 <h1 class="title" th:text="${landmark.name}">Landmark Name</h1>
                 <div class="location">
                     <i><span th:text="${landmark.location}">Location name</span></i>
                 </div>
                 <p class="description" th:text="${landmark.description}">Landmark description</p>
-                <img th:each="picture : ${landmark.pictures}" th:src="@{${picture.location}}"/>
             </article>
         </div>
     </main>

@@ -5,7 +5,7 @@
 <head>
     <th:block layout:include="layout :: site-head" th:with="title=${landmark.name}" th:remove="tag">
         <th:block layout:fragment="links">
-            <link rel="stylesheet" href="../../public/css/create-landmark.css" th:href="@{/public/css/create-landmark.css}"/>
+            <link rel="stylesheet" href="../../public/css/create-landmark.css" th:href="@{/css/create-landmark.css}"/>
         </th:block>
     </th:block>
 </head>
@@ -16,7 +16,7 @@
 
     <main>
         <div class="container">
-            <form method="post" accept-charset="UTF-8" th:action="@{/landmarks/edit/{id}/(id=${landmark.id})}" th:object="${landmarkForm}">
+            <form method="post" accept-charset="UTF-8" enctype="multipart/form-data" th:action="@{/landmarks/edit/{id}/(id=${landmark.id})}" th:object="${landmarkForm}">
                 <h1>Edit Landmark</h1>
                 <div class="form-group">
                     <label for="name" >Name: </label>
@@ -35,7 +35,7 @@
 
                 <div id="last-div" class="form-group">
                     <label class="btn btn-default btn-block btn-file" >
-                        Browse Picture<input type="file" style="display: none;"/>
+                        Browse Picture<input type="file" style="display: none;" name="file"/>
                     </label>
                     <input class="btn btn-primary btn-block" type="submit" value="Save changes"/>
                 </div>

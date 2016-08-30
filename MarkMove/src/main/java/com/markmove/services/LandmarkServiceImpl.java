@@ -2,6 +2,7 @@ package com.markmove.services;
 
 import com.markmove.forms.LandmarkForm;
 import com.markmove.models.Landmark;
+import com.markmove.models.Picture;
 import com.markmove.repositories.LandmarkRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
@@ -9,8 +10,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import org.springframework.data.domain.Pageable;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Service
 @Primary
@@ -30,7 +34,7 @@ public class LandmarkServiceImpl implements LandmarkService {
     }
 
     @Override
-    public Landmark edit(Landmark landmark, LandmarkForm landmarkForm) {
+    public Landmark edit(Landmark landmark, LandmarkForm landmarkForm, Picture picture) {
         if (!Objects.equals(landmark.getName(), landmarkForm.getName())) {
             landmark.setName(landmarkForm.getName());
         }
@@ -43,7 +47,11 @@ public class LandmarkServiceImpl implements LandmarkService {
             landmark.setDescription(landmarkForm.getDescription());
         }
 
-        //TODO: edit for pictures
+        if (picture != null){
+            Set<Picture> currentPictures = landmark.getPictures();
+            currentPictures.clear();
+            currentPictures.add(picture);
+        }
 
         return this.landmarkRepository.save(landmark);
     }

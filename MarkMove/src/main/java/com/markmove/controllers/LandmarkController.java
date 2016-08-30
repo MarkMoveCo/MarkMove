@@ -131,7 +131,7 @@ public class LandmarkController {
     }
 
     @RequestMapping(value = "/landmarks/edit/{id}", method = RequestMethod.POST)
-    public String edit(@PathVariable("id") Long id, @Valid LandmarkForm landmarkForm) {
+    public String edit(@PathVariable("id") Long id, @RequestParam("file") MultipartFile file, @Valid LandmarkForm landmarkForm) {
         Landmark landmark = landmarkService.findById(id);
 
         if (landmark == null) {
@@ -139,7 +139,9 @@ public class LandmarkController {
             return "redirect:/landmarks/manage";
         }
 
-        this.landmarkService.edit(landmark, landmarkForm);
+        Picture landmarkPicture = this.pictureService.create(file, landmark);
+
+        this.landmarkService.edit(landmark, landmarkForm, landmarkPicture);
 
         return "redirect:/landmarks/manage";
     }

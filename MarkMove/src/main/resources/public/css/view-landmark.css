@@ -1,13 +1,23 @@
-.title {
+.panel {
+    min-height: 420px;
+}
+
+#landmark-picture {
+    margin: 1px auto;
+    width: 100%;
+    height: 320px;
+}
+
+.title, .location {
     text-align: center;
 }
 
 .location, .description {
-    border: 1px solid #000000;
     border-radius: 2px;
     padding: 10px 5px 5px 5px;
 }
 
 .description {
-    margin: 10px 0 0 0;
+    padding: 2px;
+    margin: 10px;
 }

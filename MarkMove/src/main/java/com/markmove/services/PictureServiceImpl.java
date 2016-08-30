@@ -21,7 +21,7 @@ import java.nio.file.Paths;
 public class PictureServiceImpl implements PictureService {
 
     private static final String RESOURCES_PATH = "src/main/resources";
-    private static final String PICTURES_FOLDER_NAME = "images";
+    private static final String PICTURES_FOLDER_NAME = "images/uploaded_images";
     private static final String PUBLIC_CONTENTS_FOLDER = "public";
     private static final String PICTURES_PATH = RESOURCES_PATH + "/" + PUBLIC_CONTENTS_FOLDER + "/" + PICTURES_FOLDER_NAME; // TODO: Make more flexible (run-time) if possible;
     private static final String TEMP_PICTURE_NAME = "temp";
@@ -49,7 +49,7 @@ public class PictureServiceImpl implements PictureService {
         if (!file.isEmpty()) {
             try {
                 String content = file.getContentType();
-                String [] tokens = content.split("/");
+                String[] tokens = content.split("/");
                 if ("image".equals(tokens[0])){
                     InputStream inputStream = file.getInputStream();
                     Path path = Paths.get(PICTURES_PATH, TEMP_PICTURE_NAME + "." + tokens[1]);
