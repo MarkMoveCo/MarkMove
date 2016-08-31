@@ -84,7 +84,7 @@ public class LandmarkController {
     }
 
     @RequestMapping(value = "/landmarks/create", method = RequestMethod.GET)
-    public String createLandmarkPage(){
+    public String createLandmarkPage(LandmarkForm landmarkForm){
         return "landmarks/create";
     }
 
@@ -138,7 +138,7 @@ public class LandmarkController {
 
         model.addAttribute("landmark", landmark);
 
-        this.notificationService.addInfoMessage(String.format("You rated %s with %d", landmark.getName(), star));
+        this.notificationService.addInfoMessage(String.format("You rated %s with %.0f", landmark.getName(), star));
 
         return "landmarks/view";
     }
