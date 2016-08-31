@@ -70,7 +70,13 @@ public class LandmarkController {
         else {
             model.addAttribute("currentPage", pageNumber);
         }
-        model.addAttribute("totalPages", allLandmarks.getTotalPages());
+
+        int totalPagesCount = allLandmarks.getTotalPages();
+        if (totalPagesCount == 0) {
+            totalPagesCount = 1;
+        }
+
+        model.addAttribute("totalPages", totalPagesCount);
         model.addAttribute("landmarks", allLandmarks);
 
         return "landmarks/manage";
