@@ -71,23 +71,34 @@ public class UserController {
     @RequestMapping(method = RequestMethod.POST, value = "/users/permissions")
     @ResponseBody
     public void editUsersPermissions(@RequestBody MultiValueMap<String, String> map) {
-        for (Map.Entry<String, List<String>> userIdRolesPair : map.entrySet()) {
-            long id = Long.parseLong(userIdRolesPair.getKey());
-            String role = userIdRolesPair.getValue().get(0);
-            User userToEditPermission = this.userService.findById(id);
+        boolean editedAtLeastOne = false;
+        for (Map.Entry<String, List<String>> pairs : map.entrySet()) {
+            int firstBracesPos = pairs.getKey().indexOf("[");
+            String username = pairs.getKey().substring(0, firstBracesPos);
+            int lasBracesPos = pairs.getKey().lastIndexOf("[");
+            String roleName = pairs.getKey().substring(lasBracesPos + 1, pairs.getKey().length() - 1);
+            Boolean isChecked = Boolean.parseBoolean(pairs.getValue().get(0));
+            User userToEditPermission = this.userService.findByUsername(username);
             if (userToEditPermission == null) {
-                this.systemNotificationService.addErrorMessage("Failed to change Permissions of User with Id: " + id);
+                this.systemNotificationService.addErrorMessage("Failed to change Permissions of User: " + username);
             }
 
-            Role newRoleToAssign = this.roleService.findByName(role);
-            userToEditPermission.getRoles().add(newRoleToAssign);
-            this.userService.edit(userToEditPermission);
+            if (isChecked) {
+                Role newRoleToAssign = this.roleService.findByName(roleName);
+                userToEditPermission.getRoles().add(newRoleToAssign);
+            } else {
+                Role roleToRemove = this.roleService.findByName(roleName);
+                userToEditPermission.getRoles().remove(roleToRemove);
+            }
 
-            this.systemNotificationService.addInfoMessage("Successfully edited Permissions");
+            this.userService.edit(userToEditPermission);
+            editedAtLeastOne = true;
         }
 
-        if (map.isEmpty()) {
+        if (!editedAtLeastOne) {
             this.systemNotificationService.addErrorMessage("No changes in the permissions was detected!");
+        } else {
+            this.systemNotificationService.addInfoMessage("Successfully edited Permissions");
         }
 
     }
