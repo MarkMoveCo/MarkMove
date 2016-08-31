@@ -27,11 +27,11 @@
                     </thead>
 
                     <tbody>
-                    <tr th:each="user : ${users}">
+                    <tr th:each="user : ${users}" th:name="${user.username}">
                         <td th:text="${user.username}">Name</td>
                         <td style="text-align: center" th:each="role : ${roles}" th:with="isInRole = ${user.roles.contains(role)}">
-                            <input type="checkbox" th:if="${isInRole}" th:name="userRole" th:checked="true"/>
-                            <input type="checkbox" th:name="userRole" th:unless="${isInRole}" />
+                            <input type="checkbox" th:if="${isInRole}" th:name="${role.name}" th:checked="true"/>
+                            <input type="checkbox" th:name="${role.name}" th:unless="${isInRole}" />
                         </td>
                     </tr>
                     </tbody>
