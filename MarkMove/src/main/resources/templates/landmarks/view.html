@@ -5,7 +5,7 @@
 <head>
     <th:block layout:include="layout :: site-head" th:with="title=${landmark.name}" th:remove="tag">
         <th:block layout:fragment="links">
-            <link rel="stylesheet" href="../../public/css/view-landmark.css" th:href="@{/css/view-landmark.css}"/>
+            <link rel="stylesheet" href="../../public/css/landmark/view-landmark.css" th:href="@{/css/landmark/view-landmark.css}"/>
         </th:block>
     </th:block>
 </head>
@@ -22,6 +22,28 @@
                 <div class="location">
                     <i><span th:text="${landmark.location}">Location name</span></i>
                 </div>
+
+                <div class="stars">
+                    <form method="post" th:action="@{/landmarks/view/{id}/(id=${landmark.id})}">
+                        <input class="star star-5" id="star-5" type="radio" name="star" value="5"/>
+                        <label class="star star-5" for="star-5" th:value="*{star}"></label>
+
+                        <input class="star star-4" id="star-4" type="radio" name="star" value="4"/>
+                        <label class="star star-4" for="star-4" th:value="*{star}"></label>
+
+                        <input class="star star-3" id="star-3" type="radio" name="star" value="3"/>
+                        <label class="star star-3" for="star-3" th:value="*{star}"></label>
+
+                        <input class="star star-2" id="star-2" type="radio" name="star" value="2"/>
+                        <label class="star star-2" for="star-2" th:value="*{star}"></label>
+
+                        <input class="star star-1" id="star-1" type="radio" name="star" value="1"/>
+                        <label class="star star-1" for="star-1" th:value="*{star}"></label>
+
+                        <input class="btn" type="submit" value="Rate" />
+                    </form>
+                </div>
+
                 <p class="description" th:text="${landmark.description}">Landmark description</p>
             </article>
         </div>

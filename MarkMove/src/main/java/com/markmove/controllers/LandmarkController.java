@@ -53,17 +53,12 @@ public class LandmarkController {
 
         List<Landmark> mostRated = landmarks.stream()
                 .sorted(Comparator.comparingDouble((Landmark landmark) -> landmark.getRating())
+                        .reversed()
                         .thenComparing(Comparator.comparing((Landmark landmark) -> landmark.getName())))
-                .collect(Collectors.toList());
+                .collect(Collectors.toList())
+                .subList(0, 5);
 
         model.addAttribute("mostRated", mostRated);
-
-        return "landmarks/landmarks";
-    }
-
-    @RequestMapping(value = "/landmarks", method = RequestMethod.POST)
-    public String rateLandmark(){
-        //TODO: rate landmark
 
         return "landmarks/landmarks";
     }
@@ -82,7 +77,7 @@ public class LandmarkController {
     }
 
     @RequestMapping(value = "/landmarks/create", method = RequestMethod.GET)
-    public String createLandmarkPage(LandmarkForm landmarkForm){
+    public String createLandmarkPage(){
         return "landmarks/create";
     }
 
@@ -107,7 +102,7 @@ public class LandmarkController {
         return "redirect:/landmarks/manage";
     }
 
-    @RequestMapping("/landmarks/view/{id}")
+    @RequestMapping(value = "/landmarks/view/{id}", method = RequestMethod.GET)
     public String view(@PathVariable("id") Long id, Model model) {
         Landmark landmark = landmarkService.findById(id);
 
@@ -115,6 +110,24 @@ public class LandmarkController {
             notificationService.addErrorMessage("Cannot find post #" + id);
             return "redirect:/landmarks/manage";
         }
+
+        model.addAttribute("landmark", landmark);
+
+        return "landmarks/view";
+    }
+
+    @RequestMapping(value = "/landmarks/view/{id}", method = RequestMethod.POST)
+    public String rate(@PathVariable("id") Long id, @RequestParam("star") Double star, Model model) {
+        Landmark landmark = landmarkService.findById(id);
+
+        if (landmark == null) {
+            notificationService.addErrorMessage("Cannot find post #" + id);
+            return "redirect:/landmarks/manage";
+        }
+
+        double currentRating = (landmark.getRating() + star) / 2; // average value
+        landmark.setRating(currentRating);
+        this.landmarkService.create(landmark);
 
         model.addAttribute("landmark", landmark);
 

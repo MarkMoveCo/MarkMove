@@ -5,7 +5,7 @@
 <head>
     <th:block layout:include="layout :: site-head" th:with="title=${landmark.name}" th:remove="tag">
         <th:block layout:fragment="links">
-            <link rel="stylesheet" href="../../public/css/view-landmark.css" th:href="@{/css/view-landmark.css}"/>
+            <link rel="stylesheet" href="../../public/css/landmark/view-landmark.css" th:href="@{/css/landmark/delete-landmark.css}"/>
         </th:block>
     </th:block>
 </head>
@@ -24,7 +24,7 @@
                 </div>
                 <p class="description" th:text="${landmark.description}">Landmark description</p>
 
-                <input class="btn btn-default btn-block" style="margin-top: 20px;" type="submit" value="Delete Landmark"/>
+                <input class="btn btn-default btn-block" type="submit" value="Delete Landmark"/>
             </form>
         </div>
     </main>
