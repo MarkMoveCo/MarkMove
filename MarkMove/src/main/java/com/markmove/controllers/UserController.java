@@ -54,6 +54,8 @@ public class UserController {
 
         User currentUser = this.userService.findByUsername(principal.getName());
         this.pictureService.create(file, currentUser, false);
+
+        this.systemNotificationService.addInfoMessage("Successfully uploaded picture");
         return "redirect:/";
     }
 
@@ -70,6 +72,8 @@ public class UserController {
     @ResponseBody
     public void editUsersPermissions(Model model, @RequestParam("1") String arr) {
         int x = 1;
+
+        this.systemNotificationService.addInfoMessage("Permissions updated.");
     }
 
 

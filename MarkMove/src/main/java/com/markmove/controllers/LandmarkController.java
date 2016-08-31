@@ -95,7 +95,7 @@ public class LandmarkController {
             newLandmark.setLocation(landmarkForm.getLocation());
         }
 
-       this.landmarkService.create(newLandmark);
+        this.landmarkService.create(newLandmark);
 
         Picture landMarkPicture = this.pictureService.create(file, newLandmark);
         Set<Picture> pictureSet = new HashSet<>();
@@ -138,6 +138,8 @@ public class LandmarkController {
 
         model.addAttribute("landmark", landmark);
 
+        this.notificationService.addInfoMessage(String.format("You rated %s with %d", landmark.getName(), star));
+
         return "landmarks/view";
     }
 
@@ -179,6 +181,7 @@ public class LandmarkController {
 
         this.landmarkService.edit(landmark, landmarkForm, landmarkPicture);
 
+        this.notificationService.addInfoMessage("Successfully edited landmark");
         return "redirect:/landmarks/manage";
     }
 
