@@ -10,5 +10,6 @@ import java.util.List;
 
 @Repository
 public interface LandmarkRepository extends PagingAndSortingRepository<Landmark, Long> {
-    List<Landmark> findAll();
+    List<Landmark> findTop5ByOrderByRatingDescNameAsc();
+
 }

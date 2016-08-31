@@ -12,7 +12,8 @@ import java.util.List;
 
 public interface LandmarkService {
     Page<Landmark> listAllByPage(Pageable pageable);
-    List<Landmark> findAll();
+    List<Landmark> findTop5();
+    Iterable<Landmark> findAll();
     Landmark findById(Long id);
     Landmark create(Landmark landmark);
     Landmark edit(Landmark landmark, LandmarkForm landmarkForm, Picture file);

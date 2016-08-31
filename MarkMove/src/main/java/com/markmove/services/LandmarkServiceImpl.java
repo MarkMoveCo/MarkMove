@@ -25,7 +25,7 @@ public class LandmarkServiceImpl implements LandmarkService {
     private LandmarkRepository landmarkRepository;
 
     @Override
-    public List<Landmark> findAll(){
+    public Iterable<Landmark> findAll(){
         return this.landmarkRepository.findAll();
     }
 
@@ -70,5 +70,10 @@ public class LandmarkServiceImpl implements LandmarkService {
     @Override
     public Page<Landmark> listAllByPage(Pageable pageable) {
         return this.landmarkRepository.findAll(pageable);
+    }
+
+    @Override
+    public List<Landmark> findTop5() {
+        return this.landmarkRepository.findTop5ByOrderByRatingDescNameAsc();
     }
 }

@@ -48,14 +48,7 @@ public class LandmarkController {
 
     @RequestMapping(value = "/landmarks", method = RequestMethod.GET)
     public String landmarks(Model model){
-        List<Landmark> landmarks = this.landmarkService.findAll();
-
-        List<Landmark> mostRated = new ArrayList<>(); /*landmarks.stream()
-                .sorted(Comparator.comparingDouble((Landmark landmark) -> landmark.getRating())
-                        .reversed()
-                        .thenComparing(Comparator.comparing((Landmark landmark) -> landmark.getName())))
-                .collect(Collectors.toList())
-                .subList(0, 5);*/
+        List<Landmark> mostRated = this.landmarkService.findTop5();
 
         model.addAttribute("mostRated", mostRated);
 
