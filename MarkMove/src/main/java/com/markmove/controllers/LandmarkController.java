@@ -6,7 +6,6 @@ import com.markmove.models.Landmark;
 import com.markmove.models.Picture;
 import com.markmove.services.LandmarkService;
 import com.markmove.services.PictureService;
-import com.markmove.services.PictureServiceImpl;
 import com.markmove.services.SystemNotificationService;
 import com.markmove.services.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,6 +70,14 @@ public class LandmarkController {
         }
 
         Page<Landmark> allLandmarks = landmarkService.listAllByPage(pageable);
+
+        if (pageNumber == null) {
+            model.addAttribute("currentPage", 1);
+        }
+        else {
+            model.addAttribute("currentPage", pageNumber);
+        }
+        model.addAttribute("totalPages", allLandmarks.getTotalPages());
         model.addAttribute("landmarks", allLandmarks);
 
         return "landmarks/manage";
