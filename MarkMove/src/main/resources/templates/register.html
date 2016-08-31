@@ -7,7 +7,7 @@
     <th:block layout:include="layout :: site-head" th:with="title='Register'">
         <th:block layout:fragment="links">
             <link rel="stylesheet" type="text/css" href="../public/css/register-form.css"
-                  th:href="@{/css/register.css}"/>
+                  th:href="@{/css/register-form.css}"/>
             <script src="../public/js/jquery-3.1.0.min.js" th:src="@{/js/validate-inputs.js}"></script>
         </th:block>
 
@@ -136,7 +136,10 @@
             </div>
         </div>
     </main>
+
+    <footer th:include="layouts/footer :: footer"></footer>
 </div>
+
 </body>
 
 </html>
