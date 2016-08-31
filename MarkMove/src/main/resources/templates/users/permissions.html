@@ -10,8 +10,6 @@
                 <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
             </th:block>
         </th:block>
-
-
     </head>
 <body>
 <div id="wrapper">
@@ -19,26 +17,28 @@
 
     <main>
         <div class="container">
-            <table border="1">
-                <tr>
-                    <td>Nickname</td>
-                    <td>Role</td>
-                </tr>
-                <tr th:each="user : ${users}">
-                    <td th:text="${user.username}"></td>
-                    <td>
-                        <select th:name="${user.id}">
-                            <span th:each="role : ${roles}" th:with="isInRole = ${#lists.contains(user.roles,role)}" th:remove="tag">
-                                <option th:if="${isInRole}" th:selected="${isInRole}"  th:name="userRole" th:text="${role.name}">
-                            </option>
-                                <option th:if="${!isInRole}" th:text="${role.name}"></option>
-                            </span>
+            <div class="panel">
+                <table class="table table-striped table-bordered table-list">
+                    <thead>
+                    <tr>
+                        <th>Users</th>
+                        <th style="text-align: center" th:each="role : ${roles}" th:text="${role.name}">ROLE</th>
+                    </tr>
+                    </thead>
 
-                        </select>
-                    </td>
-                </tr>
-            </table>
-            <input type="submit" name="change_roles" value ="Save" onclick="saveChanges()"/>
+                    <tbody>
+                    <tr th:each="user : ${users}">
+                        <td th:text="${user.username}">Name</td>
+                        <td style="text-align: center" th:each="role : ${roles}" th:with="isInRole = ${user.roles.contains(role)}">
+                            <input type="checkbox" th:if="${isInRole}" th:name="userRole" th:checked="true"/>
+                            <input type="checkbox" th:name="userRole" th:unless="${isInRole}" />
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <input class="btn btn-default btn-block" type="submit" name="change_roles" value ="Save" onclick="saveChanges()"/>
+            </div>
         </div>
     </main>
 

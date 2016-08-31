@@ -45,8 +45,7 @@ public class UserServiceImpl implements UserService {
         user.setPasswordHash(bCryptPasswordEncoder.encode(user.getPasswordHash()));
         HashSet<Role> roles = new HashSet<Role>();
 
-        // adding ROLE_USER
-        // ROLE_USER should be added to db explicitly
+        // adding role USER
         roles.add(roleRepository.findAll().get(0));
 
         user.setRoles(roles);
