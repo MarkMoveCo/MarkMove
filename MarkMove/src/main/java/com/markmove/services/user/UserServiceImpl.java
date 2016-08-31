@@ -47,7 +47,7 @@ public class UserServiceImpl implements UserService {
 
         // adding ROLE_USER
         // ROLE_USER should be added to db explicitly
-        roles.add(roleRepository.findAll().get(1));
+        roles.add(roleRepository.findAll().get(0));
 
         user.setRoles(roles);
 
