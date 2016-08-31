@@ -1,5 +1,12 @@
 var rolesToUpdate = {};
+var initialRoles = {};
 $(document).ready(function(){
+    $("select > option[selected]").each(function () {
+       var initialRole = $(this).text();
+        var userId = $(this).parent().attr("name");
+        initialRoles[userId] = initialRole;
+    });
+
 
 $("select").change(function(event){
 	var userId = $(this).attr("name");
@@ -21,7 +28,10 @@ function saveChanges(){
         url: url,
         type: "POST",
         data: rolesToUpdate,
-        headers: headers
+        headers: headers,
+        success: function () {
+            location.reload();
+        }
 });
 }
 

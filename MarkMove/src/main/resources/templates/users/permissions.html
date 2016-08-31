@@ -6,11 +6,12 @@
         <th:block layout:include="layout :: site-head" th:with="title='Permissions'" th:remove="tag">
             <th:block layout:fragment="scripts">
                 <script src="../../public/js/edit-permissions.js" th:src="@{/js/edit-permissions.js}"></script>
-
+                <meta name="_csrf" th:content="${_csrf.token}"/>
+                <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
             </th:block>
         </th:block>
 
-        <sec:csrfMetaTags/>
+
     </head>
 <body>
 <div id="wrapper">
@@ -18,7 +19,6 @@
 
     <main>
         <div class="container">
-            <form th:action="@{/users/permissions}" method="post">
             <table border="1">
                 <tr>
                     <td>Nickname</td>
@@ -38,8 +38,7 @@
                     </td>
                 </tr>
             </table>
-            <input type="submit" name="change_roles" value ="Save"/>
-            </form>
+            <input type="submit" name="change_roles" value ="Save" onclick="saveChanges()"/>
         </div>
     </main>
 

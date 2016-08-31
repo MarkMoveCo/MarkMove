@@ -16,4 +16,9 @@ public class RoleServiceImpl implements RoleService {
     public Iterable<Role> findAllOrderedById() {
         return this.roleRepository.findAllByOrderByIdDesc();
     }
+
+    @Override
+    public Role findByName(String name) {
+        return this.roleRepository.findByName(name);
+    }
 }

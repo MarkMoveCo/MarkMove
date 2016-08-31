@@ -50,12 +50,12 @@ public class LandmarkController {
     public String landmarks(Model model){
         List<Landmark> landmarks = this.landmarkService.findAll();
 
-        List<Landmark> mostRated = landmarks.stream()
+        List<Landmark> mostRated = new ArrayList<>(); /*landmarks.stream()
                 .sorted(Comparator.comparingDouble((Landmark landmark) -> landmark.getRating())
                         .reversed()
                         .thenComparing(Comparator.comparing((Landmark landmark) -> landmark.getName())))
                 .collect(Collectors.toList())
-                .subList(0, 5);
+                .subList(0, 5);*/
 
         model.addAttribute("mostRated", mostRated);
 

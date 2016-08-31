@@ -15,7 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.security.Principal;
-import java.util.List;
+import java.util.*;
 
 @Controller
 public class UserController {
@@ -70,10 +70,26 @@ public class UserController {
 
     @RequestMapping(method = RequestMethod.POST, value = "/users/permissions")
     @ResponseBody
-    public void editUsersPermissions(Model model, @RequestParam("1") String arr) {
-        int x = 1;
+    public void editUsersPermissions(@RequestBody MultiValueMap<String, String> map) {
+        for (Map.Entry<String, List<String>> userIdRolesPair : map.entrySet()) {
+            long id = Long.parseLong(userIdRolesPair.getKey());
+            String role = userIdRolesPair.getValue().get(0);
+            User userToEditPermission = this.userService.findById(id);
+            if (userToEditPermission == null) {
+                this.systemNotificationService.addErrorMessage("Failed to change Permissions of User with Id: " + id);
+            }
 
-        this.systemNotificationService.addInfoMessage("Permissions updated.");
+            Role newRoleToAssign = this.roleService.findByName(role);
+            userToEditPermission.getRoles().add(newRoleToAssign);
+            this.userService.edit(userToEditPermission);
+
+            this.systemNotificationService.addInfoMessage("Successfully edited Permissions");
+        }
+
+        if (map.isEmpty()) {
+            this.systemNotificationService.addErrorMessage("No changes in the permissions was detected!");
+        }
+
     }
 
 
