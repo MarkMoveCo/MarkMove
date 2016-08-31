@@ -131,8 +131,14 @@ public class LandmarkController {
             return "redirect:/landmarks/manage";
         }
 
-        double currentRating = (landmark.getRating() + star) / 2; // average value
-        landmark.setRating(currentRating);
+        if (landmark.getRating() != 0) {
+            double currentRating = (landmark.getRating() + star) / 2; // average value
+            landmark.setRating(currentRating);
+        }
+        else {
+            landmark.setRating(star);
+        }
+
         this.landmarkService.create(landmark);
 
         model.addAttribute("landmark", landmark);
