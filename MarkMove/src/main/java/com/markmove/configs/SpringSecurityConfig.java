@@ -28,23 +28,30 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                    .antMatchers(
-                            "/",
-                            "/register",
-                            "/css/**",
-                            "/js/**",
-                            "/images/**")
-                    .permitAll()
-                    .anyRequest().authenticated()
-                    .and()
+                .antMatchers(
+                        "/",
+                        "/register",
+                        "/css/**",
+                        "/js/**",
+                        "/images/**")
+                .permitAll()
+                .antMatchers(
+                        "/users/permissions",
+                        "/landmarks/create",
+                        "/landmarks/manage",
+                        "/landmarks/edit/**",
+                        "/landmarks/delete/**")
+                .hasAnyAuthority("ADMIN")
+                .anyRequest().authenticated()
+                .and()
                 .formLogin()
-                    .loginPage("/login")
-                    .permitAll()
-                    .and()
+                .loginPage("/login")
+                .permitAll()
+                .and()
                 .logout()
-                    .logoutUrl("/logout")
-                    .logoutSuccessUrl("/?logout")
-                    .permitAll();
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/?logout")
+                .permitAll();
     }
 
     @Autowired
