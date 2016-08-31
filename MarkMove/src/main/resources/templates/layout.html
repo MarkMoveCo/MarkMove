@@ -94,7 +94,7 @@
                             <li role="presentation"><a th:href="@{/register}">Sign up</a></li>
                         </div>
                         <div sec:authorize="isAuthenticated()" th:remove="tag">
-                            <li role="presentation"><a th:href="@{/users/profile}" sec:authentication="name"></a></li>
+                            <li role="presentation"><a th:href="@{'/users/profile/' + ${#authentication.name}}" th:with="username =${#authentication.name}" sec:authentication="name"></a></li>
                             <li role="presentation"><a><form th:action="@{/logout}" method="post">
                                 <input id= "logout-button" type="submit" value="Sign Out"/>
                             </form></a>
