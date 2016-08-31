@@ -92,5 +92,12 @@ public class UserController {
 
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/users/profile/{id}")
+    public String showProfile(Model model, @PathVariable("id") Long id) {
+        User desiredUser = this.userService.findById(id);
+        model.addAttribute("user", desiredUser);
+        return "users/profile";
+    }
+
 
 }
