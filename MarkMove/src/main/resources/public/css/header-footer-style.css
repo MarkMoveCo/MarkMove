@@ -14,7 +14,7 @@
 .list-group-item.active > .badge,
 .navbar-nav > .active > a > .badge {
     color: #337ab7;
-    background-color: #fff;
+    background-color: #000;
 }
 
 #logout-button {
@@ -59,7 +59,7 @@
 .social-em:hover {
     color: #f39c12;
 }
-.nomargin { margin:0px; padding:0px;}
+.nomargin { margin:0; padding:0;}
 
 .social-icons > .nomargin > li {
     display: inline-block;
@@ -67,7 +67,7 @@
 .title-median,
 .footer-bottom > .contact > a,
 .copyright {
-    color: #fff;
+    color: #000;
 }
 
 .copyright {

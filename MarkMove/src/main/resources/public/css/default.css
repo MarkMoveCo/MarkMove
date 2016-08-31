@@ -2,9 +2,9 @@ html, body {
 	height: 100%;
 }
 body {
- background: #02021a url("http://cdn.wonderfulengineering.com/wp-content/uploads/2016/01/nature-wallpapers-6.jpg") no-repeat 0 0;
+    background: #FAFAFA;
+    background-size: 100% 100%;
   -webkit-background-size: cover;
-  background-size: cover;
   font-family: Arial, sans-serif;
   font-weight:lighter;
   letter-spacing:1px;
@@ -16,6 +16,10 @@ header {
 
 .container {
 	min-height: 500px;
+}
+
+.panel {
+    border: 1px solid lightgrey;
 }
 
 @media (max-width: 1240px) {

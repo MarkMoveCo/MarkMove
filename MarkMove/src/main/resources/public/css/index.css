@@ -1,3 +1,7 @@
+body {
+    background: #FAFAFA url("http://cdn.wonderfulengineering.com/wp-content/uploads/2016/01/nature-wallpapers-6.jpg") no-repeat;
+    background-size: 100% 100%;
+}
 .story {
     color: #000;
     text-align: center;
