@@ -1,5 +1,7 @@
 package com.markmove.forms;
 
+import org.hibernate.validator.constraints.Email;
+
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -12,9 +14,12 @@ public class RegisterForm {
     @NotNull
     @Size(min=4, max=32, message = "Password size should be in the range [4 ... 32]")
     private String password;
+
+    @NotNull(message = "Passwords do not match!")
     private String confirmPassword;
 
     @NotNull
+    @Email
     private String email;
 
     @Min(7)
@@ -22,6 +27,10 @@ public class RegisterForm {
 
     @NotNull
     private String gender;
+
+    public RegisterForm() {
+
+    }
 
     public String getUsername() {
         return username;
@@ -37,6 +46,7 @@ public class RegisterForm {
 
     public void setPassword(String password) {
         this.password = password;
+        this.checkPassword();
     }
 
     public String getConfirmPassword() {
@@ -69,5 +79,13 @@ public class RegisterForm {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    private void checkPassword() {
+        if(this.password == null || this.confirmPassword == null){
+            return;
+        }else if(!this.password.equals(confirmPassword)){
+            this.confirmPassword = null;
+        }
     }
 }

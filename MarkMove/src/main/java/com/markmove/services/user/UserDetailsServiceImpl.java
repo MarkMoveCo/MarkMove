@@ -1,6 +1,5 @@
 package com.markmove.services.user;
 
-import com.markmove.models.Role;
 import com.markmove.models.User;
 import com.markmove.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 

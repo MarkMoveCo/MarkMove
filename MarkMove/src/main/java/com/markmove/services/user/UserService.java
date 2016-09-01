@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface UserService {
     List<User> findAll();
+    User findByEmail(String email);
     User findByUsername(String username);
     List<User> findAllOrderedByUsername();
     User findById(Long id);
