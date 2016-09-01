@@ -43,6 +43,9 @@
                             </a>
 
                             <p class="landmark-name" th:text="${landmark.location}">Heaven</p>
+
+                            <!--<p class="landmark-info" th:text="${landmark.description}">Do you want to try my reflex?</p>-->
+
                             <p class="landmark-info">Rating: <span th:text="${#numbers.formatDecimal(landmark.rating, 1, 1)}"></span></p>
                         </li>
                     </ul>
