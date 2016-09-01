@@ -72,7 +72,7 @@ public class UserController {
     @ResponseBody
     public void editUsersPermissions(@RequestBody MultiValueMap<String, String> map) {
         boolean editedAtLeastOne = false;
-        for (Map.Entry<String, List<String>> pairs : map.entrySet()) {
+        for (Map.Entry<String, List<String>> pairs : map.entrySet()) {      //  the key look like USER[index-of-its-pos][ROLE] => True/False
             int firstBracesPos = pairs.getKey().indexOf("[");
             String username = pairs.getKey().substring(0, firstBracesPos);
             int lasBracesPos = pairs.getKey().lastIndexOf("[");

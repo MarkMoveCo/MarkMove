@@ -40,8 +40,6 @@ public class LandmarkController {
     @Autowired
     private ResourceLoader resourceLoader;
 
-    @Autowired
-    private UserService userService;
 
     @Autowired
     private SystemNotificationService notificationService;

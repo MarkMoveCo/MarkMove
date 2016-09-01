@@ -84,10 +84,6 @@ public class PictureServiceImpl implements PictureService {
                 this.systemNotificationService.addErrorMessage(String.format(Messages.PICTURE_UPLOAD_FAILURE, file.getOriginalFilename()));
             }
         }
-//        else {
-//            this.systemNotificationService.addErrorMessage(String.format(Messages.PICTURE_UPLOAD_FAILURE, file.getOriginalFilename())
-//                    + " Because it was empty!");
-//        }
 
         return null;
     }

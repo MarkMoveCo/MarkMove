@@ -26,8 +26,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     DataSource dataSource;
 
-//    @Autowired
-//    private CustomAuthenticationSuccessHandler successHandler;
 
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
