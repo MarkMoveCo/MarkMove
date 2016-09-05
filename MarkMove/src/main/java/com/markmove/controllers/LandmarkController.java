@@ -7,7 +7,6 @@ import com.markmove.models.Picture;
 import com.markmove.services.LandmarkService;
 import com.markmove.services.PictureService;
 import com.markmove.services.SystemNotificationService;
-import com.markmove.services.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.data.domain.Page;
@@ -24,7 +23,6 @@ import javax.validation.Valid;
 import java.nio.file.Paths;
 import java.security.Principal;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Controller
 public class LandmarkController {
