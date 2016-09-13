@@ -1,4 +1,4 @@
-package com.markmove.services;
+package com.markmove.services.picture;
 
 
 import com.markmove.models.Landmark;

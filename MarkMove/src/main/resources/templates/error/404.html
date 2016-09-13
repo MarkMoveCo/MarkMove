@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block layout:include="layout :: site-head" th:with="title='404'" th:remove="tag">
+        <th:block layout:fragment="links">
+            <link rel="stylesheet" type="text/css" href="../../public/css/error404.css" th:href="@{/css/error404.css}"/>
+        </th:block>
+    </th:block>
+</head>
+
+<body>
+
+<div id="wrapper">
+    <header th:replace="layout :: site-header"/>
+    <main>
+        <p><h1>Error 404</h1></p>
+
+        <p>Page not found.</p>
+    </main>
+
+    <footer th:include="layouts/footer :: footer">
+    </footer>
+</div>
+</body>
+</html>

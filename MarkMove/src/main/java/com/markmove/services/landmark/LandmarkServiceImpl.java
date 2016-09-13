@@ -1,4 +1,4 @@
-package com.markmove.services;
+package com.markmove.services.landmark;
 
 import com.markmove.forms.LandmarkForm;
 import com.markmove.models.Landmark;
@@ -10,9 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import org.springframework.data.domain.Pageable;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;

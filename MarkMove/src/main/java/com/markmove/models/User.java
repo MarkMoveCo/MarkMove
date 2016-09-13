@@ -30,7 +30,7 @@ public class User {
     private String gender;
 
     @OneToMany(mappedBy = "author")
-    private Set<Post> posts = new HashSet<>();
+    private Set<Post> posts;
 
     @ManyToMany
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
@@ -41,6 +41,9 @@ public class User {
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private Set<Picture> pictures;
+
+    @OneToMany(mappedBy = "author")
+    private Set<Publication> publications;
 
     public User() {
     }
@@ -139,6 +142,14 @@ public class User {
 
     public void setPictures(Set<Picture> pictures) {
         this.pictures = pictures;
+    }
+
+    public Set<Publication> getPublications() {
+        return publications;
+    }
+
+    public void setPublications(Set<Publication> publications) {
+        this.publications = publications;
     }
 
     @Override

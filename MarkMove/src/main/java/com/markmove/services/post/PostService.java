@@ -1,4 +1,4 @@
-package com.markmove.services;
+package com.markmove.services.post;
 
 
 import com.markmove.models.Post;

@@ -1,5 +1,6 @@
 package com.markmove.forms;
 
+import com.markmove.constants.Messages;
 import org.hibernate.validator.constraints.Email;
 
 import javax.validation.constraints.Min;
@@ -8,14 +9,14 @@ import javax.validation.constraints.Size;
 
 public class RegisterForm {
     @NotNull
-    @Size(min=2, max=30, message = "Username size should be in the range [2...30]")
+    @Size(min=2, max=30, message = Messages.USERNAME_SIZE_ERROR)
     private String username;
 
     @NotNull
-    @Size(min=4, max=32, message = "Password size should be in the range [4 ... 32]")
+    @Size(min=4, max=32, message = Messages.PASSWORD_SIZE_ERROR)
     private String password;
 
-    @NotNull(message = "Passwords do not match!")
+    @NotNull(message = Messages.PASSWORDS_DO_NOT_MATCH_ERROR)
     private String confirmPassword;
 
     @NotNull

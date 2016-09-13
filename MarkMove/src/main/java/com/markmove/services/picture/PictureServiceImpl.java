@@ -1,10 +1,11 @@
-package com.markmove.services;
+package com.markmove.services.picture;
 
 import com.markmove.constants.Messages;
 import com.markmove.models.Landmark;
 import com.markmove.models.Picture;
 import com.markmove.models.User;
 import com.markmove.repositories.PictureRepository;
+import com.markmove.services.system.SystemNotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;

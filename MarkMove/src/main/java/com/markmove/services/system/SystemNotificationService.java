@@ -1,4 +1,4 @@
-package com.markmove.services;
+package com.markmove.services.system;
 
 public interface SystemNotificationService {
     void addInfoMessage(String msg);

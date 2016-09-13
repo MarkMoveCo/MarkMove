@@ -4,9 +4,9 @@ import com.markmove.constants.Messages;
 import com.markmove.forms.LandmarkForm;
 import com.markmove.models.Landmark;
 import com.markmove.models.Picture;
-import com.markmove.services.LandmarkService;
-import com.markmove.services.PictureService;
-import com.markmove.services.SystemNotificationService;
+import com.markmove.services.landmark.LandmarkService;
+import com.markmove.services.picture.PictureService;
+import com.markmove.services.system.SystemNotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.data.domain.Page;
@@ -36,11 +36,8 @@ public class LandmarkController {
     private PictureService pictureService;
 
     @Autowired
-    private ResourceLoader resourceLoader;
-
-
-    @Autowired
     private SystemNotificationService notificationService;
+
 
     @RequestMapping(value = "/landmarks", method = RequestMethod.GET)
     public String landmarks(Model model){
@@ -105,11 +102,11 @@ public class LandmarkController {
     }
 
     @RequestMapping(value = "/landmarks/view/{id}", method = RequestMethod.GET)
-    public String view(@PathVariable("id") Long id, Model model) {
+    public String viewLandmark(@PathVariable("id") Long id, Model model) {
         Landmark landmark = landmarkService.findById(id);
 
         if (landmark == null) {
-            notificationService.addErrorMessage("Cannot find post #" + id);
+            notificationService.addErrorMessage(String.format(Messages.LANDMARK_NOT_FOUND_ERROR, id));
             return "redirect:/landmarks/manage";
         }
 
@@ -119,7 +116,7 @@ public class LandmarkController {
     }
 
     @RequestMapping(value = "/landmarks/view/{id}", method = RequestMethod.POST)
-    public String rate(@PathVariable("id") Long id, @RequestParam("star") Double star, Model model) {
+    public String rateLandmark(@PathVariable("id") Long id, @RequestParam("star") Double star, Model model) {
         Landmark landmark = landmarkService.findById(id);
 
         if (landmark == null) {
@@ -139,28 +136,17 @@ public class LandmarkController {
 
         model.addAttribute("landmark", landmark);
 
-        this.notificationService.addInfoMessage(String.format("You rated %s with %.0f", landmark.getName(), star));
+        this.notificationService.addInfoMessage(String.format(Messages.LANDMARK_RATED_OK, landmark.getName(), star));
 
         return "landmarks/view";
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/images/uploaded_images/{filename:.+}")
-    @ResponseBody
-    public ResponseEntity<?> getFile(@PathVariable String filename) {
-                    // Paths.get Should be Constant or somehow made with variables
-        try {
-            return ResponseEntity.ok(resourceLoader.getResource("file:" + Paths.get("src/main/resources/public/images/uploaded_images", filename).toString()));
-        } catch (Exception e) {
-            return ResponseEntity.notFound().build();
-        }
-    }
-
     @RequestMapping(value = "/landmarks/edit/{id}", method = RequestMethod.GET)
-    public String editPage(@PathVariable("id") Long id, Model model) {
+    public String editLandmark(@PathVariable("id") Long id, Model model) {
         Landmark landmark = landmarkService.findById(id);
 
         if (landmark == null) {
-            notificationService.addErrorMessage("Cannot find post #" + id);
+            notificationService.addErrorMessage(String.format(Messages.LANDMARK_NOT_FOUND_ERROR, id));
             return "redirect:/landmarks/manage";
         }
 
@@ -170,7 +156,7 @@ public class LandmarkController {
     }
 
     @RequestMapping(value = "/landmarks/edit/{id}", method = RequestMethod.POST)
-    public String edit(@PathVariable("id") Long id, @RequestParam("file") MultipartFile file, @Valid LandmarkForm landmarkForm) {
+    public String editLandmark(@PathVariable("id") Long id, @RequestParam("file") MultipartFile file, @Valid LandmarkForm landmarkForm) {
         Landmark landmark = landmarkService.findById(id);
 
         if (landmark == null) {
@@ -182,7 +168,7 @@ public class LandmarkController {
 
         this.landmarkService.edit(landmark, landmarkForm, landmarkPicture);
 
-        this.notificationService.addInfoMessage("Successfully edited landmark");
+        this.notificationService.addInfoMessage(String.format(Messages.LANDMARK_EDITED_OK, id));
         return "redirect:/landmarks/manage";
     }
 
@@ -191,7 +177,7 @@ public class LandmarkController {
         Landmark landmark = landmarkService.findById(id);
 
         if (landmark == null) {
-            notificationService.addErrorMessage("Cannot find post #" + id);
+            notificationService.addErrorMessage(String.format(Messages.LANDMARK_NOT_FOUND_ERROR,id));
             return "redirect:/landmarks/manage";
         }
 
@@ -205,7 +191,7 @@ public class LandmarkController {
         Landmark landmark = landmarkService.findById(id);
 
         if (landmark == null) {
-            notificationService.addErrorMessage("Cannot find post #" + id);
+            notificationService.addErrorMessage(String.format(Messages.LANDMARK_NOT_FOUND_ERROR, id));
             return "redirect:/landmarks/manage";
         }
 
@@ -213,7 +199,7 @@ public class LandmarkController {
 
         landmarkService.deleteById(id);
 
-        notificationService.addInfoMessage("Successfully deleted landmark.");
+        notificationService.addInfoMessage(Messages.LANDMARK_DELETED_OK);
 
         return "redirect:/landmarks/manage";
     }

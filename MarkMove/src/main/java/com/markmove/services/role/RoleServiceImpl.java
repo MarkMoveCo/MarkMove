@@ -1,4 +1,4 @@
-package com.markmove.services;
+package com.markmove.services.role;
 
 import com.markmove.models.Role;
 import com.markmove.repositories.RoleRepository;

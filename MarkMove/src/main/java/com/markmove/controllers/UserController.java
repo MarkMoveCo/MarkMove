@@ -1,10 +1,11 @@
 package com.markmove.controllers;
 
+import com.markmove.constants.Messages;
 import com.markmove.models.Role;
 import com.markmove.models.User;
-import com.markmove.services.PictureService;
-import com.markmove.services.RoleService;
-import com.markmove.services.SystemNotificationService;
+import com.markmove.services.picture.PictureService;
+import com.markmove.services.role.RoleService;
+import com.markmove.services.system.SystemNotificationService;
 import com.markmove.services.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,7 +37,7 @@ public class UserController {
     public String login(@RequestParam(value = "error", required = false) String error) {
 
         if (error != null) {
-            this.systemNotificationService.addErrorMessage("Invalid login");
+            this.systemNotificationService.addErrorMessage(Messages.LOG_IN_ERROR);
 
         }
 
@@ -55,7 +56,6 @@ public class UserController {
         User currentUser = this.userService.findByUsername(principal.getName());
         this.pictureService.create(file, currentUser, false);
 
-        this.systemNotificationService.addInfoMessage("Successfully uploaded picture");
         return "redirect:/";
     }
 
@@ -70,37 +70,8 @@ public class UserController {
 
     @RequestMapping(method = RequestMethod.POST, value = "/users/permissions")
     @ResponseBody
-    public void editUsersPermissions(@RequestBody MultiValueMap<String, String> map) {
-        boolean editedAtLeastOne = false;
-        for (Map.Entry<String, List<String>> pairs : map.entrySet()) {      //  the key look like USER[index-of-its-pos][ROLE] => True/False
-            int firstBracesPos = pairs.getKey().indexOf("[");
-            String username = pairs.getKey().substring(0, firstBracesPos);
-            int lasBracesPos = pairs.getKey().lastIndexOf("[");
-            String roleName = pairs.getKey().substring(lasBracesPos + 1, pairs.getKey().length() - 1);
-            Boolean isChecked = Boolean.parseBoolean(pairs.getValue().get(0));
-            User userToEditPermission = this.userService.findByUsername(username);
-            if (userToEditPermission == null) {
-                this.systemNotificationService.addErrorMessage("Failed to change Permissions of User: " + username);
-            }
-
-            if (isChecked) {
-                Role newRoleToAssign = this.roleService.findByName(roleName);
-                userToEditPermission.getRoles().add(newRoleToAssign);
-            } else {
-                Role roleToRemove = this.roleService.findByName(roleName);
-                userToEditPermission.getRoles().remove(roleToRemove);
-            }
-
-            this.userService.edit(userToEditPermission);
-            editedAtLeastOne = true;
-        }
-
-        if (!editedAtLeastOne) {
-            this.systemNotificationService.addErrorMessage("No changes in the permissions was detected!");
-        } else {
-            this.systemNotificationService.addInfoMessage("Successfully edited Permissions");
-        }
-
+    public void editUsersPermissions(@RequestBody MultiValueMap<String, String> map, Principal currentUser) {
+        this.userService.editPermissions(map, currentUser.getName());
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/users/profile/{username}")

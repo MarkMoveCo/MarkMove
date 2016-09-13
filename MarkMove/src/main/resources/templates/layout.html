@@ -106,13 +106,13 @@
             </div><!-- /.container-fluid -->
         </nav>
 
-        <ul id="messages" th:with="notifyMessages=${session[T(com.markmove.services.SystemNotificationServiceImpl).NOTIFY_MSG_SESSION_KEY]}">
+        <ul id="messages" th:with="notifyMessages=${session[T(com.markmove.services.system.SystemNotificationServiceImpl).NOTIFY_MSG_SESSION_KEY]}">
             <li th:each="msg : ${notifyMessages}"
                 th:text="${msg.text}"
                 th:class="${#strings.toLowerCase(msg.type)}">
             </li>
             <span th:if="${notifyMessages}" th:remove="all" th:text="${session.remove(
-          T(com.markmove.services.SystemNotificationServiceImpl).NOTIFY_MSG_SESSION_KEY)}"></span>
+          T(com.markmove.services.system.SystemNotificationServiceImpl).NOTIFY_MSG_SESSION_KEY)}"></span>
         </ul>
     </header>
 

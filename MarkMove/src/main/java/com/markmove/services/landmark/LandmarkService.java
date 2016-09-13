@@ -1,4 +1,4 @@
-package com.markmove.services;
+package com.markmove.services.landmark;
 
 import com.markmove.forms.LandmarkForm;
 import com.markmove.models.Landmark;

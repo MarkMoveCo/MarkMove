@@ -1,4 +1,4 @@
-package com.markmove.services;
+package com.markmove.services.post;
 
 import com.markmove.models.Post;
 import com.markmove.repositories.PostRepository;
@@ -23,7 +23,7 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public List<Post> findLatest5() {
-        return this.postRepository.findLatest5Posts(new PageRequest(0, 5));
+        return this.postRepository.findByOrderByDateDesc(new PageRequest(0, 5));
     }
 
     @Override
