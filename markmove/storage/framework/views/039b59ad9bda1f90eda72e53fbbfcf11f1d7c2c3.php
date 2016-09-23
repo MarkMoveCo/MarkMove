@@ -9,7 +9,9 @@
         <p>"Traveling - it leaves you speechless, then turns you into a storyteller." - Ibn Battuta</p>
         <div class="message">
             <p>Tell your story to us</p>
-            <a href="<?php echo e(url('user/create')); ?>">Sign up</a>
+            <?php if(!Auth::check()): ?>
+                <a href="<?php echo e(url('user/create')); ?>">Sign up</a>
+            <?php endif; ?>
         </div>
     </div>
 <?php $__env->stopSection(); ?>

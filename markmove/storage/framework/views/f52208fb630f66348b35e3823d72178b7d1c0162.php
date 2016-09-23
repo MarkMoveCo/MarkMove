@@ -75,12 +75,12 @@
                     <?php endif;?>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <?php if(empty($this->user)): ?>
-                    <li role="presentation"><a href="<?php echo e(url('/login')); ?>">Log in</a></li>
-                    <li role="presentation"><a href="<?php echo e(url('/register')); ?>">Sign up</a></li>
+                    <?php if(Auth::check()): ?>
+                        <li role="presentation"><a href="#"><?php echo e(Auth::user()->name); ?></a></li>
+                        <li role="presentation"><a href="#">Log out</a></li>
                     <?php else: ?>
-                    <li role="presentation"><a href="#"><?=$this->user->getNickname();?></a></li>
-                    <li role="presentation"><a href="#">Log out</a></li>
+                        <li role="presentation"><a href="<?php echo e(url('/login')); ?>">Log in</a></li>
+                        <li role="presentation"><a href="<?php echo e(url('/register')); ?>">Sign up</a></li>
                     <?php endif; ?>
                 </ul>
             </div><!-- /.navbar-csollapse -->

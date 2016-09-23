@@ -75,13 +75,13 @@
                     <?php endif;?>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <?php if(empty($this->user)): ?>
-                    <li role="presentation"><a href="{{ url('/login') }}">Log in</a></li>
-                    <li role="presentation"><a href="{{ url('/register') }}">Sign up</a></li>
-                    <?php else: ?>
-                    <li role="presentation"><a href="#"><?=$this->user->getNickname();?></a></li>
-                    <li role="presentation"><a href="#">Log out</a></li>
-                    <?php endif; ?>
+                    @if (Auth::check())
+                        <li role="presentation"><a href="#">{{ Auth::user()->name }}</a></li>
+                        <li role="presentation"><a href="#">Log out</a></li>
+                    @else
+                        <li role="presentation"><a href="{{ url('/login') }}">Log in</a></li>
+                        <li role="presentation"><a href="{{ url('/register') }}">Sign up</a></li>
+                    @endif
                 </ul>
             </div><!-- /.navbar-csollapse -->
         </div><!-- /.container-fluid -->

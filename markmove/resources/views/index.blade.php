@@ -11,7 +11,9 @@
         <p>"Traveling - it leaves you speechless, then turns you into a storyteller." - Ibn Battuta</p>
         <div class="message">
             <p>Tell your story to us</p>
-            <a href="{{ url('user/create') }}">Sign up</a>
+            @if (!Auth::check())
+                <a href="{{ url('user/create') }}">Sign up</a>
+            @endif
         </div>
     </div>
 @endsection
