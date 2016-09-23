@@ -1,0 +1,33 @@
+html, body {
+    height: 100%;
+}
+body {
+    background: #FAFAFA;
+    background-size: 100% 100%;
+    -webkit-background-size: cover;
+    font-family: Arial, sans-serif;
+    font-weight:lighter;
+    letter-spacing:1px;
+}
+
+header {
+    margin-bottom: 50px;
+}
+
+.container {
+    min-height: 500px;
+}
+
+.panel {
+    border: 1px solid lightgrey;
+}
+
+@media (max-width: 1240px) {
+    .container {
+        min-height: 400px; }
+}
+
+@media (max-width: 1024px) {
+    .container {
+        min-height: 300px; }
+}

@@ -1,0 +1,63 @@
+.left-side, .right-side {
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.left-side{
+    float: left;
+}
+
+.right-side {
+    float: right;
+}
+
+#googleMap {
+    margin: 10px 2px 10px 2px;
+    width: 500px;
+    height: 350px;
+}
+
+@media (max-width: 1024px) {
+    #googleMap {
+        width: 350px;
+    }
+}
+
+@media (max-width: 1200px){
+    .right-side {
+        float: left;
+    }
+}
+.category-name {
+    font-size: 18px;
+    color: #000;
+    padding-bottom: 2px;
+    padding-left: 20px;
+    border-bottom: 1px solid #000;
+}
+.landmark {
+    display: inline-block;
+    width: 200px;
+    height: 340px;
+    background-color: #fff;
+}
+
+.landmark-photo {
+    width: 198px;
+    height: 220px;
+}
+
+.landmark-name {
+    padding-left: 10px;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.landmark-info {
+    padding: 0 10px 0 10px;
+    word-wrap: break-word;
+    margin-bottom: 0;
+}
+.category li {
+    display: inline-block;
+}
