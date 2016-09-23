@@ -4,19 +4,19 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>@yield('title')</title>
+    <title><?php echo $__env->yieldContent('title'); ?></title>
 
-    <link href="{{ asset('/css/main/reset.css') }}" rel="stylesheet">
-    <link href="{{ asset('/css/main/bootstrap.css') }}" rel="stylesheet">
-    <link href="{{ asset('/css/main/default.css') }}" rel="stylesheet">
-    <link href="{{ asset('/css/main/header-footer.css') }}" rel="stylesheet">
+    <link href="<?php echo e(asset('/css/main/reset.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('/css/main/bootstrap.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('/css/main/default.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('/css/main/header-footer.css')); ?>" rel="stylesheet">
 
-    @yield('style')
+    <?php echo $__env->yieldContent('style'); ?>
 
-    <script src="{{ asset('/js/jquery-3.1.0.min.js') }}"></script>
-    <script src="{{ asset('/js/bootstrap.min.js') }}"></script>
+    <script src="<?php echo e(asset('/js/jquery-3.1.0.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('/js/bootstrap.min.js')); ?>"></script>
 
-    @yield('script')
+    <?php echo $__env->yieldContent('script'); ?>
 </head>
 <body>
 
@@ -24,7 +24,7 @@
     <nav class="navbar transparent  navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div>
-                <a class="navbar-brand" href="{{ url('/') }}">{{ Html::image('img/logo.png', 'Brand', array('id' => 'logo')) }}</a>
+                <a class="navbar-brand" href="<?php echo e(url('/')); ?>"><?php echo e(Html::image('img/logo.png', 'Brand', array('id' => 'logo'))); ?></a>
             </div>
 
             <div class="navbar-header">
@@ -45,8 +45,8 @@
                     </div>
                 </form>
                 <ul class="nav navbar-nav navbar-left">
-                    <li role="presentation"><a href="{{ url('/') }}">Mark Move</a></li>
-                    <li role="presentation"><a href="{{ url('landmark') }}">Landmarks</a></li>
+                    <li role="presentation"><a href="<?php echo e(url('/')); ?>">Mark Move</a></li>
+                    <li role="presentation"><a href="<?php echo e(url('landmark')); ?>">Landmarks</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tourism<span class="caret"></span></a>
                         <ul class="dropdown-menu">
@@ -76,8 +76,8 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <?php if(empty($this->user)): ?>
-                    <li role="presentation"><a href="{{ url('/login') }}">Log in</a></li>
-                    <li role="presentation"><a href="{{ url('/register') }}">Sign up</a></li>
+                    <li role="presentation"><a href="<?php echo e(url('/login')); ?>">Log in</a></li>
+                    <li role="presentation"><a href="<?php echo e(url('/register')); ?>">Sign up</a></li>
                     <?php else: ?>
                     <li role="presentation"><a href="#"><?=$this->user->getNickname();?></a></li>
                     <li role="presentation"><a href="#">Log out</a></li>
@@ -90,12 +90,12 @@
 
 <main>
     <div class="container">
-        @yield('content')
+        <?php echo $__env->yieldContent('content'); ?>
     </div>
 </main>
 
 <footer>
-    @yield('footer')
+    <?php echo $__env->yieldContent('footer'); ?>
 </footer>
 
 </body>

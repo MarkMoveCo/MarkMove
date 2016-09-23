@@ -2,35 +2,36 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
-    public function index()
+    /**
+     * The user repository instance.
+     */
+    protected $users;
+
+    /**
+     * Create a new controller instance.
+     *
+     * @param  UserRepository  $users
+     * @return void
+     */
+    public function __construct(UserRepository $users)
     {
-        return view('user/login');
+        $this->users = $users;
     }
 
-    public function create()
+    /**
+     * Show the profile for the given user.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function show($id)
     {
-        return view('user/registration');
-    }
-
-    public function store(Request $request)
-    {
-        $data = $request->all();
-        $rules = ['email' => 'required|email', 'password' => 'required|min:7|max:50', 'confirmPassword' => 'same:pass'];
-        $validator = Validator::make($data, $rules, ['email.required' => 'Дай го тоя имейл.']);
-
-        if ($validator->fails()){
-            return redirect('/user/create')->withErrors($validator)->withInput();
-        }
-        else {
-            $id = DB::table('users')->insertGetId(
-                ['email' => $data['email'], 'password' => $data['password']]
-            );
-            return redirect('');
-        }
+        return view('user.profile', ['user' => User::findOrFail($id)]);
     }
 }
