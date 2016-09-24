@@ -11,7 +11,7 @@ class HasXPathTest extends \Hamcrest\AbstractMatcherTest
     {
         self::$xml = <<<XML
 <?xml version="1.0"?>
-<users>
+<user>
     <user>
         <id>alice</id>
         <name>Alice Frankel</name>
@@ -27,7 +27,7 @@ class HasXPathTest extends \Hamcrest\AbstractMatcherTest
         <name>Charlie Chan</name>
         <role>user</role>
     </user>
-</users>
+</user>
 XML;
         self::$doc = new \DOMDocument();
         self::$doc->loadXML(self::$xml);
@@ -47,7 +47,7 @@ HTML;
 
     protected function createMatcher()
     {
-        return \Hamcrest\Xml\HasXPath::hasXPath('/users/user');
+        return \Hamcrest\Xml\HasXPath::hasXPath('/user/user');
     }
 
     public function testMatchesWhenXPathIsFound()
@@ -163,17 +163,17 @@ HTML;
     public function testHasAReadableDescription()
     {
         $this->assertDescription(
-            'XML or HTML document with XPath "/users/user"',
-            hasXPath('/users/user')
+            'XML or HTML document with XPath "/user/user"',
+            hasXPath('/user/user')
         );
         $this->assertDescription(
-            'XML or HTML document with XPath "count(/users/user)" <2>',
-            hasXPath('/users/user', 2)
+            'XML or HTML document with XPath "count(/user/user)" <2>',
+            hasXPath('/user/user', 2)
         );
         $this->assertDescription(
-            'XML or HTML document with XPath "/users/user/name"'
+            'XML or HTML document with XPath "/user/user/name"'
             . ' a string starting with "Alice"',
-            hasXPath('/users/user/name', startsWith('Alice'))
+            hasXPath('/user/user/name', startsWith('Alice'))
         );
     }
 
@@ -181,17 +181,17 @@ HTML;
     {
         $this->assertMismatchDescription(
             'XPath returned no results',
-            hasXPath('/users/name'),
+            hasXPath('/user/name'),
             self::$doc
         );
         $this->assertMismatchDescription(
             'XPath expression result was <3F>',
-            hasXPath('/users/user', 2),
+            hasXPath('/user/user', 2),
             self::$doc
         );
         $this->assertMismatchDescription(
             'XPath returned ["alice", "bob", "charlie"]',
-            hasXPath('/users/user/id', 'Frank'),
+            hasXPath('/user/user/id', 'Frank'),
             self::$doc
         );
     }

@@ -76,7 +76,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     @if (Auth::check())
-                        <li role="presentation"><a href="#">{{ Auth::user()->name }}</a></li>
+                        <li role="presentation"><a href="{{ url('/user/' . Auth::user()->id) }}">{{ Auth::user()->name }}</a></li>
                         <li role="presentation"><a href="#">Log out</a></li>
                     @else
                         <li role="presentation"><a href="{{ url('/login') }}">Log in</a></li>

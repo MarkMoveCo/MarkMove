@@ -76,7 +76,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <?php if(Auth::check()): ?>
-                        <li role="presentation"><a href="#"><?php echo e(Auth::user()->name); ?></a></li>
+                        <li role="presentation"><a href="<?php echo e(url('/user/' . Auth::user()->id)); ?>"><?php echo e(Auth::user()->name); ?></a></li>
                         <li role="presentation"><a href="#">Log out</a></li>
                     <?php else: ?>
                         <li role="presentation"><a href="<?php echo e(url('/login')); ?>">Log in</a></li>

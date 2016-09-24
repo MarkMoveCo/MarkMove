@@ -13,16 +13,16 @@ class UserController extends Controller
      */
     protected $users;
 
-    /**
-     * Create a new controller instance.
-     *
-     * @param  UserRepository  $users
-     * @return void
-     */
-    public function __construct(UserRepository $users)
-    {
-        $this->users = $users;
-    }
+//    /**
+//     * Create a new controller instance.
+//     *
+//     * @param  UserRepository  $users
+//     * @return void
+//     */
+//    public function __construct(UserRepository $users)
+//    {
+//        $this->users = $users;
+//    }
 
     /**
      * Show the profile for the given user.
@@ -32,6 +32,6 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        return view('user.profile', ['user' => User::findOrFail($id)]);
+        return view('user.profile');
     }
 }

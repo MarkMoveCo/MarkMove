@@ -2610,7 +2610,7 @@ EOT;
 
     The Goal of Project Gutenberg is to Give Away 1 Trillion eBooks!
     This is ten thousand titles each to one hundred million readers,
-    which is only about 4% of the present number of computer users.
+    which is only about 4% of the present number of computer user.
 
     Here is the briefest record of our progress (* means estimated):
 
