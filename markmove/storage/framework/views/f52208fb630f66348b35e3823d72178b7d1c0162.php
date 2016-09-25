@@ -60,24 +60,20 @@
                     </li>
                     <li role="presentation"><a href="#">Events</a></li>
                     <li role="presentation"><a href="#">Additional Info</a></li>
-                    <?php if(!empty($this->user)):?>
-                    <?php if($this->user->getRole()->getRole() =="Admin"):?>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administration<span class="caret"></span></a>
                         <ul class="dropdown-menu">
+                            <li><a href="<?php echo e(url('/admin/permissions')); ?>">Manage Permissions</a></li>
                             <li><a href="#">Manage Events</a></li>
                             <li><a href="#">Manage publications</a></li>
-                            <li><a href="#">Permissions</a></li>
                             <li><a href="#">Manage photos</a></li>
                         </ul>
                     </li>
-                    <?php endif;?>
-                    <?php endif;?>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <?php if(Auth::check()): ?>
                         <li role="presentation"><a href="<?php echo e(url('/user/' . Auth::user()->id)); ?>"><?php echo e(Auth::user()->name); ?></a></li>
-                        <li role="presentation"><a href="#">Log out</a></li>
+                        <li role="presentation"><a href="<?php echo e(Auth::logout()); ?>">Log out</a></li>
                     <?php else: ?>
                         <li role="presentation"><a href="<?php echo e(url('/login')); ?>">Log in</a></li>
                         <li role="presentation"><a href="<?php echo e(url('/register')); ?>">Sign up</a></li>
